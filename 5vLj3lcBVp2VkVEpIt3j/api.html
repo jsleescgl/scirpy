@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.0+e103543
+                0.0+61f2fa6
               </div>
             
           
@@ -89,16 +89,21 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy">Input/Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-output">Input/Output</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.read_10x.html">sctcrpy.read_10x</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.pp">Preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.pp.define_clonotypes.html">sctcrpy.pp.define_clonotypes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
@@ -168,8 +173,8 @@
   <div class="section" id="module-sctcrpy">
 <span id="api"></span><h1>API<a class="headerlink" href="#module-sctcrpy" title="Permalink to this headline">¶</a></h1>
 <p>Python library for single-cell TCR analysis</p>
-<div class="section" id="module-sctcrpy">
-<span id="input-output"></span><h2>Input/Output<a class="headerlink" href="#module-sctcrpy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="input-output">
+<h2>Input/Output<a class="headerlink" href="#input-output" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -183,7 +188,7 @@
 </table>
 </div>
 <div class="section" id="module-sctcrpy.pp">
-<span id="preprocessing"></span><h2>Preprocessing<a class="headerlink" href="#module-sctcrpy.pp" title="Permalink to this headline">¶</a></h2>
+<span id="preprocessing-pp"></span><h2>Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code><a class="headerlink" href="#module-sctcrpy.pp" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -192,6 +197,20 @@
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pp.define_clonotypes.html#sctcrpy.pp.define_clonotypes" title="sctcrpy.pp.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, flavor])</p></td>
 <td><p>Define clonotypes based on CDR3 region.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sctcrpy.tl">
+<span id="tools-tl"></span><h2>Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code><a class="headerlink" href="#module-sctcrpy.tl" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.tcr_dist.html#sctcrpy.tl.tcr_dist" title="sctcrpy.tl.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata[, subst_mat, gap_open, …])</p></td>
+<td><p>Compute the TCRdist on CDR3 sequences.</p></td>
 </tr>
 </tbody>
 </table>

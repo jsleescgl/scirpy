@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python Module Index &mdash; sctcrpy  documentation</title>
+  <title>sctcrpy.tl.tcr_dist &mdash; sctcrpy  documentation</title>
   
 
   
@@ -35,9 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
- 
-
-
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="sctcrpy.pp.define_clonotypes" href="sctcrpy.pp.define_clonotypes.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,10 +85,18 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.tl.tcr_dist</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -136,10 +143,18 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Python Module Index</li>
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>sctcrpy.tl.tcr_dist</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/grst/sctcrpy/blob/master/docs/sctcrpy.tl.tcr_dist.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
         
       </li>
     
@@ -151,40 +166,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+  <div class="section" id="sctcrpy-tl-tcr-dist">
+<h1>sctcrpy.tl.tcr_dist<a class="headerlink" href="#sctcrpy-tl-tcr-dist" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sctcrpy.tl.tcr_dist">
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">tcr_dist</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">subst_mat=&lt;parasail.bindings_v2.Matrix object&gt;</em>, <em class="sig-param">gap_open=8</em>, <em class="sig-param">gap_extend=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.tcr_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the TCRdist on CDR3 sequences.</p>
+<p>Currently takes into account only dominant alpha and dominant beta.</p>
+<p>High-performance sequence alignment through parasail library <a class="reference internal" href="references.html#daily2016" id="id1"><span>[Daily2016]</span></a></p>
+</dd></dl>
 
-   <h1>Python Module Index</h1>
-
-   <div class="modindex-jumpbox">
-   <a href="#cap-s"><strong>s</strong></a>
-   </div>
-
-   <table class="indextable modindextable">
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-s"><td></td><td>
-       <strong>s</strong></td><td></td></tr>
-     <tr>
-       <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-       <td>
-       <a href="api.html#module-sctcrpy"><code class="xref">sctcrpy</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="api.html#module-sctcrpy.pp"><code class="xref">sctcrpy.pp</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="api.html#module-sctcrpy.tl"><code class="xref">sctcrpy.tl</code></a></td><td>
-       <em></em></td></tr>
-   </table>
+</div>
 
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sctcrpy.pp.define_clonotypes.html" class="btn btn-neutral float-left" title="sctcrpy.pp.define_clonotypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

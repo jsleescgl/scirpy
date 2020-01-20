@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.0+e103543
+                0.0+61f2fa6
               </div>
             
           
@@ -89,13 +89,15 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy">Input/Output</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#input-output">Input/Output</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.read_10x</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.pp">Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
@@ -172,10 +174,10 @@
 <dd><p>Read TCR data from a 10x genomics sample.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Path to filtered_contig_annotations.csv</p>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Path to filtered_contig_annotations.csv</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>AnnData object with TCR data in <cite>obs</cite> for each cell.</p>
+<dd class="field-even"><p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>AnnData</p>
