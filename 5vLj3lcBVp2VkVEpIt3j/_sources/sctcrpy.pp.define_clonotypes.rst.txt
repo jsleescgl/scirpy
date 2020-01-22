@@ -1,0 +1,6 @@
+sctcrpy.pp.define\_clonotypes
+=============================
+
+.. currentmodule:: sctcrpy.pp
+
+.. autofunction:: define_clonotypes
