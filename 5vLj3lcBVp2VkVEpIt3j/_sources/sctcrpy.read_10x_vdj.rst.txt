@@ -1,0 +1,6 @@
+sctcrpy.read\_10x\_vdj
+======================
+
+.. currentmodule:: sctcrpy
+
+.. autofunction:: read_10x_vdj

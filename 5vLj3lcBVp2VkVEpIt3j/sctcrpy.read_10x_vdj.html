@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sctcrpy.read_10x &mdash; sctcrpy  documentation</title>
+  <title>sctcrpy.read_10x_vdj &mdash; sctcrpy  documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+291c78c
+                0.0+ac9e6c8
               </div>
             
           
@@ -92,7 +92,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#input-output">Input/Output</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.read_h5ad.html">sctcrpy.read_h5ad</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.read_10x</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.read_10x_vdj</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.read_tracer.html">sctcrpy.read_tracer</a></li>
 </ul>
 </li>
@@ -149,14 +149,14 @@
         
           <li><a href="api.html">API</a> &raquo;</li>
         
-      <li>sctcrpy.read_10x</li>
+      <li>sctcrpy.read_10x_vdj</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/grst/sctcrpy/blob/master/docs/sctcrpy.read_10x.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/grst/sctcrpy/blob/master/docs/sctcrpy.read_10x_vdj.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -170,16 +170,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sctcrpy-read-10x">
-<h1>sctcrpy.read_10x<a class="headerlink" href="#sctcrpy-read-10x" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sctcrpy-read-10x-vdj">
+<h1>sctcrpy.read_10x_vdj<a class="headerlink" href="#sctcrpy-read-10x-vdj" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="sctcrpy.read_10x">
-<code class="sig-prename descclassname">sctcrpy.</code><code class="sig-name descname">read_10x</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.read_10x" title="Permalink to this definition">¶</a></dt>
+<dt id="sctcrpy.read_10x_vdj">
+<code class="sig-prename descclassname">sctcrpy.</code><code class="sig-name descname">read_10x_vdj</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">filtered=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.read_10x_vdj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read TCR data from a 10x genomics sample.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Path to filtered_contig_annotations.csv</p>
+<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Path to all_contig_annotations.json</p>
+</dd>
+<dt><strong>filtered</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Only keep filtered contig annotations (= is_cell and high_confidence)</p>
 </dd>
 </dl>
 </dd>
