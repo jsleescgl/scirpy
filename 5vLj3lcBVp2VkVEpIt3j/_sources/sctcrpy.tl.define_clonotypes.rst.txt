@@ -1,0 +1,6 @@
+sctcrpy.tl.define\_clonotypes
+=============================
+
+.. currentmodule:: sctcrpy.tl
+
+.. autofunction:: define_clonotypes

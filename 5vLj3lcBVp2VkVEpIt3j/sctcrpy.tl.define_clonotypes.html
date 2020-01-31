@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>References &mdash; sctcrpy  documentation</title>
+  <title>sctcrpy.tl.define_clonotypes &mdash; sctcrpy  documentation</title>
   
 
   
@@ -36,7 +36,8 @@
   <link rel="stylesheet" href="_static/typehints.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="sctcrpy.tl.alpha_diversity" href="sctcrpy.tl.alpha_diversity.html" /> 
+    <link rel="next" title="sctcrpy.tl.tcr_dist" href="sctcrpy.tl.tcr_dist.html" />
+    <link rel="prev" title="sctcrpy.pp.merge_with_tcr" href="sctcrpy.pp.merge_with_tcr.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,8 +89,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.tl.define_clonotypes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-sctcrpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
@@ -135,14 +147,16 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>References</li>
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>sctcrpy.tl.define_clonotypes</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/grst/sctcrpy/blob/master/docs/references.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/grst/sctcrpy/blob/master/docs/sctcrpy.tl.define_clonotypes.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -156,15 +170,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<dl class="citation">
-<dt class="label" id="daily2016"><span class="brackets">Daily2016</span></dt>
-<dd><p>Daily, Jeff. (2016).
-Parasail: SIMD C library for global, semi-global, and local pairwise sequence alignments.
-<a class="reference external" href="http://dx.doi.org/10.1186/s12859-016-0930-z">BMC Bioinformatics</a>, 17(1), 1-11.</p>
+  <div class="section" id="sctcrpy-tl-define-clonotypes">
+<h1>sctcrpy.tl.define_clonotypes<a class="headerlink" href="#sctcrpy-tl-define-clonotypes" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sctcrpy.tl.define_clonotypes">
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">define_clonotypes</code><span class="sig-paren">(</span><em class="sig-param">adata</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.define_clonotypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define clonotypes based on CDR3 region.</p>
+<p>The current definition of a clonotype is
+same CDR3 sequence for both primary and secondary
+TRA and TRB chains.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p></p>
+</dd>
+<dt><strong>flavor</strong></dt><dd><p>Currently, only “paried” is supported.</p>
 </dd>
 </dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Nothing, but adds a column <code class="docutils literal notranslate"><span class="pre">clonotype</span></code> to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 
 
@@ -175,8 +207,10 @@ Parasail: SIMD C library for global, semi-global, and local pairwise sequence al
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="sctcrpy.tl.tcr_dist.html" class="btn btn-neutral float-right" title="sctcrpy.tl.tcr_dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="sctcrpy.tl.alpha_diversity.html" class="btn btn-neutral float-left" title="sctcrpy.tl.alpha_diversity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="sctcrpy.pp.merge_with_tcr.html" class="btn btn-neutral float-left" title="sctcrpy.pp.merge_with_tcr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

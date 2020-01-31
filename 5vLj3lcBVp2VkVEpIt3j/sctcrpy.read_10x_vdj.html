@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+ac9e6c8
+                0.0+c3a0f9a
               </div>
             
           
@@ -176,20 +176,40 @@
 <dt id="sctcrpy.read_10x_vdj">
 <code class="sig-prename descclassname">sctcrpy.</code><code class="sig-name descname">read_10x_vdj</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">filtered=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.read_10x_vdj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read TCR data from a 10x genomics sample.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Path to all_contig_annotations.json</p>
+<blockquote>
+<div><p>Filters and processes</p>
+</div></blockquote>
+<p>cells according to our current working
+model for TCRs.</p>
+<dl class="simple">
+<dt>Simplifying assumptions:</dt><dd><ul class="simple">
+<li><p>There are only alpha and beta chains</p></li>
+<li><p>each cell can contain at most two alpha and two beta chains</p></li>
+<li><p>non-productive chains are not relevant</p></li>
+</ul>
 </dd>
-<dt><strong>filtered</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Only keep filtered contig annotations (= is_cell and high_confidence)</p>
+<dt>These assumptions lead to the following filtering rules:</dt><dd><ul class="simple">
+<li><p>All chains that are not of type “TRA” or “TRB” will be removed.</p></li>
+<li><p>Non-productive chains will be removed.</p></li>
+<li><p>if there are more than two non-produrvice chains for either TRA/TRB,</p></li>
+</ul>
 </dd>
 </dl>
+<p>the least abundant ones (by <code class="docutils literal notranslate"><span class="pre">expr</span></code>) will be removed until
+there are only two left. Cells that had chains removed are flagged
+with ‘multi_chain’ = True.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>path</dt><dd><p>Path to all_contig_annotations.json</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt>filtered</dt><dd><p>Only keep filtered contig annotations (= is_cell and high_confidence)</p>
 </dd>
+</dl>
+<p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell.</p>
+</div></blockquote>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell.</p>
+<dd class="field-odd"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>
 </dd>
 </dl>
 </dd></dl>

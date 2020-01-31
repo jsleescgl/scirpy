@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+ac9e6c8
+                0.0+c3a0f9a
               </div>
             
           
@@ -101,6 +101,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
 </ul>
@@ -209,9 +210,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pp.merge_with_tcr.html#sctcrpy.pp.merge_with_tcr" title="sctcrpy.pp.merge_with_tcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_tcr</span></code></a>(adata, adata_tcr, *[, how, …])</p></td>
 <td><p>Integrate the TCR AnnData into an existing AnnData object with transcriptomics data.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -223,10 +221,13 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.tcr_dist.html#sctcrpy.tl.tcr_dist" title="sctcrpy.tl.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata, *[, subst_mat, gap_open, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html#sctcrpy.tl.define_clonotypes" title="sctcrpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata)</p></td>
+<td><p>Define clonotypes based on CDR3 region.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.tcr_dist.html#sctcrpy.tl.tcr_dist" title="sctcrpy.tl.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata, *[, subst_mat, gap_open, …])</p></td>
 <td><p>Compute the TCRdist on CDR3 sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html#sctcrpy.tl.alpha_diversity" title="sctcrpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, key, *[, flavor, inplace])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html#sctcrpy.tl.alpha_diversity" title="sctcrpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, key, *[, flavor, inplace])</p></td>
 <td><p>Alpha diversity within groups.</p></td>
 </tr>
 </tbody>
