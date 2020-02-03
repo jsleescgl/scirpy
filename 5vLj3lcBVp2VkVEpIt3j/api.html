@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+d2aaac8
+                0.0+a5b7127
               </div>
             
           
@@ -104,9 +104,14 @@
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clonal_expansion.html">sctcrpy.tl.clonal_expansion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.alpha_diversity.html">sctcrpy.pl.alpha_diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.clonal_expansion.html">sctcrpy.pl.clonal_expansion</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -230,6 +235,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html#sctcrpy.tl.alpha_diversity" title="sctcrpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Computes the alpha diversity of clonotypes within a group.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.clonal_expansion.html#sctcrpy.tl.clonal_expansion" title="sctcrpy.tl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Creates summary statsitics on how many clonotypes are expanded within a certain groups.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -241,6 +249,12 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pl.alpha_diversity.html#sctcrpy.pl.alpha_diversity" title="sctcrpy.pl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Plot the alpha diversity per group.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.pl.clonal_expansion.html#sctcrpy.pl.clonal_expansion" title="sctcrpy.pl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Plot the fraction of cells in each group belonging to singleton, doublet or triplet clonotype.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
