@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+c3a0f9a
+                0.0+d2aaac8
               </div>
             
           
@@ -174,12 +174,33 @@
 <h1>sctcrpy.tl.alpha_diversity<a class="headerlink" href="#sctcrpy-tl-alpha-diversity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.tl.alpha_diversity">
-<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">key</em>, <em class="sig-param">*</em>, <em class="sig-param">flavor='shannon'</em>, <em class="sig-param">inplace=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alpha diversity within groups.</p>
-<dl class="simple">
-<dt>adata</dt><dd><p>AnnData object to use</p>
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">inplace=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the alpha diversity of clonotypes within a group.</p>
+<p>Ignores NaN values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annotated data matrix</p>
 </dd>
-<dt>key</dt><dd><p>Column of <code class="docutils literal notranslate"><span class="pre">obs</span></code> by which the grouping will be performed.</p>
+<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Column of <code class="docutils literal notranslate"><span class="pre">obs</span></code> by which the grouping will be performed.</p>
+</dd>
+<dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column on which to compute the alpha diversity</p>
+</dd>
+<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If true, adds an entry to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.
+Otherwise it returns a dictionary with the results.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Depending on the value of <code class="docutils literal notranslate"><span class="pre">inplace</span></code>, either returns a dictionary</p></li>
+<li><p><em>with the diversity for each group of adds the dict to</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
