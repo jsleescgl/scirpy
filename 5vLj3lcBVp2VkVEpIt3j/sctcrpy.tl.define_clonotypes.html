@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+ef61ec6
+                0.0+294bc4b
               </div>
             
           
@@ -175,7 +175,7 @@
 <h1>sctcrpy.tl.define_clonotypes<a class="headerlink" href="#sctcrpy-tl-define-clonotypes" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.tl.define_clonotypes">
-<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">define_clonotypes</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">key_added='clonotype'</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.define_clonotypes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">define_clonotypes</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">flavor='all_chains'</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">key_added='clonotype'</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.define_clonotypes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Define clonotypes based on CDR3 region.</p>
 <p>The current definition of a clonotype is
 same CDR3 sequence for both primary and secondary
@@ -185,6 +185,10 @@ be <code class="docutils literal notranslate"><span class="pre">NaN</span></code
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annotated data matrix</p>
+</dd>
+<dt><strong>flavor</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[all_chains, primary_only]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[all_chains, primary_only]</span> (default: <code class="docutils literal notranslate"><span class="pre">'all_chains'</span></code>)</dt><dd><p>Biological model to define clonotypes.
+<code class="docutils literal notranslate"><span class="pre">all_chains</span></code>: All four chains of a cell in a clonotype need to be the same.
+<code class="docutils literal notranslate"><span class="pre">primary_only</span></code>: Only primary alpha and beta chain need to be the same.</p>
 </dd>
 <dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, adds a column to adata.obs</p>
 </dd>
