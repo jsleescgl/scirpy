@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+3c73cbb
+                0.0+0b0e529
               </div>
             
           
@@ -96,7 +96,6 @@
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.pl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.clonal_expansion.html">sctcrpy.pl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.cdr_convergence.html">sctcrpy.pl.cdr_convergence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.spectratype.html">sctcrpy.pl.spectratype</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.pl.group_abundance.html">sctcrpy.pl.group_abundance</a></li>
 </ul>
@@ -176,18 +175,21 @@
 <h1>sctcrpy.pl.alpha_diversity<a class="headerlink" href="#sctcrpy-pl-alpha-diversity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.pl.alpha_diversity">
-<code class="sig-prename descclassname">sctcrpy.pl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">vistype='bar'</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.pl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.pl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">vistype='bar'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.pl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot the alpha diversity per group.</p>
+<p>Calls <code class="xref py py-meth docutils literal notranslate"><span class="pre">tl.alpha_diversity()</span></code> on-the-fly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annotated data matrix</p>
+<dt><strong>adata</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></span></dt><dd><p>Annotated data matrix. Will execute <code class="docutils literal notranslate"><span class="pre">tl.alpha_diversity</span></code> on-the-fly.</p>
 </dd>
 <dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Column of <code class="docutils literal notranslate"><span class="pre">obs</span></code> by which the grouping will be performed</p>
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column on which to compute the alpha diversity</p>
 </dd>
-<dt><strong>vistype</strong> : <span class="annotation terse">{‘bar’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘bar’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>)</dt><dd><p>Visualization type. Currently only ‘bar’ is supported.</p>
+<dt><strong>vistype</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[bar]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[bar]</span> (default: <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>)</dt><dd><p>Visualization type. Currently only ‘bar’ is supported.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional parameters passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">pl.base.bar()</span></code></p>
 </dd>
 </dl>
 </dd>

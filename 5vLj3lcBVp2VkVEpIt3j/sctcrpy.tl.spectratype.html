@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sctcrpy.tl.group_abundance" href="sctcrpy.tl.group_abundance.html" />
-    <link rel="prev" title="sctcrpy.tl.cdr_convergence" href="sctcrpy.tl.cdr_convergence.html" /> 
+    <link rel="prev" title="sctcrpy.tl.alpha_diversity" href="sctcrpy.tl.alpha_diversity.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0+3c73cbb
+                0.0+0b0e529
               </div>
             
           
@@ -96,8 +96,6 @@
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.chain_pairing.html">sctcrpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clonal_expansion.html">sctcrpy.tl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.cdr_convergence.html">sctcrpy.tl.cdr_convergence</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.tl.spectratype</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.group_abundance.html">sctcrpy.tl.group_abundance</a></li>
 </ul>
@@ -178,53 +176,32 @@
 <h1>sctcrpy.tl.spectratype<a class="headerlink" href="#sctcrpy-tl-spectratype" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.tl.spectratype">
-<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">spectratype</code><span class="sig-paren">(</span><em class="sig-param">adata, groupby, *, target_col=['TRB_1_cdr3_len'], fun=&lt;function sum&gt;, for_cells=None, fraction=None, fraction_base=None, inplace=True, as_dict=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.spectratype" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">spectratype</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby='TRA_1_cdr3_len'</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col</em>, <em class="sig-param">combine_fun=&lt;function sum&gt;</em>, <em class="sig-param">fraction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.spectratype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the distribution of CDR3 region lengths.</p>
 <p>Ignores NaN values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>AnnData object to work on.</p>
+<dt><strong>adata</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></span></dt><dd><p>AnnData object to work on.</p>
 </dd>
-<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Group by this column from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Samples or diagnosis for example.</p>
+<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Collection" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Collection" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]</span> (default: <code class="docutils literal notranslate"><span class="pre">'TRA_1_cdr3_len'</span></code>)</dt><dd><p>Column(s) containing CDR3 lengths.</p>
 </dd>
-<dt><strong>fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7f8a63034ca0&gt;</span></code>)</dt><dd><p>A function definining how the target columns should be merged
+<dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Color by this column from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. E.g. sample or diagnosis</p>
+</dd>
+<dt><strong>combine_fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7f55b444cd08&gt;</span></code>)</dt><dd><p>A function definining how the groupby columns should be merged
 (e.g. sum, mean, median, etc).</p>
 </dd>
-<dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">['TRB_1_cdr3_len']</span></code>)</dt><dd><p>Columns containing CDR3 lengths.</p>
-</dd>
-<dt><strong>for_cells</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p><p>A whitelist of cells that should be included in the analysis.
-If not specified, cells with NaN values in the group definition columns
-will be ignored. When the tool is executed by the plotting function,</p>
-<blockquote>
-<div><p>the whitelist is not updated.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt><strong>fraction</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If True, compute fractions of expanded clonotypes rather than reporting
-abosolute numbers. If a string is supplied, that should be the column name
-of a grouping (e.g. samples).</p>
-</dd>
-<dt><strong>fraction_base</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Sets the column used as a bsis for fraction calculation explicitely.
-Overrides the column set by <code class="docutils literal notranslate"><span class="pre">fraction</span></code>, but gets
-ignored if <code class="docutils literal notranslate"><span class="pre">fraction</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, the results are added to <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>. Otherwise it returns a dict
-with the computed values.</p>
-</dd>
-<dt><strong>as_dict</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</dt><dd><p>If True, returns a dictionary instead of a dataframe. Useful for testing.</p>
+<dt><strong>fraction</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If True, compute fractions of abundances relative to the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> column
+rather than reporting abosolute numbers. Alternatively, a column
+name can be provided according to that the values will be normalized.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]</span></p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><ul class="simple">
-<li><p>Depending on the value of <code class="docutils literal notranslate"><span class="pre">inplace</span></code>, either returns a data frame</p></li>
-<li><p>or adds it to <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>.</p></li>
-</ul>
-</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A DataFrame with spectratype information.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -242,7 +219,7 @@ with the computed values.</p>
         <a href="sctcrpy.tl.group_abundance.html" class="btn btn-neutral float-right" title="sctcrpy.tl.group_abundance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sctcrpy.tl.cdr_convergence.html" class="btn btn-neutral float-left" title="sctcrpy.tl.cdr_convergence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sctcrpy.tl.alpha_diversity.html" class="btn btn-neutral float-left" title="sctcrpy.tl.alpha_diversity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
