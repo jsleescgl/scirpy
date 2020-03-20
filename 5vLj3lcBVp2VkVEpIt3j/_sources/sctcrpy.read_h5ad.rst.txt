@@ -1,0 +1,6 @@
+sctcrpy.read\_h5ad
+==================
+
+.. currentmodule:: sctcrpy
+
+.. autofunction:: read_h5ad
