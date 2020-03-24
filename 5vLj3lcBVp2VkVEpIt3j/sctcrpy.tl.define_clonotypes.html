@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="sctcrpy.tl.clonotype_network" href="sctcrpy.tl.clonotype_network.html" />
-    <link rel="prev" title="sctcrpy.pp.merge_with_tcr" href="sctcrpy.pp.merge_with_tcr.html" /> 
+    <link rel="prev" title="sctcrpy.pp.tcr_neighbors" href="sctcrpy.pp.tcr_neighbors.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+25fde90
+                0.0+1add9f4
               </div>
             
           
@@ -99,7 +99,6 @@
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clonotype_network.html">sctcrpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.chain_pairing.html">sctcrpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clip_and_count.html">sctcrpy.tl.clip_and_count</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
@@ -207,41 +206,43 @@
 <h1>sctcrpy.tl.define_clonotypes<a class="headerlink" href="#sctcrpy-tl-define-clonotypes" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.tl.define_clonotypes">
-<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">define_clonotypes</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">metric='alignment'</em>, <em class="sig-param">key_added='clonotype'</em>, <em class="sig-param">cutoff=2</em>, <em class="sig-param">strategy='any'</em>, <em class="sig-param">chains='primary_only'</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">resolution=1</em>, <em class="sig-param">n_iterations=5</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.define_clonotypes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">define_clonotypes</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">partitions='leiden'</em>, <em class="sig-param">resolution=1</em>, <em class="sig-param">n_iterations=5</em>, <em class="sig-param">neighbors_key='neighbors'</em>, <em class="sig-param">key_added='clonotype'</em>, <em class="sig-param">inplace=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.define_clonotypes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Define clonotypes based on cdr3 distance.</p>
-<p>For now, uses primary TRA and TRB only.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>metric</strong> : <span class="annotation terse">{‘alignment’, ‘levenshtein’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘alignment’, ‘levenshtein’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'alignment'</span></code>)</dt><dd><p><dl class="simple">
-<dt>“alignment” - Calculate distance using pairwise sequence alignment</dt><dd><p>and BLOSUM62 matrix</p>
+<dt><strong>adata</strong></dt><dd><p>annotated data matrix</p>
 </dd>
-</dl>
-<p>”levenshtein” - Levenshtein edit distance</p>
+<dt><strong>partitions</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[connected, leiden]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[connected, leiden]</span> (default: <code class="docutils literal notranslate"><span class="pre">'leiden'</span></code>)</dt><dd><p><p>How to find graph partitions that define a clonotype.
+Possible values are ‘leiden’, for using the “Leiden” algorithm and
+“connected” to find fully connected sub-graphs.</p>
+<p>The difference is that the Leiden algorithm further divides
+fully connected subgraphs into highly-connected modules.</p>
 </p>
 </dd>
-<dt><strong>cutoff</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">2</span></code>)</dt><dd><p>Two cells with a distance &lt;= the cutoff will be connected.
-If cutoff = 0, the CDR3 sequences need to be identical. In this
-case, no alignment is performed.</p>
+<dt><strong>resolution</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>resolution parameter for the leiden algorithm.</p>
 </dd>
-<dt><strong>strategy</strong> : <span class="annotation terse">{‘TRA’, ‘TRB’, ‘all’, ‘any’, ‘lenient’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘TRA’, ‘TRB’, ‘all’, ‘any’, ‘lenient’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'any'</span></code>)</dt><dd><p><p>“TRA” - only consider TRA sequences
-“TRB” - only consider TRB sequences
-“all” - both TRA and TRB need to match
-“any” - either TRA or TRB need to match
-“lenient” - both TRA and TRB need to match, however it is tolerated if for a</p>
-<blockquote>
-<div><p>given cell pair, no TRA or TRB sequence is available.</p>
-</div></blockquote>
-</p>
+<dt><strong>n_iterations</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">5</span></code>)</dt><dd><p>n_iterations parameter for the leiden algorithm.</p>
 </dd>
-<dt><strong>chains</strong> : <span class="annotation terse">{‘primary_only’, ‘all’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘primary_only’, ‘all’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'primary_only'</span></code>)</dt><dd><p>Use only primary chains (“TRA_1”, “TRB_1”) or all four chains?
-When considering all four chains, at least one of them needs
-to match.</p>
+<dt><strong>neighbors_key</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'neighbors'</span></code>)</dt><dd><p>key under which the neighboorhood graph is stored in adata</p>
+</dd>
+<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>name of the columns that will be added to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code> if inplace is True.
+Will create the columns <code class="docutils literal notranslate"><span class="pre">{key_added}</span></code> and <code class="docutils literal notranslate"><span class="pre">{key_added}_size</span></code>.</p>
+</dd>
+<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If true, adds the results to anndata, otherwise returns them.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>]</span></p>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>], <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code></a>[<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]]</span></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>clonotype</em> – an array containing the clonotype id for each cell</p></li>
+<li><p><em>clonotype_size</em> – an array containing the number of cells in the respective clonotype
+for each cell.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -259,7 +260,7 @@ to match.</p>
         <a href="sctcrpy.tl.clonotype_network.html" class="btn btn-neutral float-right" title="sctcrpy.tl.clonotype_network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sctcrpy.pp.merge_with_tcr.html" class="btn btn-neutral float-left" title="sctcrpy.pp.merge_with_tcr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sctcrpy.pp.tcr_neighbors.html" class="btn btn-neutral float-left" title="sctcrpy.pp.tcr_neighbors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+25fde90
+                0.0+1add9f4
               </div>
             
           
@@ -107,12 +107,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.pp.merge_with_tcr.html">sctcrpy.pp.merge_with_tcr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.pp.tcr_dist.html">sctcrpy.pp.tcr_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sctcrpy.pp.tcr_neighbors.html">sctcrpy.pp.tcr_neighbors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clonotype_network.html">sctcrpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.chain_pairing.html">sctcrpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clip_and_count.html">sctcrpy.tl.clip_and_count</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
@@ -279,6 +280,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pp.merge_with_tcr.html#sctcrpy.pp.merge_with_tcr" title="sctcrpy.pp.merge_with_tcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_tcr</span></code></a>(adata, adata_tcr, *[, how, …])</p></td>
 <td><p>Integrate the TCR AnnData into an existing AnnData object with transcriptomics data.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.pp.tcr_dist.html#sctcrpy.pp.tcr_dist" title="sctcrpy.pp.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata, *[, metric, cutoff, n_jobs])</p></td>
+<td><p>Computes the distances between CDR3 sequences</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pp.tcr_neighbors.html#sctcrpy.pp.tcr_neighbors" title="sctcrpy.pp.tcr_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
+<td><p>Construct a cell x cell neighborhood graph based on CDR3 sequence similarity.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -290,28 +297,25 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html#sctcrpy.tl.define_clonotypes" title="sctcrpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, metric, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html#sctcrpy.tl.define_clonotypes" title="sctcrpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, partitions, …])</p></td>
 <td><p>Define clonotypes based on cdr3 distance.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.clonotype_network.html#sctcrpy.tl.clonotype_network" title="sctcrpy.tl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, layout, key, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.clonotype_network.html#sctcrpy.tl.clonotype_network" title="sctcrpy.tl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, layout, …])</p></td>
 <td><p>Build the clonotype network for plotting</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.tcr_dist.html#sctcrpy.tl.tcr_dist" title="sctcrpy.tl.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata, *[, metric, n_jobs])</p></td>
-<td><p>Computes the distances between CDR3 sequences</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.chain_pairing.html#sctcrpy.tl.chain_pairing" title="sctcrpy.tl.chain_pairing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chain_pairing</span></code></a>(adata, *[, inplace, key_added])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.chain_pairing.html#sctcrpy.tl.chain_pairing" title="sctcrpy.tl.chain_pairing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chain_pairing</span></code></a>(adata, *[, inplace, key_added])</p></td>
 <td><p>Associate categories to cells based on how many TRA and TRB chains they have.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.clip_and_count.html#sctcrpy.tl.clip_and_count" title="sctcrpy.tl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.clip_and_count.html#sctcrpy.tl.clip_and_count" title="sctcrpy.tl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, groupby, target_col, *)</p></td>
 <td><p>Counts the number of identical entries in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html#sctcrpy.tl.alpha_diversity" title="sctcrpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html#sctcrpy.tl.alpha_diversity" title="sctcrpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Computes the alpha diversity of clonotypes within a group.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.group_abundance.html#sctcrpy.tl.group_abundance" title="sctcrpy.tl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.group_abundance.html#sctcrpy.tl.group_abundance" title="sctcrpy.tl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby, target_col, *)</p></td>
 <td><p>Creates summary statsitics on how many cells belong to a certain category within a certain group.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.tl.spectratype.html#sctcrpy.tl.spectratype" title="sctcrpy.tl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.tl.spectratype.html#sctcrpy.tl.spectratype" title="sctcrpy.tl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
 <td><p>Show the distribution of CDR3 region lengths.</p></td>
 </tr>
 </tbody>
@@ -342,7 +346,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="sctcrpy.pl.spectratype.html#sctcrpy.pl.spectratype" title="sctcrpy.pl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
 <td><p>Show the distribution of CDR3 region lengths.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.pl.clonotype_network.html#sctcrpy.pl.clonotype_network" title="sctcrpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, color, *[, key, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="sctcrpy.pl.clonotype_network.html#sctcrpy.pl.clonotype_network" title="sctcrpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, color, *[, …])</p></td>
 <td><p>Plot the clonotype network</p></td>
 </tr>
 </tbody>

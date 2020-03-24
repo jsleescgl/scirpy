@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/typehints.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="sctcrpy.tl.tcr_dist" href="sctcrpy.tl.tcr_dist.html" />
+    <link rel="next" title="sctcrpy.tl.chain_pairing" href="sctcrpy.tl.chain_pairing.html" />
     <link rel="prev" title="sctcrpy.tl.define_clonotypes" href="sctcrpy.tl.define_clonotypes.html" /> 
 </head>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+25fde90
+                0.0+1add9f4
               </div>
             
           
@@ -99,7 +99,6 @@
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-sctcrpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.define_clonotypes.html">sctcrpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sctcrpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.tcr_dist.html">sctcrpy.tl.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.chain_pairing.html">sctcrpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.clip_and_count.html">sctcrpy.tl.clip_and_count</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sctcrpy.tl.alpha_diversity.html">sctcrpy.tl.alpha_diversity</a></li>
@@ -207,12 +206,12 @@
 <h1>sctcrpy.tl.clonotype_network<a class="headerlink" href="#sctcrpy-tl-clonotype-network" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.tl.clonotype_network">
-<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">clonotype_network</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">layout='fr'</em>, <em class="sig-param">key='clonotype'</em>, <em class="sig-param">key_added='X_clonotype_network'</em>, <em class="sig-param">min_size=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.clonotype_network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.tl.</code><code class="sig-name descname">clonotype_network</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">layout='fr'</em>, <em class="sig-param">min_size=1</em>, <em class="sig-param">neighbors_key='neighbors'</em>, <em class="sig-param">key_clonotype_size='clonotype_size'</em>, <em class="sig-param">key_added='X_clonotype_network'</em>, <em class="sig-param">inplace=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.tl.clonotype_network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the clonotype network for plotting</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>min_size</strong></dt><dd><p>Only show clonotypes with at least <code class="docutils literal notranslate"><span class="pre">min_size</span></code> cells.</p>
+<dt><strong>min_size</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>Only show clonotypes with at least <code class="docutils literal notranslate"><span class="pre">min_size</span></code> cells.</p>
 </dd>
 </dl>
 </dd>
@@ -229,7 +228,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sctcrpy.tl.tcr_dist.html" class="btn btn-neutral float-right" title="sctcrpy.tl.tcr_dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sctcrpy.tl.chain_pairing.html" class="btn btn-neutral float-right" title="sctcrpy.tl.chain_pairing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="sctcrpy.tl.define_clonotypes.html" class="btn btn-neutral float-left" title="sctcrpy.tl.define_clonotypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
