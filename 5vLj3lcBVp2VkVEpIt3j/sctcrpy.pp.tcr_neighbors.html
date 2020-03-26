@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0+d2febfb
+                0.0+bba0371
               </div>
             
           
@@ -201,13 +201,13 @@
 <h1>sctcrpy.pp.tcr_neighbors<a class="headerlink" href="#sctcrpy-pp-tcr-neighbors" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sctcrpy.pp.tcr_neighbors">
-<code class="sig-prename descclassname">sctcrpy.pp.</code><code class="sig-name descname">tcr_neighbors</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">metric='alignment'</em>, <em class="sig-param">cutoff=2</em>, <em class="sig-param">strategy='any'</em>, <em class="sig-param">chains='primary_only'</em>, <em class="sig-param">key_added='neighbors'</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.pp.tcr_neighbors" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sctcrpy.pp.</code><code class="sig-name descname">tcr_neighbors</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">*</em>, <em class="sig-param">metric='alignment'</em>, <em class="sig-param">cutoff=2</em>, <em class="sig-param">strategy='any'</em>, <em class="sig-param">chains='primary_only'</em>, <em class="sig-param">key_added='tcr_neighbors'</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">n_jobs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sctcrpy.pp.tcr_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a cell x cell neighborhood graph based on CDR3 sequence
 similarity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>metric</strong> : <span class="annotation terse">{‘identity’, ‘alignment’, ‘levenshtein’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘identity’, ‘alignment’, ‘levenshtein’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'alignment'</span></code>)</dt><dd><p><dl class="simple">
+<dt><strong>metric</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[identity, alignment, levenshtein]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[identity, alignment, levenshtein]</span> (default: <code class="docutils literal notranslate"><span class="pre">'alignment'</span></code>)</dt><dd><p><dl class="simple">
 <dt>“identity” = Calculate 0/1 distance based on sequence identity. Equals a</dt><dd><p>cutoff of 0.</p>
 </dd>
 <dt>”alignment” - Calculate distance using pairwise sequence alignment</dt><dd><p>and BLOSUM62 matrix</p>
@@ -220,16 +220,16 @@ similarity.</p>
 If cutoff = 0, the CDR3 sequences need to be identical. In this
 case, no alignment is performed.</p>
 </dd>
-<dt><strong>strategy</strong> : <span class="annotation terse">{‘TRA’, ‘TRB’, ‘all’, ‘any’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘TRA’, ‘TRB’, ‘all’, ‘any’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'any'</span></code>)</dt><dd><p>“TRA” - only consider TRA sequences
+<dt><strong>strategy</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[TRA, TRB, all, any]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[TRA, TRB, all, any]</span> (default: <code class="docutils literal notranslate"><span class="pre">'any'</span></code>)</dt><dd><p>“TRA” - only consider TRA sequences
 “TRB” - only consider TRB sequences
 “all” - both TRA and TRB need to match
 “any” - either TRA or TRB need to match</p>
 </dd>
-<dt><strong>chains</strong> : <span class="annotation terse">{‘primary_only’, ‘all’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘primary_only’, ‘all’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'primary_only'</span></code>)</dt><dd><p>Use only primary chains (“TRA_1”, “TRB_1”) or all four chains?
+<dt><strong>chains</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[primary_only, all]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[primary_only, all]</span> (default: <code class="docutils literal notranslate"><span class="pre">'primary_only'</span></code>)</dt><dd><p>Use only primary chains (“TRA_1”, “TRB_1”) or all four chains?
 When considering all four chains, at least one of them needs
 to match.</p>
 </dd>
-<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'neighbors'</span></code>)</dt><dd><p>dict key under which the result will be stored in <code class="docutils literal notranslate"><span class="pre">adata.uns[&quot;sctcrpy&quot;]</span></code>
+<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'tcr_neighbors'</span></code>)</dt><dd><p>dict key under which the result will be stored in <code class="docutils literal notranslate"><span class="pre">adata.uns[&quot;sctcrpy&quot;]</span></code>
 when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True.</p>
 </dd>
 <dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, store the results in adata.uns. If False, returns
