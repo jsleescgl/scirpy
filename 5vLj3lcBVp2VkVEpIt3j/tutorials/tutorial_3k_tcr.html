@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+17e86ac
+                0.0+4b76f27
               </div>
             
           
@@ -94,16 +94,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Analysis of 3k T cells from cancer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Preprocess-Transcriptomics-data">Preprocess Transcriptomics data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#TCR-Quality-Control">TCR Quality Control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Define-clonotypes">Define clonotypes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Compute-CDR3-neighborhood-graph">Compute CDR3 neighborhood graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#Clonotype-abundance">Clonotype abundance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TCR-Quality-Control">TCR Quality Control</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#)">)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#))">))</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Gene-usage">Gene usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Spectratype-plots">Spectratype plots</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#Gene-usage">Gene usage</a></li>
 </ul>
 </li>
 </ul>
@@ -459,7 +455,7 @@ For this tutorial, to speed up computations, we use a downsampled version of 3k 
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.2MB [00:02, 13.4MB/s]
+wu2020_3k.h5ad: 28.2MB [00:01, 17.0MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object:</p>
@@ -810,12 +806,12 @@ wu2020_3k.h5ad: 28.2MB [00:02, 13.4MB/s]
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Importing data</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> supports importing TCR data from Cellranger or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a>.
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> supports importing TCR data from Cellranger or <code class="docutils literal notranslate"><span class="pre">TraCeR</span> <span class="pre">&lt;https://github.com/Teichlab/tracer&gt;</span></code>_.
 See <a class="reference internal" href="../api.html#api-io"><span class="std std-ref">Input/Output</span></a> for more details.</p>
 <p>This particular dataset has been imported using <a class="reference internal" href="../scirpy.read_10x_vdj_csv.html#scirpy.read_10x_vdj_csv" title="scirpy.read_10x_vdj_csv"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.read_10x_vdj_csv()</span></code></a> and merged
 with transcriptomics data using <a class="reference internal" href="../scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>. The exact procedure
 is described in <a class="reference internal" href="../scirpy.datasets.wu2020.html#scirpy.datasets.wu2020" title="scirpy.datasets.wu2020"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.datasets.wu2020()</span></code></a>.</p>
-</div>
 <div class="section" id="Preprocess-Transcriptomics-data">
 <h2>Preprocess Transcriptomics data<a class="headerlink" href="#Preprocess-Transcriptomics-data" title="Permalink to this headline">¶</a></h2>
 <p>Transcriptomics data needs to be filtered and preprocessed as with any other single-cell dataset. We recommend following the <a class="reference external" href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html">scanpy tutorial</a> and the best practice paper by <a class="reference external" href="https://www.embopress.org/doi/10.15252/msb.20188746">Luecken et al.</a></p>
@@ -905,169 +901,125 @@ is described in <a class="reference internal" href="../scirpy.datasets.wu2020.ht
 <div class="section" id="TCR-Quality-Control">
 <h2>TCR Quality Control<a class="headerlink" href="#TCR-Quality-Control" title="Permalink to this headline">¶</a></h2>
 <p>While most T cell receptors have exactely one pair of α and β chains, it has been reported that up to one third of
-the receptors can be <em>Dual TCRs</em> posessing a second pair of receptors, one originating from each Allele (<span class="bibtex" id="id2">[Schuldt2019]</span>).</p>
+the receptors can be _Dual <a href="#id14"><span class="problematic" id="id15">TCRs_</span></a> posessing a second pair of receptors, one originating from each Allele (<span class="bibtex" id="id2">[Schuldt2019]</span>).</p>
 <p>Using the <a class="reference internal" href="../scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a> function, we can add a summary
 about the T cell receptor compositions to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>. We can visualize it using <a class="reference internal" href="../scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>chain pairing</strong></p>
+</div>
 <ul class="simple">
-<li><p><em>Orphan chain</em> refers to cells that have a single alpha or beta receptor chain, respectively.</p></li>
-<li><p><em>Extra chain</em> refers to cells that have a full alpha/beta receptor pair, and an additional chain.</p></li>
-<li><p><em>Multichain</em> refers to cells with more than two receptor pairs detected. These cells are likely doublets.</p></li>
+<li><p>_Orphan <a href="#id16"><span class="problematic" id="id17">chain_</span></a> refers to cells that have a single alpha or beta receptor chain, respectively.</p></li>
+<li><p>_Extra <a href="#id18"><span class="problematic" id="id19">chain_</span></a> refers to cells that have a full alpha/beta receptor pair, and an additional chain.</p></li>
+<li><p>_Multichain_ refers to cells with more than two receptor pairs detected. These cells are likely doublets.
+&lt;!– #endraw –&gt;</p></li>
 </ul>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">chain_pairing</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;chain_pairing&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb958451eb0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_21_1.svg" src="../_images/tutorials_tutorial_3k_tcr_21_1.svg" /></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">ir.tl.chain_pairing(adata)</span>
+<span class="pre">`</span></code></p>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a>python
+ir.pl.group_abundance(</p>
+<blockquote>
+<div><p>adata, groupby=”chain_pairing”, target_col=”source”,</p>
+</div></blockquote>
+<div class="section" id=")">
+<h3>)<a class="headerlink" href="#)" title="Permalink to this headline">¶</a></h3>
 <p>Indeed, in our case, ~20% of cells have more than a one pair of T-cell receptors:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
+<p><a href="#id8"><span class="problematic" id="id9">``</span></a><a href="#id10"><span class="problematic" id="id11">`</span></a>python
+print(“Fraction of cells with more than one pair of TCRs: {:.2f}”.format(</p>
+<blockquote>
+<div><p>np.sum(adata.obs[“chain_pairing”].isin([“Extra beta”, “Extra alpha”, “Two full chains”])) / adata.n_obs</p>
+</div></blockquote>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fraction of cells with more than one pair of TCRs: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;chain_pairing&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Extra beta&quot;</span><span class="p">,</span> <span class="s2">&quot;Extra alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;Two full chains&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span>
-<span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Fraction of cells with more than one pair of TCRs: 0.20
-</pre></div></div>
-</div>
-<p>Next, we visualize the <em>Multichain</em> cells on the UMAP plot and exclude them from downstream analysis:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;multi_chain&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-... storing &#39;chain_pairing&#39; as categorical
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_25_1.svg" src="../_images/tutorials_tutorial_3k_tcr_25_1.svg" /></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;multi_chain&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="Define-clonotypes">
-<h2>Define clonotypes<a class="headerlink" href="#Define-clonotypes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="))">
+<h3>))<a class="headerlink" href="#))" title="Permalink to this headline">¶</a></h3>
+<p>Next, we visualize the _Multichain_ cells on the UMAP plot and exclude them from downstream analysis:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">sc.pl.umap(adata,</span> <span class="pre">color=&quot;multi_chain&quot;)</span>
+<span class="pre">`</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">adata</span> <span class="pre">=</span> <span class="pre">adata[adata.obs[&quot;multi_chain&quot;]</span> <span class="pre">!=</span> <span class="pre">&quot;True&quot;,</span> <span class="pre">:].copy()</span>
+<span class="pre">`</span></code></p>
+<p>## Define clonotypes</p>
+<p>&lt;!– #raw raw_mimetype=”text/restructuredtext” –&gt;</p>
 <p>In this section, we will define and visualize clonotypes.</p>
-<p><em>Scirpy</em> implements a network-based approach for clonotype definition. The steps to
+<p>_Scirpy_ implements a network-based approach for clonotype definition. The steps to
 create and visualize the clonotype-network are anologous to the construction of a
 neighborhood graph we already know from transcriptomics data:</p>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-text">Analysis steps on transcriptomics data</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>scanpy function</p></th>
-<th class="head"><p>objective</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pp.neighbors.html#scanpy.pp.neighbors" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pp.neighbors()</span></code></a></p></td>
-<td><p>Compute a nearest-neighbor graph based on gene expression.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.tl.leiden.html#scanpy.tl.leiden" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.tl.leiden()</span></code></a></p></td>
-<td><p>Cluster cells by the similarity of their transcriptional profiles.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.tl.umap.html#scanpy.tl.umap" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.tl.umap()</span></code></a></p></td>
-<td><p>Compute positions of cells in UMAP embedding.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.umap.html#scanpy.pl.umap" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.umap()</span></code></a></p></td>
-<td><p>Plot UMAP colored by different parameters.</p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">Analysis steps on TCR data</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>scirpy function</p></th>
-<th class="head"><p>objective</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="../scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a></p></td>
-<td><p>Compute a neighborhood graph of CDR3-sequences.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a></p></td>
-<td><p>Cluster cells by the similarity of their CDR3-sequences.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a></p></td>
-<td><p>Compute positions of cells in clonotype network.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a></p></td>
-<td><p>Plot clonotype network colored by different parameters.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">widths</dt>
+<dd class="field-odd"><p>40 60</p>
+</dd>
+<dt class="field-even">header-rows</dt>
+<dd class="field-even"><p>1</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><ul>
+<li><p>scanpy function</p></li>
+<li><p>objective</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pp.neighbors.html#scanpy.pp.neighbors" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pp.neighbors()</span></code></a></p></li>
+<li><p>Compute a nearest-neighbor graph based on gene expression.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.tl.leiden.html#scanpy.tl.leiden" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.tl.leiden()</span></code></a></p></li>
+<li><p>Cluster cells by the similarity of their transcriptional profiles.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.tl.umap.html#scanpy.tl.umap" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.tl.umap()</span></code></a></p></li>
+<li><p>Compute positions of cells in UMAP embedding.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.umap.html#scanpy.pl.umap" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.umap()</span></code></a></p></li>
+<li><p>Plot UMAP colored by different parameters.</p></li>
+</ul>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">widths</dt>
+<dd class="field-odd"><p>40 60</p>
+</dd>
+<dt class="field-even">header-rows</dt>
+<dd class="field-even"><p>1</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><ul>
+<li><p>scirpy function</p></li>
+<li><p>objective</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference internal" href="../scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a></p></li>
+<li><p>Compute a neighborhood graph of CDR3-sequences.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference internal" href="../scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a></p></li>
+<li><p>Cluster cells by the similarity of their CDR3-sequences.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference internal" href="../scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a></p></li>
+<li><p>Compute positions of cells in clonotype network.</p></li>
+</ul>
+</li>
+<li><ul>
+<li><p><a class="reference internal" href="../scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a></p></li>
+<li><p>Plot clonotype network colored by different parameters.</p></li>
+</ul>
+</li>
+</ul>
 <div class="section" id="Compute-CDR3-neighborhood-graph">
-<h3>Compute CDR3 neighborhood graph<a class="headerlink" href="#Compute-CDR3-neighborhood-graph" title="Permalink to this headline">¶</a></h3>
+<h4>Compute CDR3 neighborhood graph<a class="headerlink" href="#Compute-CDR3-neighborhood-graph" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="../scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a> computes pairwise sequence alignments of all CDR3 sequences and
-derives a distance from the alignment score. This approach was originally proposed as <em>TCRdist</em> by Dash et al. (<span class="bibtex" id="id3">[TCRdist]</span>).</p>
+derives a distance from the alignment score. This approach was originally proposed as _TCRdist_ by Dash et al. (<span class="bibtex" id="id13">[TCRdist]</span>).</p>
 <p>The function requires to specify a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> parameter. All cells with a distance between their
 CDR3 sequences lower than <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> will be connected in the network. In the first example,
 we set the cutoff to <code class="docutils literal notranslate"><span class="pre">0</span></code>, to define clontypes as cells with <strong>identical</strong> CDR3 sequences.</p>
@@ -1075,7 +1027,7 @@ we set the cutoff to <code class="docutils literal notranslate"><span class="pre
 in the graph and annotate them as clonotypes. This will add a <code class="docutils literal notranslate"><span class="pre">clonotype</span></code> and
 <code class="docutils literal notranslate"><span class="pre">clonotype_size</span></code> column to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1084,11 +1036,11 @@ in the graph and annotate them as clonotypes. This will add a <code class="docut
 </pre></div>
 </div>
 </div>
-<p>To visualize  the network we first call <a class="reference internal" href="../scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
+<p>To visualize the network we first call <a class="reference internal" href="../scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
 We can then visualize it using <a class="reference internal" href="../scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a>. We recommend setting the
 <code class="docutils literal notranslate"><span class="pre">min_size</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&gt;=2</span></code>, to prevent the singleton clonotypes from cluttering the network.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1106,12 +1058,12 @@ We can then visualize it using <a class="reference internal" href="../scirpy.pl.
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952d39640&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fae83c6a0f0&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1119,12 +1071,12 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952d39640&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_33_2.svg" src="../_images/tutorials_tutorial_3k_tcr_33_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_24_2.svg" src="../_images/tutorials_tutorial_3k_tcr_24_2.svg" /></div>
 </div>
 <p>Let’s re-compute the network with a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> of <code class="docutils literal notranslate"><span class="pre">20</span></code>. That’s the equivalent of 4 <code class="docutils literal notranslate"><span class="pre">R</span></code>s mutating into <code class="docutils literal notranslate"><span class="pre">N</span></code> (using the BLOSUM62 distance matrix).</p>
 <p>Additionally, we set <code class="docutils literal notranslate"><span class="pre">chains</span></code> to <code class="docutils literal notranslate"><span class="pre">all</span></code>. This results in the distances not being only computed between the most abundant pair of T-cell receptors, but instead, will take the minimal distance between any pair of T-cell receptors.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1134,7 +1086,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952d39640&gt;],
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1144,7 +1096,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952d39640&gt;],
 </div>
 <p>When coloring by clonotype, we can see that the large, connected Hairball has been sub-divided in multiple clonotypes by Graph-based clustering using the <em>Leiden-algorithm</em>. Also, the edges are now colored according to the distance between nodes. The darker an edge, the lower the alignment-distance.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1161,12 +1113,12 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952d39640&gt;],
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb958178160&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fae83c2ce48&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1174,11 +1126,11 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb958178160&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_38_2.svg" src="../_images/tutorials_tutorial_3k_tcr_38_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_29_2.svg" src="../_images/tutorials_tutorial_3k_tcr_29_2.svg" /></div>
 </div>
 <p>Now we show the same graph, colored by sample. We observe that for instance clonotypes 292 and 279 are <em>private</em>, i.e. they contain cells from a single sample only. On the other hand, for instance clonotype 16 is <em>public</em>, i.e. it is shared across tissues and/or patients.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1187,12 +1139,12 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb958178160&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fae8845df98&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1200,11 +1152,11 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_40_1.svg" src="../_images/tutorials_tutorial_3k_tcr_40_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_31_1.svg" src="../_images/tutorials_tutorial_3k_tcr_31_1.svg" /></div>
 </div>
 <p>Next, visualize the clonal expansion by cell-type cluster</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1213,23 +1165,23 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb9584dd190&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae83cd90b8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_42_1.svg" src="../_images/tutorials_tutorial_3k_tcr_42_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_33_1.svg" src="../_images/tutorials_tutorial_3k_tcr_33_1.svg" /></div>
 </div>
 <p>Normalized to the cluster size</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1238,22 +1190,22 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb952a81be0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae8967def0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_44_1.svg" src="../_images/tutorials_tutorial_3k_tcr_44_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_35_1.svg" src="../_images/tutorials_tutorial_3k_tcr_35_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1262,25 +1214,25 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb946375a90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae895b4470&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_45_1.svg" src="../_images/tutorials_tutorial_3k_tcr_45_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_36_1.svg" src="../_images/tutorials_tutorial_3k_tcr_36_1.svg" /></div>
 </div>
 </div>
 <div class="section" id="Clonotype-abundance">
-<h3>Clonotype abundance<a class="headerlink" href="#Clonotype-abundance" title="Permalink to this headline">¶</a></h3>
+<h4>Clonotype abundance<a class="headerlink" href="#Clonotype-abundance" title="Permalink to this headline">¶</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1291,23 +1243,23 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb95844a910&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae83c54be0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_47_1.svg" src="../_images/tutorials_tutorial_3k_tcr_47_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_38_1.svg" src="../_images/tutorials_tutorial_3k_tcr_38_1.svg" /></div>
 </div>
 <p>Perhaps an even more straightforward question would be comparing clonotype composition of samples</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1318,23 +1270,23 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb952c76850&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae89711f60&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_49_1.svg" src="../_images/tutorials_tutorial_3k_tcr_49_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_40_1.svg" src="../_images/tutorials_tutorial_3k_tcr_40_1.svg" /></div>
 </div>
 <p>If cell types are considered, it is still probably better to normalize to cell numbers in a sample.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1345,19 +1297,20 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb9583f8b20&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae73a62518&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_51_1.svg" src="../_images/tutorials_tutorial_3k_tcr_51_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_42_1.svg" src="../_images/tutorials_tutorial_3k_tcr_42_1.svg" /></div>
+</div>
 </div>
 </div>
 </div>
@@ -1365,7 +1318,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 <h2>Gene usage<a class="headerlink" href="#Gene-usage" title="Permalink to this headline">¶</a></h2>
 <p>Group abundance plots can also give some information on VDJ usage</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1381,22 +1334,22 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb950774eb0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae729fe7b8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_53_1.svg" src="../_images/tutorials_tutorial_3k_tcr_53_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_44_1.svg" src="../_images/tutorials_tutorial_3k_tcr_44_1.svg" /></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1407,7 +1360,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1416,7 +1369,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1425,24 +1378,22 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb950536b80&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae73893e48&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_56_1.svg" src="../_images/tutorials_tutorial_3k_tcr_56_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_47_1.svg" src="../_images/tutorials_tutorial_3k_tcr_47_1.svg" /></div>
 </div>
-<div class="section" id="Spectratype-plots">
-<h3>Spectratype plots<a class="headerlink" href="#Spectratype-plots" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1455,27 +1406,27 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/virtualenv/python3.8.0/lib/python3.8/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+/home/travis/virtualenv/python3.6.7/lib/python3.6/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   result = method(y)
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb952c6cfd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae73703978&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_58_2.svg" src="../_images/tutorials_tutorial_3k_tcr_58_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_49_2.svg" src="../_images/tutorials_tutorial_3k_tcr_49_2.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1484,22 +1435,22 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb94bf40040&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae735c61d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_59_1.svg" src="../_images/tutorials_tutorial_3k_tcr_59_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_50_1.svg" src="../_images/tutorials_tutorial_3k_tcr_50_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1512,27 +1463,27 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/virtualenv/python3.8.0/lib/python3.8/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+/home/travis/virtualenv/python3.6.7/lib/python3.6/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   result = method(y)
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb94bf2db80&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae731075f8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_60_2.svg" src="../_images/tutorials_tutorial_3k_tcr_60_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_51_2.svg" src="../_images/tutorials_tutorial_3k_tcr_51_2.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1547,52 +1498,72 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fb952dab610&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/travis/virtualenv/python3.8.0/lib/python3.8/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+/home/travis/virtualenv/python3.6.7/lib/python3.6/site-packages/pandas/core/ops/__init__.py:1115: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
   result = method(y)
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb94be4ff40&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae73041ac8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_61_2.svg" src="../_images/tutorials_tutorial_3k_tcr_61_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_52_2.svg" src="../_images/tutorials_tutorial_3k_tcr_52_2.svg" /></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae724ca5f8&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_53_1.svg" src="../_images/tutorials_tutorial_3k_tcr_53_1.svg" /></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">full_combination</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fae720d0748&gt;
+</pre></div></div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
 </div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_54_1.svg" src="../_images/tutorials_tutorial_3k_tcr_54_1.svg" /></div>
 </div>
 </div>
 </div>
