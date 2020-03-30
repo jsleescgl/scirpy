@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="scirpy.tl.group_abundance" href="scirpy.tl.group_abundance.html" />
-    <link rel="prev" title="scirpy.tl.clip_and_count" href="scirpy.tl.clip_and_count.html" /> 
+    <link rel="prev" title="scirpy.tl.clonal_expansion" href="scirpy.tl.clonal_expansion.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+4b76f27
+                0.0+28a1796
               </div>
             
           
@@ -90,7 +90,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">Our T-cell receptor model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
@@ -101,6 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clip_and_count.html">scirpy.tl.clip_and_count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.tl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
@@ -206,7 +207,7 @@
 <h1>scirpy.tl.alpha_diversity<a class="headerlink" href="#scirpy-tl-alpha-diversity" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="scirpy.tl.alpha_diversity">
-<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">inplace=True</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">alpha_diversity</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">inplace=True</em>, <em class="sig-param">key_added=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.alpha_diversity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the alpha diversity of clonotypes within a group.</p>
 <p>Ignores NaN values.</p>
 <dl class="field-list simple">
@@ -218,13 +219,23 @@
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column on which to compute the alpha diversity</p>
 </dd>
+<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, add a column to <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Otherwise return a DataFrame
+with the alpha diversities.</p>
+</dd>
+<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Key under which the alpha diversity will be stored if inplace is True.
+Defaults to <code class="docutils literal notranslate"><span class="pre">alpha_diversity_{target_col}</span></code>.</p>
+</dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a></span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>DataFrame with the alpha diversity for each group.</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Depending on the value of inplace returns a DataFrame with the alpha diversity</em></p></li>
+<li><p>for each group or adds a column to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -242,7 +253,7 @@
         <a href="scirpy.tl.group_abundance.html" class="btn btn-neutral float-right" title="scirpy.tl.group_abundance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="scirpy.tl.clip_and_count.html" class="btn btn-neutral float-left" title="scirpy.tl.clip_and_count" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="scirpy.tl.clonal_expansion.html" class="btn btn-neutral float-left" title="scirpy.tl.clonal_expansion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

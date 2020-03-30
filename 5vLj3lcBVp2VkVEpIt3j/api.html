@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+4b76f27
+                0.0+28a1796
               </div>
             
           
@@ -90,7 +90,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Single cell analysis of T cell receptor sequencing in python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">Our T-cell receptor model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#input-output">Input/Output</a><ul>
@@ -116,6 +116,7 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clip_and_count.html">scirpy.tl.clip_and_count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
@@ -307,19 +308,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chain_pairing</span></code></a>(adata, *[, inplace, key_added])</p></td>
 <td><p>Associate categories to cells based on how many TRA and TRB chains they have.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.clip_and_count.html#scirpy.tl.clip_and_count" title="scirpy.tl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.clip_and_count.html#scirpy.tl.clip_and_count" title="scirpy.tl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, target_col, *[, …])</p></td>
 <td><p>Counts the number of identical entries in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.alpha_diversity.html#scirpy.tl.alpha_diversity" title="scirpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata[, target_col, …])</p></td>
+<td><p>Adds a column to obs which clonotypes are expanded.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.alpha_diversity.html#scirpy.tl.alpha_diversity" title="scirpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Computes the alpha diversity of clonotypes within a group.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
 <td><p>Creates summary statsitics on how many cells belong to a certain category within a certain group.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.spectratype.html#scirpy.tl.spectratype" title="scirpy.tl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.spectratype.html#scirpy.tl.spectratype" title="scirpy.tl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
 <td><p>Show the distribution of CDR3 region lengths.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -339,12 +343,12 @@
 <td><p>Plot the alpha diversity per group.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.clip_and_count.html#scirpy.pl.clip_and_count" title="scirpy.pl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, groupby, target_col, *)</p></td>
-<td><p>Plots the the number of identical entries in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
+<td><p>Plots the the <em>number of cells</em> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> that fall into a certain count bin for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Plot the fraction of cells in each group belonging to singleton, doublet or triplet clonotype.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
 <td><p>Plots how many cells belong to each clonotype.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
