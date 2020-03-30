@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+28a1796
+                0.0+f38ce4a
               </div>
             
           
@@ -207,7 +207,7 @@
 <h1>scirpy.tl.clonal_expansion<a class="headerlink" href="#scirpy-tl-clonal-expansion" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="scirpy.tl.clonal_expansion">
-<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">*</em>, <em class="sig-param">groupby=None</em>, <em class="sig-param">clip_at=3</em>, <em class="sig-param">key_added='clonal_expansion'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonal_expansion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">*</em>, <em class="sig-param">expanded_in=None</em>, <em class="sig-param">clip_at=3</em>, <em class="sig-param">key_added='clonal_expansion'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonal_expansion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a column to obs which clonotypes are expanded.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -216,8 +216,10 @@
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column containing the clontype annoataion</p>
 </dd>
-<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Calculate clonal expansion within groups. Usually makes sense to set
-this to the column containing sample annotation.</p>
+<dt><strong>expanded_in</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Calculate clonal expansion within groups. Usually makes sense to set
+this to the column containing sample annotation. If set to None,
+a clonotype counts as expanded if there’s any cell of the same clonotype
+across the entire dataset.</p>
 </dd>
 <dt><strong>clip_at</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">3</span></code>)</dt><dd><p>All clonotypes with more than <code class="docutils literal notranslate"><span class="pre">clip_at</span></code> clones will be summarized into
 a single category</p>

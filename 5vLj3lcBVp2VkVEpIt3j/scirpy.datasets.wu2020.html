@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+28a1796
+                0.0+f38ce4a
               </div>
             
           
@@ -215,7 +215,8 @@ import scirpy as st
 from multiprocessing import Pool
 import os
 import pandas as pd
-from glob import glob</p>
+from glob import glob
+import numpy as np</p>
 <p># + language=”bash”
 # mkdir -p data
 # cd data
@@ -279,8 +280,9 @@ st.pp.merge_with_tcr(adata, adata_tcr)
 return adata</p>
 </dd>
 </dl>
-<p>p = Pool()</p>
-<p>adatas = p.map(_load_adata, mtx_paths)</p>
+<p>p = Pool()
+adatas = p.map(_load_adata, mtx_paths)
+p.close()</p>
 <p>adata = adatas[0].concatenate(adatas[1:])</p>
 <p># inverse umap X -coordinate
 adata.obsm[“X_umap_orig”][:, 0] = (</p>
@@ -288,7 +290,6 @@ adata.obsm[“X_umap_orig”][:, 0] = (</p>
 <div><p>np.max(adata.obsm[“X_umap_orig”][:, 0]) - adata.obsm[“X_umap_orig”][:, 0]</p>
 </div></blockquote>
 <p>)</p>
-<p>import numpy as np</p>
 <p>np.sum(adata.obs[“has_tcr”])</p>
 <p>adata.write_h5ad(“wu2020.h5ad”, compression=”lzf”)</p>
 <p>adata.obs</p>

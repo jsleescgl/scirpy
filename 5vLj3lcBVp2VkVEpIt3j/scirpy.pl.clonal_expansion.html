@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+28a1796
+                0.0+f38ce4a
               </div>
             
           
@@ -209,10 +209,35 @@
 <h1>scirpy.pl.clonal_expansion<a class="headerlink" href="#scirpy-pl-clonal-expansion" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="scirpy.pl.clonal_expansion">
-<code class="sig-prename descclassname">scirpy.pl.</code><code class="sig-name descname">clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">clip_at=3</em>, <em class="sig-param">fraction=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.clonal_expansion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot the fraction of cells in each group belonging to
-singleton, doublet or triplet clonotype.</p>
-<p>This is a wrapper for <code class="xref py py-meth docutils literal notranslate"><span class="pre">pl.clip_and_count()</span></code>.</p>
+<code class="sig-prename descclassname">scirpy.pl.</code><code class="sig-name descname">clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">*</em>, <em class="sig-param">expanded_in=None</em>, <em class="sig-param">clip_at=3</em>, <em class="sig-param">fraction=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.clonal_expansion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the the <em>number of cells</em> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> that fall into
+a certain count bin for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p>
+<p>Removes all entries with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> prior to plotting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>AnnData object to work on</p>
+</dd>
+<dt><strong>groupby</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Group by this column from <code class="docutils literal notranslate"><span class="pre">obs</span></code></p>
+</dd>
+<dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column to count on. Default to clonotype.</p>
+</dd>
+<dt><strong>expanded_in</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Calculate clonal expansion within groups. Usually makes sense to set
+this to the column containing sample annotation. If set to None,
+a clonotype counts as expanded if there’s any cell of the same clonotype
+across the entire dataset.</p>
+</dd>
+<dt><strong>clip_at</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">3</span></code>)</dt><dd><p>All entries in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> with more copies than <code class="docutils literal notranslate"><span class="pre">clip_at</span></code>
+will be summarized into a single group.</p>
+</dd>
+<dt><strong>fraction</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, compute fractions rather than reporting
+abosolute numbers.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>Additional arguments passed to <a class="reference internal" href="scirpy.pl.base.bar.html#scirpy.pl.base.bar" title="scirpy.pl.base.bar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">base.bar()</span></code></a></p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
