@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+0801afa
+                0.0+30108cf
               </div>
             
           
@@ -115,8 +115,8 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clip_and_count.html">scirpy.tl.clip_and_count</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
@@ -125,7 +125,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#plotting-pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-scirpy.pl.base">Base plotting functions: <code class="docutils literal notranslate"><span class="pre">pl.base</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.alpha_diversity.html">scirpy.pl.alpha_diversity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scirpy.pl.clip_and_count.html">scirpy.pl.clip_and_count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.clonal_expansion.html">scirpy.pl.clonal_expansion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.group_abundance.html">scirpy.pl.group_abundance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.spectratype.html">scirpy.pl.spectratype</a></li>
@@ -282,8 +281,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_tcr</span></code></a>(adata, adata_tcr, *[, how, …])</p></td>
 <td><p>Integrate the TCR AnnData into an existing AnnData object with transcriptomics data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pp.tcr_dist.html#scirpy.pp.tcr_dist" title="scirpy.pp.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
-<td><p>Computes the distances between CDR3 sequences</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pp.tcr_dist.html#scirpy.pp.tcr_dist" title="scirpy.pp.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(unique_seqs, *[, metric, cutoff, …])</p></td>
+<td><p>calculate the sequence x sequence distance matrix</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
 <td><p>Construct a cell x cell neighborhood graph based on CDR3 sequence similarity.</p></td>
@@ -308,11 +307,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chain_pairing</span></code></a>(adata, *[, inplace, key_added])</p></td>
 <td><p>Associate categories to cells based on how many TRA and TRB chains they have.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.clip_and_count.html#scirpy.tl.clip_and_count" title="scirpy.tl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, target_col, *[, …])</p></td>
-<td><p>Counts the number of identical entries in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata[, target_col, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, *[, target_col, …])</p></td>
 <td><p>Adds a column to obs which clonotypes are expanded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html#scirpy.tl.summarize_clonal_expansion" title="scirpy.tl.summarize_clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summarize_clonal_expansion</span></code></a>(adata, groupby, *)</p></td>
+<td><p>Summarizes clonal expansion by a grouping variable.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.alpha_diversity.html#scirpy.tl.alpha_diversity" title="scirpy.tl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Computes the alpha diversity of clonotypes within a group.</p></td>
@@ -342,22 +341,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity" title="scirpy.pl.alpha_diversity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alpha_diversity</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Plot the alpha diversity per group.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.clip_and_count.html#scirpy.pl.clip_and_count" title="scirpy.pl.clip_and_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip_and_count</span></code></a>(adata, groupby, target_col, *)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby, *[, …])</p></td>
 <td><p>Plots the the <em>number of cells</em> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> that fall into a certain count bin for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonal_expansion</span></code></a>(adata, groupby[, …])</p></td>
-<td><p>Plots the the <em>number of cells</em> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> that fall into a certain count bin for each group in <code class="docutils literal notranslate"><span class="pre">group_by</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">group_abundance</span></code></a>(adata, groupby[, …])</p></td>
 <td><p>Plots how many cells belong to each clonotype.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectratype</span></code></a>(adata[, groupby, combine_fun, …])</p></td>
 <td><p>Show the distribution of CDR3 region lengths.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></a>(adata, *[, target_cols, fraction, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></a>(adata, *[, target_cols, fraction, …])</p></td>
 <td><p>Creates a ribbon plot of the most abundant VDJ combinations in a given subset of cells.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, color, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, color, …])</p></td>
 <td><p>Plot the clonotype network</p></td>
 </tr>
 </tbody>
