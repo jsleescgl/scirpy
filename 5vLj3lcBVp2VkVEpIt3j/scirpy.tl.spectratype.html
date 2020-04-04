@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scirpy.pl.alpha_diversity" href="scirpy.pl.alpha_diversity.html" />
+    <link rel="next" title="scirpy.tl.repertoire_overlap" href="scirpy.tl.repertoire_overlap.html" />
     <link rel="prev" title="scirpy.tl.group_abundance" href="scirpy.tl.group_abundance.html" /> 
 </head>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+ec5d0c8
+                0.0+feb21f9
               </div>
             
           
@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.tl.spectratype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#plotting-pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
@@ -219,7 +220,7 @@
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Color by this column from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. E.g. sample or diagnosis</p>
 </dd>
-<dt><strong>combine_fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7fd00a60c6a8&gt;</span></code>)</dt><dd><p>A function definining how the groupby columns should be merged
+<dt><strong>combine_fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7fdf21164730&gt;</span></code>)</dt><dd><p>A function definining how the groupby columns should be merged
 (e.g. sum, mean, median, etc).</p>
 </dd>
 <dt><strong>fraction</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If True, compute fractions of abundances relative to the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> column
@@ -247,7 +248,7 @@ name can be provided according to that the values will be normalized.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.pl.alpha_diversity.html" class="btn btn-neutral float-right" title="scirpy.pl.alpha_diversity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.tl.repertoire_overlap.html" class="btn btn-neutral float-right" title="scirpy.tl.repertoire_overlap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.tl.group_abundance.html" class="btn btn-neutral float-left" title="scirpy.tl.group_abundance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

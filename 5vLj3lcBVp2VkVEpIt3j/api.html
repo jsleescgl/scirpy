@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+ec5d0c8
+                0.0+feb21f9
               </div>
             
           
@@ -120,6 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting-pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul>
@@ -129,6 +130,7 @@
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.group_abundance.html">scirpy.pl.group_abundance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.spectratype.html">scirpy.pl.spectratype</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.vdj_usage.html">scirpy.pl.vdj_usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.pl.repertoire_overlap.html">scirpy.pl.repertoire_overlap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.clonotype_network.html">scirpy.pl.clonotype_network</a></li>
 </ul>
 </li>
@@ -325,6 +327,9 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tl.repertoire_overlap.html#scirpy.tl.repertoire_overlap" title="scirpy.tl.repertoire_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repertoire_overlap</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Compute distance between cell groups based on clonotype overlap.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -353,7 +358,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vdj_usage</span></code></a>(adata, *[, target_cols, fraction, …])</p></td>
 <td><p>Creates a ribbon plot of the most abundant VDJ combinations in a given subset of cells.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, color, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.repertoire_overlap.html#scirpy.pl.repertoire_overlap" title="scirpy.pl.repertoire_overlap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repertoire_overlap</span></code></a>(adata, groupby, *[, …])</p></td>
+<td><p>Visualizes overlap betwen a pair of samples on a scatter plot or all samples on a heatmap or draws a dendrogram of samples only.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, color, …])</p></td>
 <td><p>Plot the clonotype network</p></td>
 </tr>
 </tbody>
