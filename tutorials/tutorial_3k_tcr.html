@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+69a6473
+                0.0+80446d6
               </div>
             
           
@@ -103,6 +103,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Gene-usage">Gene usage</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Spectratype-plots">Spectratype plots</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Experimental-plots">Experimental plots</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Repertoire-overlaps">Repertoire overlaps</a></li>
 </ul>
 </li>
@@ -425,7 +428,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Analysis-of-3k-T-cells-from-cancer">
 <h1>Analysis of 3k T cells from cancer<a class="headerlink" href="#Analysis-of-3k-T-cells-from-cancer" title="Permalink to this headline">¶</a></h1>
-<p>In this tutorial, we re-analize single-cell TCR/RNA-seq data from Wu et al (<a class="bibtex reference internal" href="../bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
+<p>In this tutorial, we re-analize single-cell TCR/RNA-seq data from Wu et al. (<a class="bibtex reference internal" href="../bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
 generated on the 10x Genomics platform. The original dataset consists of &gt;140k T cells
 from 14 treatment-naive patients across four different types of cancer.
 For this tutorial, to speed up computations, we use a downsampled version of 3k cells.</p>
@@ -479,7 +482,7 @@ scanpy==1.4.6 anndata==0.7.1 umap==0.4.1 numpy==1.18.2 scipy==1.4.1 pandas==0.25
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 39.8MB/s]
+wu2020_3k.h5ad: 28.7MB [00:00, 58.3MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object:</p>
@@ -847,7 +850,7 @@ wu2020_3k.h5ad: 28.7MB [00:00, 39.8MB/s]
 <p class="admonition-title">Note</p>
 <p><strong>Importing data</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> supports importing TCR data from <a class="reference external" href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cellranger</a> (10x)
-or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a>. (SMARTseq2).
+or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (Smart-seq2).
 See <a class="reference internal" href="../api.html#api-io"><span class="std std-ref">Input/Output</span></a> for more details.</p>
 <p>This particular dataset has been imported using <a class="reference internal" href="../scirpy.read_10x_vdj_csv.html#scirpy.read_10x_vdj_csv" title="scirpy.read_10x_vdj_csv"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.read_10x_vdj_csv()</span></code></a> and merged
 with transcriptomics data using <a class="reference internal" href="../scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>. The exact procedure
@@ -980,7 +983,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7c5079bd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a4bb09cd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -989,7 +992,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 <div class="output_area docutils container">
 <img alt="../_images/tutorials_tutorial_3k_tcr_23_1.svg" src="../_images/tutorials_tutorial_3k_tcr_23_1.svg" /></div>
 </div>
-<p>Indeed, in this dataset, ~7% of cells have more than a one pair of productive T-cell receptors:</p>
+<p>Indeed, in this dataset, ~6% of cells have more than a one pair of productive T-cell receptors:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -1147,7 +1150,7 @@ We can then visualize it using <a class="reference internal" href="../scirpy.pl.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4e4dd10&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f4a4bbf07d0&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1157,8 +1160,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4e4dd10&gt;],
 <div class="output_area docutils container">
 <img alt="../_images/tutorials_tutorial_3k_tcr_35_2.svg" src="../_images/tutorials_tutorial_3k_tcr_35_2.svg" /></div>
 </div>
-<p>Let’s re-compute the network with a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> of <code class="docutils literal notranslate"><span class="pre">15</span></code>. That’s the equivalent of 3 <code class="docutils literal notranslate"><span class="pre">R</span></code>s mutating into <code class="docutils literal notranslate"><span class="pre">N</span></code> (using the BLOSUM62 distance matrix).</p>
-<p>Additionally, we set <code class="docutils literal notranslate"><span class="pre">chains</span></code> to <code class="docutils literal notranslate"><span class="pre">all</span></code>. This results in the distances not being only computed between the most abundant pair of T-cell receptors, but instead, will take the minimal distance between any pair of T-cell receptors.</p>
+<p>Let’s re-compute the network with a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> of <code class="docutils literal notranslate"><span class="pre">10</span></code>. That’s the equivalent of 2 <code class="docutils literal notranslate"><span class="pre">R</span></code>s mutating into <code class="docutils literal notranslate"><span class="pre">N</span></code> (using the BLOSUM62 distance matrix).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
@@ -1173,7 +1175,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4e4dd10&gt;],
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">dual_tcr</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotypes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">partitions</span><span class="o">=</span><span class="s2">&quot;connected&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1191,7 +1193,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4e4dd10&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1622/1622 [00:18&lt;00:00, 86.89it/s]
+100%|██████████| 1698/1698 [00:22&lt;00:00, 76.65it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1207,7 +1209,7 @@ Finished computing TRA pairwise distances.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2180/2180 [00:34&lt;00:00, 63.96it/s]
+100%|██████████| 2259/2259 [00:37&lt;00:00, 59.49it/s]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1226,7 +1228,7 @@ Finished constructing cell x cell distance matrix.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1238,7 @@ Finished constructing cell x cell distance matrix.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">legend_fontoutline</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">legend_fontoutline</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1256,7 @@ Finished constructing cell x cell distance matrix.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c5341250&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f4a4be8a150&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1264,13 +1266,13 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c5341250&gt;],
 <div class="output_area docutils container">
 <img alt="../_images/tutorials_tutorial_3k_tcr_41_2.svg" src="../_images/tutorials_tutorial_3k_tcr_41_2.svg" /></div>
 </div>
-<p>Now we show the same graph, colored by sample. We observe that for instance clonotypes 247 and 293 are <em>private</em>, i.e. they contain cells from a single sample only. On the other hand, for instance clonotype 106 is <em>public</em>, i.e. it is shared across tissues and/or patients.</p>
+<p>Now we show the same graph, colored by patient. We observe that for instance clonotypes 277 and 211 (center) are <em>private</em>, i.e. they contain cells from a single sample only. On the other hand, for instance clonotype 333 (bottom left) is <em>public</em>, i.e. it is shared across patients <em>Lung3</em> and <em>Lung1</em>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">)</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;patient&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1280,7 +1282,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c5341250&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4f3c610&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f4a4b9c5e50&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1290,576 +1292,18 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fc7c4f3c610&gt;],
 <div class="output_area docutils container">
 <img alt="../_images/tutorials_tutorial_3k_tcr_43_1.svg" src="../_images/tutorials_tutorial_3k_tcr_43_1.svg" /></div>
 </div>
-</div>
-</div>
-<div class="section" id="Clonotype-analysis">
-<h2>Clonotype analysis<a class="headerlink" href="#Clonotype-analysis" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Clonal-expansion">
-<h3>Clonal expansion<a class="headerlink" href="#Clonal-expansion" title="Permalink to this headline">¶</a></h3>
-<p>Let’s visualize the number of expanded clonotypes (i.e. clonotypes consisting of more than one cell) by cell-type. The first option is to add a column with the <em>clonal expansion</em> to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code> and plot it on the UMAP plot.</p>
-<div class="nbinput nblast docutils container">
+<p>We can now extract information (e.g. CDR3-sequences) from a specific clonotype by subsetting <code class="docutils literal notranslate"><span class="pre">AnnData</span></code>. Clonotype <code class="docutils literal notranslate"><span class="pre">333</span></code> does not have a detected alpha chain.</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;clonal_expansion&quot;</span><span class="p">,</span> <span class="s2">&quot;clonotype_size&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-... storing &#39;clonal_expansion&#39; as categorical
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_46_1.svg" src="../_images/tutorials_tutorial_3k_tcr_46_1.svg" /></div>
-</div>
-<p>The second option is to show the number of cells belonging to an expanded clonotype per category in a stacked bar plot:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">clip_at</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ba95b9d0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_48_1.svg" src="../_images/tutorials_tutorial_3k_tcr_48_1.svg" /></div>
-</div>
-<p>The same plot, normalized to cluster size:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7c0ff4c50&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_50_1.svg" src="../_images/tutorials_tutorial_3k_tcr_50_1.svg" /></div>
-</div>
-<p>Expectedly, the CD8+ effector T cells have the largest fraction of expanded clonotypes.</p>
-<p>Consistent with this observation, they have the lowest alpha diversity of clonotypes:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">alpha_diversity</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">)</span>
+<span></span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;clonotype&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;333&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;TRA_1_cdr3&quot;</span><span class="p">,</span> <span class="s2">&quot;TRA_2_cdr3&quot;</span><span class="p">,</span> <span class="s2">&quot;TRB_1_cdr3&quot;</span><span class="p">,</span> <span class="s2">&quot;TRB_2_cdr3&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_52_0.svg" src="../_images/tutorials_tutorial_3k_tcr_52_0.svg" /></div>
-</div>
-</div>
-<div class="section" id="Clonotype-abundance">
-<h3>Clonotype abundance<a class="headerlink" href="#Clonotype-abundance" title="Permalink to this headline">¶</a></h3>
-<p>The function <a class="reference internal" href="../scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a> allows us to create bar charts for
-arbitrary categorial from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Here, we use it to show the distribution of the
-ten largest clonotypes across the cell-type clusters.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7b90a5610&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_55_1.svg" src="../_images/tutorials_tutorial_3k_tcr_55_1.svg" /></div>
-</div>
-<p>When cell-types are considered, it might be benefitial to normalize the counts to the sample size:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7c522da50&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_57_1.svg" src="../_images/tutorials_tutorial_3k_tcr_57_1.svg" /></div>
-</div>
-<p>Coloring the bars by patient gives us information about public and private clonotypes: While most clonotypes are private, i.e. specific to a certain tissue, some of them are public, i.e. they are shared across different tissues.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-small&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.legend.Legend at 0x7fc7b8f63110&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_59_1.svg" src="../_images/tutorials_tutorial_3k_tcr_59_1.svg" /></div>
-</div>
-<div class="line-block">
-<div class="line">However, none of them is shared across patients.</div>
-<div class="line">This is consistent with the observation we made earlier on the clonotype network.</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;patient&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7b8ed4710&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_61_1.svg" src="../_images/tutorials_tutorial_3k_tcr_61_1.svg" /></div>
-</div>
-</div>
-</div>
-<div class="section" id="Gene-usage">
-<h2>Gene usage<a class="headerlink" href="#Gene-usage" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.group_abundance()</span></code></a> can also give us some information on VDJ usage.
-We can choose any of the <code class="docutils literal notranslate"><span class="pre">{TRA,TRB}_{1,2]_{v,d,j,c}_gene</span></code> columns to make a stacked bar plot.
-We use <code class="docutils literal notranslate"><span class="pre">max_col</span></code> to limit the plot to the 10 most abundant V-genes.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">,</span>
-    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
-    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
-    <span class="n">fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7b8078fd0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_64_1.svg" src="../_images/tutorials_tutorial_3k_tcr_64_1.svg" /></div>
-</div>
-<p>We can pre-select groups by filtering <code class="docutils literal notranslate"><span class="pre">adata</span></code>:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;TRBV20-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-2&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV28&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV5-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-9&quot;</span><span class="p">]</span>
-    <span class="p">),:],</span>
-    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
-    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
-    <span class="n">fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7b84cddd0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_66_1.svg" src="../_images/tutorials_tutorial_3k_tcr_66_1.svg" /></div>
-</div>
-<p>The exact combinations of VDJ genes can be visualized as a Sankey-plot using <a class="reference internal" href="../scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.vdj_usage()</span></code></a>.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">full_combination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7b86f7d10&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_68_1.svg" src="../_images/tutorials_tutorial_3k_tcr_68_1.svg" /></div>
-</div>
-<div class="section" id="Spectratype-plots">
-<h3>Spectratype plots<a class="headerlink" href="#Spectratype-plots" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="../scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-func docutils literal notranslate"><span class="pre">spectratype()</span></code></a> plots give us information about the length distribution of CDR3 regions.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_71_0.svg" src="../_images/tutorials_tutorial_3k_tcr_71_0.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab5c3450&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_72_1.svg" src="../_images/tutorials_tutorial_3k_tcr_72_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shade&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab446850&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_73_1.svg" src="../_images/tutorials_tutorial_3k_tcr_73_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab3b0810&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_74_1.svg" src="../_images/tutorials_tutorial_3k_tcr_74_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shade&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab28a410&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_75_1.svg" src="../_images/tutorials_tutorial_3k_tcr_75_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;shade&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;curve_layout&#39;</span><span class="p">:</span> <span class="s1">&#39;stacked&#39;</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab238590&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_76_1.svg" src="../_images/tutorials_tutorial_3k_tcr_76_1.svg" /></div>
-</div>
-<p>The same as line chart, normalized to cluster size:</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;curve_layout&#39;</span><span class="p">:</span> <span class="s1">&#39;shifted&#39;</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab15abd0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_78_1.svg" src="../_images/tutorials_tutorial_3k_tcr_78_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span> <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;curve_layout&#39;</span><span class="p">:</span> <span class="s1">&#39;shifted&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CD8_Trm&#39;</span><span class="p">,</span> <span class="s1">&#39;CD8_Tem&#39;</span><span class="p">,</span> <span class="s1">&#39;CD8_Teff&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_Treg&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_IL6ST&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_RPL32&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_FOSS&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_Trm&#39;</span><span class="p">,</span> <span class="s1">&#39;CD4_TCF7&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">],</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab045850&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_79_1.svg" src="../_images/tutorials_tutorial_3k_tcr_79_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7ab0ba090&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_80_1.svg" src="../_images/tutorials_tutorial_3k_tcr_80_1.svg" /></div>
-</div>
-<p>Again, to pre-select specific genes, we can simply filter the <code class="docutils literal notranslate"><span class="pre">adata</span></code> object before plotting.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span>
-    <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;TRBV20-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-2&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV28&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV5-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-9&quot;</span><span class="p">]),:],</span>
-    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;TRB_1_cdr3&quot;</span><span class="p">,</span>
-    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
-    <span class="n">fraction</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
-    <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dpi&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">}</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7aaed1210&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_82_1.svg" src="../_images/tutorials_tutorial_3k_tcr_82_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1881,160 +1325,487 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>TRA_1_c_gene</th>
       <th>TRA_1_cdr3</th>
-      <th>TRA_1_cdr3_nt</th>
-      <th>TRA_1_d_gene</th>
-      <th>TRA_1_expr</th>
-      <th>TRA_1_j_gene</th>
-      <th>TRA_1_junction_ins</th>
-      <th>TRA_1_v_gene</th>
-      <th>TRA_2_c_gene</th>
       <th>TRA_2_cdr3</th>
-      <th>...</th>
-      <th>patient</th>
-      <th>sample</th>
-      <th>source</th>
-      <th>n_genes</th>
-      <th>n_counts</th>
-      <th>cluster</th>
-      <th>chain_pairing</th>
-      <th>clonotype</th>
-      <th>clonotype_size</th>
-      <th>clonal_expansion</th>
+      <th>TRB_1_cdr3</th>
+      <th>TRB_2_cdr3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>LN1_GTAGGCCAGCGTAGTG-1-19</th>
+      <th>LN1_CAGAATCGTCGCATCG-1-19</th>
       <td>None</td>
       <td>None</td>
+      <td>CASSYQGATEAFF</td>
       <td>None</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>...</td>
-      <td>Lung1</td>
-      <td>LN1</td>
-      <td>NAT</td>
-      <td>582</td>
-      <td>1188.0</td>
-      <td>CD4_FOSS</td>
-      <td>Orphan beta</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
-      <th>RN2_AGAGCGACAGATTGCT-1-27</th>
-      <td>TRAC</td>
-      <td>CAVRGNNNARLMF</td>
-      <td>TGTGCTGTGAGGGGGAATAACAATGCCAGACTCATGTTT</td>
-      <td>None</td>
-      <td>1.0</td>
-      <td>TRAJ31</td>
-      <td>None</td>
-      <td>TRAV8-6</td>
+      <th>LN1_TCAATCTGTGTGAAAT-1-19</th>
       <td>None</td>
       <td>None</td>
-      <td>...</td>
-      <td>Renal2</td>
-      <td>RN2</td>
-      <td>NAT</td>
-      <td>740</td>
-      <td>1712.0</td>
-      <td>CD4_FOSS</td>
-      <td>Single pair</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
+      <td>CASSYQGATEAFF</td>
+      <td>None</td>
     </tr>
     <tr>
-      <th>LN1_GTCATTTCAATGAAAC-1-19</th>
-      <td>TRAC</td>
-      <td>CAVRLGNQFYF</td>
-      <td>TGTGCTGTGAGGTTGGGTAACCAGTTCTATTTT</td>
-      <td>None</td>
-      <td>2.0</td>
-      <td>TRAJ49</td>
-      <td>None</td>
-      <td>TRAV21</td>
+      <th>LN3_TTAGGACGTAAGAGAG-1-11</th>
       <td>None</td>
       <td>None</td>
-      <td>...</td>
-      <td>Lung1</td>
-      <td>LN1</td>
-      <td>NAT</td>
-      <td>1264</td>
-      <td>3195.0</td>
-      <td>CD8_Tem</td>
-      <td>Single pair</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
+      <td>CASSYQGSTEAFF</td>
+      <td>None</td>
     </tr>
     <tr>
-      <th>LN2_GACACGCAGGTAGCTG-2-2</th>
+      <th>LN3_GTCTCGTTCGTACGGC-1-11</th>
       <td>None</td>
       <td>None</td>
+      <td>CASSYQGSTEAFF</td>
       <td>None</td>
-      <td>None</td>
-      <td>NaN</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>...</td>
-      <td>Lung2</td>
-      <td>LN2</td>
-      <td>NAT</td>
-      <td>1844</td>
-      <td>5518.0</td>
-      <td>other</td>
-      <td>Orphan beta</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
     </tr>
     <tr>
-      <th>LN2_GCACTCTCAGGGATTG-2-2</th>
-      <td>TRAC</td>
-      <td>CAASDPTVEAGTALIF</td>
-      <td>TGTGCAGCAAGCGACCCCACGGTCGAGGCAGGAACTGCTCTGATCTTT</td>
-      <td>None</td>
-      <td>4.0</td>
-      <td>TRAJ15</td>
-      <td>None</td>
-      <td>TRAV23DV6</td>
+      <th>LN1_TGCGTGGCAGCAGTTT-1-19</th>
       <td>None</td>
       <td>None</td>
-      <td>...</td>
-      <td>Lung2</td>
-      <td>LN2</td>
-      <td>NAT</td>
-      <td>2086</td>
-      <td>6866.0</td>
-      <td>CD4_FOSS</td>
-      <td>Single pair</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
+      <td>CASSYQGATEAFF</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>LN1_GCCTCTATCACTTATC-1-19</th>
+      <td>None</td>
+      <td>None</td>
+      <td>CASSYQGATEAFF</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>LN1_GGACATTTCGTAGGTT-1-19</th>
+      <td>None</td>
+      <td>None</td>
+      <td>CASSYQGATEAFF</td>
+      <td>None</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 47 columns</p>
 </div></div>
 </div>
 </div>
+</div>
+<div class="section" id="Clonotype-analysis">
+<h2>Clonotype analysis<a class="headerlink" href="#Clonotype-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Clonal-expansion">
+<h3>Clonal expansion<a class="headerlink" href="#Clonal-expansion" title="Permalink to this headline">¶</a></h3>
+<p>Let’s visualize the number of expanded clonotypes (i.e. clonotypes consisting
+of more than one cell) by cell-type. The first option is to add a column with the <a class="reference internal" href="../scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonal_expansion()</span></code></a>
+to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code> and overlay it on the UMAP plot.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">clonal_expansion</span></code> refers to expansion categories, i.e singleton clonotypes, clonotypes with 2 cells and more than 2 cells. The <code class="docutils literal notranslate"><span class="pre">clonotype_size</span></code> refers to the absolute number of cells in a clonotype.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;clonal_expansion&quot;</span><span class="p">,</span> <span class="s2">&quot;clonotype_size&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+... storing &#39;clonal_expansion&#39; as categorical
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_50_1.svg" src="../_images/tutorials_tutorial_3k_tcr_50_1.svg" /></div>
+</div>
+<p>The second option is to show the number of cells belonging to an expanded clonotype per category
+in a stacked bar plot, using the <a class="reference internal" href="../scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonal_expansion()</span></code></a> plotting function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">clip_at</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a4bae8590&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_52_1.svg" src="../_images/tutorials_tutorial_3k_tcr_52_1.svg" /></div>
+</div>
+<p>The same plot, normalized to cluster size. Clonal expansion is a sign of positive selection for a certain, reactive T-cell clone. It, therefore, makes sense that CD8+ effector T-cells have the largest fraction of expanded clonotypes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a337f38d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_54_1.svg" src="../_images/tutorials_tutorial_3k_tcr_54_1.svg" /></div>
+</div>
+<p>Expectedly, the CD8+ effector T cells have the largest fraction of expanded clonotypes.</p>
+<p>Consistent with this observation, they have the lowest <a class="reference internal" href="../scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity" title="scirpy.pl.alpha_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.alpha_diversity()</span></code></a> of clonotypes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">alpha_diversity</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_56_0.svg" src="../_images/tutorials_tutorial_3k_tcr_56_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Clonotype-abundance">
+<h3>Clonotype abundance<a class="headerlink" href="#Clonotype-abundance" title="Permalink to this headline">¶</a></h3>
+<p>The function <a class="reference internal" href="../scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a> allows us to create bar charts for
+arbitrary categorial from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Here, we use it to show the distribution of the
+ten largest clonotypes across the cell-type clusters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a41774d10&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_59_1.svg" src="../_images/tutorials_tutorial_3k_tcr_59_1.svg" /></div>
+</div>
+<p>It might be beneficial to normalize the counts to the number of cells per sample to mitigate biases due to different sample sizes:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a4b8b7650&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_61_1.svg" src="../_images/tutorials_tutorial_3k_tcr_61_1.svg" /></div>
+</div>
+<p>Coloring the bars by patient gives us information about public and private clonotypes: Some clonotypes are <em>private</em>, i.e. specific to a certain tissue, others are <em>public</em>, i.e. they are shared across different tissues.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_63_0.svg" src="../_images/tutorials_tutorial_3k_tcr_63_0.svg" /></div>
+</div>
+<p>However, clonotypes that are shared between <em>patients</em> are rare:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;patient&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_65_0.svg" src="../_images/tutorials_tutorial_3k_tcr_65_0.svg" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="Gene-usage">
+<h2>Gene usage<a class="headerlink" href="#Gene-usage" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.group_abundance()</span></code></a> can also give us some information on VDJ usage.
+We can choose any of the <code class="docutils literal notranslate"><span class="pre">{TRA,TRB}_{1,2}_{v,d,j,c}_gene</span></code> columns to make a stacked bar plot.
+We use <code class="docutils literal notranslate"><span class="pre">max_col</span></code> to limit the plot to the 10 most abundant V-genes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span>
+    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
+    <span class="n">fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a4bcee310&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_68_1.svg" src="../_images/tutorials_tutorial_3k_tcr_68_1.svg" /></div>
+</div>
+<p>We can pre-select groups by filtering <code class="docutils literal notranslate"><span class="pre">adata</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;TRBV20-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-2&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV28&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV5-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-9&quot;</span><span class="p">]</span>
+    <span class="p">),:],</span>
+    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
+    <span class="n">fraction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a334a80d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_70_1.svg" src="../_images/tutorials_tutorial_3k_tcr_70_1.svg" /></div>
+</div>
+<p>The exact combinations of VDJ genes can be visualized as a Sankey-plot using <a class="reference internal" href="../scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.vdj_usage()</span></code></a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">full_combination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a332ddd90&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_72_1.svg" src="../_images/tutorials_tutorial_3k_tcr_72_1.svg" /></div>
+</div>
+<p>We can also use this plot to investigate the exact VDJ composition of one (or several) clonotypes:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span><span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;clonotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;274&quot;</span><span class="p">,</span> <span class="s2">&quot;277&quot;</span><span class="p">,</span> <span class="s2">&quot;211&quot;</span><span class="p">,</span> <span class="s2">&quot;106&quot;</span><span class="p">]),</span> <span class="p">:],</span> <span class="n">top_n</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a32e25150&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_74_1.svg" src="../_images/tutorials_tutorial_3k_tcr_74_1.svg" /></div>
+</div>
+<div class="section" id="Spectratype-plots">
+<h3>Spectratype plots<a class="headerlink" href="#Spectratype-plots" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-func docutils literal notranslate"><span class="pre">spectratype()</span></code></a> plots give us information about the length distribution of CDR3 regions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a32d78750&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_77_1.svg" src="../_images/tutorials_tutorial_3k_tcr_77_1.svg" /></div>
+</div>
+<p>The same chart visualized as “ridge”-plot:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
+    <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span>
+    <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span>
+    <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;curve_layout&#39;</span><span class="p">:</span> <span class="s1">&#39;shifted&#39;</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;kde_norm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a32a5cf50&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_79_1.svg" src="../_images/tutorials_tutorial_3k_tcr_79_1.svg" /></div>
+</div>
+<p>A spectratype-plot by gene usage. To pre-select specific genes, we can simply filter the <code class="docutils literal notranslate"><span class="pre">adata</span></code> object before plotting.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;TRBV20-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-2&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV28&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV5-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-9&quot;</span><span class="p">]),:],</span>
+    <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;TRB_1_cdr3&quot;</span><span class="p">,</span>
+    <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
+    <span class="n">fraction</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+    <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dpi&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a32962810&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_81_1.svg" src="../_images/tutorials_tutorial_3k_tcr_81_1.svg" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="Experimental-plots">
+<h2>Experimental plots<a class="headerlink" href="#Experimental-plots" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Repertoire-overlaps">
 <h3>Repertoire overlaps<a class="headerlink" href="#Repertoire-overlaps" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2043,7 +1814,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2052,7 +1823,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2085,16 +1856,16 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
       <th>8</th>
       <th>9</th>
       <th>...</th>
-      <th>2334</th>
-      <th>2335</th>
-      <th>2336</th>
-      <th>2337</th>
-      <th>2338</th>
-      <th>2339</th>
-      <th>2340</th>
-      <th>2341</th>
-      <th>2342</th>
-      <th>2343</th>
+      <th>2491</th>
+      <th>2492</th>
+      <th>2493</th>
+      <th>2494</th>
+      <th>2495</th>
+      <th>2496</th>
+      <th>2497</th>
+      <th>2498</th>
+      <th>2499</th>
+      <th>2500</th>
     </tr>
     <tr>
       <th>sample</th>
@@ -2185,8 +1956,8 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2226,7 +1997,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>2.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2244,11 +2015,11 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
     </tr>
   </tbody>
 </table>
-<p>5 rows × 2344 columns</p>
+<p>5 rows × 2501 columns</p>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2257,12 +2028,36 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7fc7b818f990&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7f4a336f6050&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_3k_tcr_86_1.svg" src="../_images/tutorials_tutorial_3k_tcr_86_1.svg" /></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">heatmap_cats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;patient&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.matrix.ClusterGrid at 0x7f4a31cae7d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2272,21 +2067,21 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 <img alt="../_images/tutorials_tutorial_3k_tcr_87_1.svg" src="../_images/tutorials_tutorial_3k_tcr_87_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">heatmap_cats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;patient&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">])</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">dendro_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heatmap_cats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7fc7aafb0ed0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a324afcd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2296,31 +2091,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 <img alt="../_images/tutorials_tutorial_3k_tcr_88_1.svg" src="../_images/tutorials_tutorial_3k_tcr_88_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">dendro_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heatmap_cats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7aa9cc3d0&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_89_1.svg" src="../_images/tutorials_tutorial_3k_tcr_89_1.svg" /></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2339,19 +2110,19 @@ No handles with labels found to put in legend.
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc7aa9b1990&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4a32361b10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_90_2.svg" src="../_images/tutorials_tutorial_3k_tcr_90_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_89_2.svg" src="../_images/tutorials_tutorial_3k_tcr_89_2.svg" /></div>
 </div>
 </div>
 </div>
