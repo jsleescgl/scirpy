@@ -1,6 +1,0 @@
-scirpy.read\_10x\_vdj\_csv
-==========================
-
-.. currentmodule:: scirpy
-
-.. autofunction:: read_10x_vdj_csv

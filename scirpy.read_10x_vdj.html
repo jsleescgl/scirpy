@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scirpy.read_10x_vdj_csv" href="scirpy.read_10x_vdj_csv.html" />
+    <link rel="next" title="scirpy.read_tracer" href="scirpy.read_tracer.html" />
     <link rel="prev" title="scirpy.read_h5ad" href="scirpy.read_h5ad.html" /> 
 </head>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+80446d6
+                0.0+90ba34b
               </div>
             
           
@@ -93,7 +93,6 @@
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#input-output">Input/Output</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_h5ad.html">scirpy.read_h5ad</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.read_10x_vdj</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.read_10x_vdj_csv.html">scirpy.read_10x_vdj_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_tracer.html">scirpy.read_tracer</a></li>
 </ul>
 </li>
@@ -202,9 +201,12 @@
 <dl class="function">
 <dt id="scirpy.read_10x_vdj">
 <code class="sig-prename descclassname">scirpy.</code><code class="sig-name descname">read_10x_vdj</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">filtered=True</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.read_10x_vdj" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read TCR data from a 10x genomics sample.</p>
+<dd><p>Read TCR data from 10x Genomics cell-ranger output.</p>
 <blockquote>
-<div><p>Filters and processes</p>
+<div><p>Supports <code class="docutils literal notranslate"><span class="pre">all_contig_annotations.json</span></code> and <code class="docutils literal notranslate"><span class="pre">{all,filtered}_contig_annotations.csv</span></code>.
+If the json file is available, it is preferable as it additionally
+contains information about VDJ-junction insertions.</p>
+<p>Filters and processes</p>
 </div></blockquote>
 <p>cells according to our current working
 model for TCRs.</p>
@@ -227,9 +229,11 @@ there are only two left. Cells that had chains removed are flagged
 with ‘multi_chain’ = True.</p>
 <blockquote>
 <div><dl class="simple">
-<dt>path</dt><dd><p>Path to all_contig_annotations.json</p>
+<dt>path</dt><dd><p>Path to filterd_contig_annotations.csv or all_contig_annotationgs.csv</p>
 </dd>
-<dt>filtered</dt><dd><p>Only keep filtered contig annotations (= is_cell and high_confidence)</p>
+<dt>filtered</dt><dd><p>Only keep filtered contig annotations (= is_cell and high_confidence)
+If using <code class="docutils literal notranslate"><span class="pre">filtered_contig_annotations.csv</span></code> already, this option
+is futile.</p>
 </dd>
 </dl>
 <p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell.</p>
@@ -251,7 +255,7 @@ with ‘multi_chain’ = True.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.read_10x_vdj_csv.html" class="btn btn-neutral float-right" title="scirpy.read_10x_vdj_csv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.read_tracer.html" class="btn btn-neutral float-right" title="scirpy.read_tracer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.read_h5ad.html" class="btn btn-neutral float-left" title="scirpy.read_h5ad" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
