@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+f3058de
+                0.0+6ca71ae
               </div>
             
           
@@ -137,6 +137,15 @@
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.base.curve.html">scirpy.pl.base.curve</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scirpy.pl.styling">Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.pl.styling.apply_style_to_axes.html">scirpy.pl.styling.apply_style_to_axes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.pl.styling.style_axes.html">scirpy.pl.styling.style_axes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.util.graph.layout_components.html">scirpy.util.graph.layout_components</a></li>
 </ul>
 </li>
 </ul>
@@ -367,7 +376,7 @@
 <td><p>Plot the clonotype network</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.embedding.html#scirpy.pl.embedding" title="scirpy.pl.embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embedding</span></code></a>(adata, basis, *[, color, …])</p></td>
-<td><p>A customized wrapper to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">sc.pl.embedding()</span></code> function.</p></td>
+<td><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -394,6 +403,37 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="module-scirpy.pl.styling">
+<span id="plot-styling-pl-styling"></span><h3>Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code><a class="headerlink" href="#module-scirpy.pl.styling" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.styling.apply_style_to_axes.html#scirpy.pl.styling.apply_style_to_axes" title="scirpy.pl.styling.apply_style_to_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_style_to_axes</span></code></a>(ax, style, style_kws)</p></td>
+<td><p>Apply a predefined style to an axis object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pl.styling.style_axes.html#scirpy.pl.styling.style_axes" title="scirpy.pl.styling.style_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style_axes</span></code></a>(ax[, title, legend_title, xlab, …])</p></td>
+<td><p>Style an axes object.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-scirpy.util">
+<span id="utility-functions-util"></span><h2>Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code><a class="headerlink" href="#module-scirpy.util" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.util.graph.layout_components.html#scirpy.util.graph.layout_components" title="scirpy.util.graph.layout_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph.layout_components</span></code></a>(graph[, …])</p></td>
+<td><p>Compute a graph layout by layouting all connected components individually.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

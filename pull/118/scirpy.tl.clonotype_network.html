@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+f3058de
+                0.0+6ca71ae
               </div>
             
           
@@ -107,6 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -215,9 +216,9 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>min_size</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>Only show clonotypes with at least <code class="docutils literal notranslate"><span class="pre">min_size</span></code> cells.</p>
 </dd>
-<dt><strong>layout</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'fr'</span></code>)</dt><dd><p>The layout algorithm to use. Can be anything supported by <code class="xref py py-meth docutils literal notranslate"><span class="pre">igraph.layout()</span></code>
-or “components” to layout all connected components individually. See
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">scirpy._util._graph.layout_componets()</span></code> for more details.</p>
+<dt><strong>layout</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'fr'</span></code>)</dt><dd><p>The layout algorithm to use. Can be anything supported by
+<code class="docutils literal notranslate"><span class="pre">igraph.Graph.layout</span></code>  or “components” to layout all connected components
+individually. See <a class="reference internal" href="scirpy.util.graph.layout_components.html#scirpy.util.graph.layout_components" title="scirpy.util.graph.layout_components"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.util.graph.layout_components()</span></code></a> for more details.</p>
 </dd>
 <dt><strong>layout_kwargs</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Will be passed to the layout function</p>
 </dd>

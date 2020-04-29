@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+f3058de
+                0.0+6ca71ae
               </div>
             
           
@@ -107,6 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -226,8 +227,7 @@ across the entire dataset.</p>
 <dt><strong>clip_at</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">3</span></code>)</dt><dd><p>All clonotypes with more than <code class="docutils literal notranslate"><span class="pre">clip_at</span></code> clones will be summarized into
 a single category</p>
 </dd>
-<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonal_expansion'</span></code>)</dt><dd><p>Key under which the results will be added to <code class="docutils literal notranslate"><span class="pre">obs</span></code>.
-Additional arguments passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clip_and_count()</span></code>.</p>
+<dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonal_expansion'</span></code>)</dt><dd><p>Key under which the results will be added to <code class="docutils literal notranslate"><span class="pre">obs</span></code>.</p>
 </dd>
 <dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, adds a column to <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Otherwise returns an array
 with the clipped counts.</p>
