@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+4cdeb42
+                0.0+427549f
               </div>
             
           
@@ -115,7 +115,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
 </ul>
 
             
@@ -428,7 +429,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Analysis-of-3k-T-cells-from-cancer">
 <h1>Analysis of 3k T cells from cancer<a class="headerlink" href="#Analysis-of-3k-T-cells-from-cancer" title="Permalink to this headline">¶</a></h1>
-<p>In this tutorial, we re-analize single-cell TCR/RNA-seq data from Wu et al. (<a class="bibtex reference internal" href="../bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
+<p>In this tutorial, we re-analize single-cell TCR/RNA-seq data from Wu et al. (<a class="bibtex reference internal" href="../zzz_bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
 generated on the 10x Genomics platform. The original dataset consists of &gt;140k T cells
 from 14 treatment-naive patients across four different types of cancer.
 For this tutorial, to speed up computations, we use a downsampled version of 3k cells.</p>
@@ -491,7 +492,7 @@ scanpy==1.4.6 anndata==0.7.1 umap==0.4.1 numpy==1.18.3 scipy==1.4.1 pandas==1.0.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 40.3MB/s]
+wu2020_3k.h5ad: 28.7MB [00:00, 45.9MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object:</p>
@@ -954,7 +955,7 @@ is described in <a class="reference internal" href="../scirpy.datasets.wu2020.ht
 <div class="section" id="TCR-Quality-Control">
 <h2>TCR Quality Control<a class="headerlink" href="#TCR-Quality-Control" title="Permalink to this headline">¶</a></h2>
 <p>While most of T cell receptors have exactly one pair of α and β chains, up to one third of
-T cells can have <em>dual TCRs</em>, i.e. two pairs of receptors originating from different alleles (<span class="bibtex" id="id2">[Schuldt2019]</span>).</p>
+T cells can have <em>dual TCRs</em>, i.e. two pairs of receptors originating from different alleles (<a class="bibtex reference internal" href="../zzz_bibliography.html#schuldt2019" id="id2">[SB19]</a>).</p>
 <p>Using the <a class="reference internal" href="../scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a> function, we can add a summary
 about the T cell receptor compositions to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>. We can visualize it using <a class="reference internal" href="../scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a>.</p>
 <div class="admonition note">
@@ -992,7 +993,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f14763f1e10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f71a6a410&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1114,7 +1115,7 @@ Fraction of cells with more than one pair of TCRs: 0.06
 <div class="section" id="Compute-CDR3-neighborhood-graph">
 <h3>Compute CDR3 neighborhood graph<a class="headerlink" href="#Compute-CDR3-neighborhood-graph" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a> computes the pairwise sequence alignment of all CDR3 sequences and
-derives a distance from the alignment score. This approach was originally proposed as <em>TCRdist</em> by Dash et al. (<span class="bibtex" id="id3">[TCRdist]</span>).</p>
+derives a distance from the alignment score. This approach was originally proposed as <em>TCRdist</em> by Dash et al. (<a class="bibtex reference internal" href="../zzz_bibliography.html#tcrdist" id="id3">[DFGH+17]</a>).</p>
 <p>The function requires to specify a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> parameter. All cells with a distance between their
 CDR3 sequences lower than <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> will be connected in the network. In the first example,
 we set the cutoff to <code class="docutils literal notranslate"><span class="pre">0</span></code>, to define clontypes as cells with <strong>identical</strong> CDR3 sequences.
@@ -1159,7 +1160,7 @@ We can then visualize it using <a class="reference internal" href="../scirpy.pl.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f14762b6d10&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f71932590&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1202,7 +1203,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f14762b6d10&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1698/1698 [00:16&lt;00:00, 104.67it/s]
+100%|██████████| 1698/1698 [00:17&lt;00:00, 97.00it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1218,7 +1219,7 @@ Finished computing TRA pairwise distances.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2259/2259 [00:28&lt;00:00, 78.87it/s]
+100%|██████████| 2259/2259 [00:30&lt;00:00, 73.53it/s]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1265,7 +1266,7 @@ Finished constructing cell x cell distance matrix.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f14762490d0&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f719ee5d0&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1291,7 +1292,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f14762490d0&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f14762f0390&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f719e9810&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1453,7 +1454,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../scirpy.p
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f147d61e190&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f74caf250&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1478,7 +1479,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../scirpy.p
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f14763aeed0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f752e9b50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1527,7 +1528,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f14762d24d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f71a33450&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1554,7 +1555,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1471473f90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68ba0450&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1627,7 +1628,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f147126e450&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68f20890&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1659,7 +1660,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f147da88510&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f7195f790&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1684,7 +1685,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1471083490&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f686c0890&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1709,7 +1710,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1470dc0310&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68292450&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1736,7 +1737,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1470dbb710&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f6845df90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1767,7 +1768,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1470e1d090&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f684b3690&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1798,7 +1799,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1470816dd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5be28750&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2042,7 +2043,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f14707deb10&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7f3f68fe2310&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2066,7 +2067,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f1470440210&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7f3f5ba6e950&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2090,7 +2091,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f14701a6d10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5bc3d7d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2122,7 +2123,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1463fff0d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5b639c90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2168,7 +2169,7 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.axisgrid.FacetGrid at 0x7f1471487a50&gt;
+&lt;seaborn.axisgrid.FacetGrid at 0x7f3f68625d50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2202,7 +2203,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f146397d310&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5b0f1750&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

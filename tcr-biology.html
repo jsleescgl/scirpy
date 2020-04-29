@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bibliography" href="bibliography.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
     <link rel="prev" title="scirpy.pl.base.curve" href="scirpy.pl.base.curve.html" /> 
 </head>
 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+4cdeb42
+                0.0+427549f
               </div>
             
           
@@ -96,7 +96,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#clonotype-definition">Clonotype definition</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zzz_bibliography.html">Bibliography</a></li>
 </ul>
 
             
@@ -192,33 +193,34 @@
 <div class="section" id="what-is-a-clonotype">
 <h2>What is a clonotype?<a class="headerlink" href="#what-is-a-clonotype" title="Permalink to this headline">¶</a></h2>
 <p>A clonotype designates a collection of T or B cells that bear the same adaptive
-immune receptors, and thus recognize the same epitopes. Generally, these cells are
+immune receptors, and thus recognize the same <a class="reference internal" href="glossary.html#term-epitope"><span class="xref std std-term">epitopes</span></a>.
+Generally, these cells are
 also descendants of a common, antecedent cell and belong to the same cell clone.
 In single-cell RNA-sequencing (scRNA-seq) data, T cells sharing identical
-complementarity-determining regions 3 (CDR3) sequences of both α and β TCR chains
-make up a clonotype.</p>
+complementarity-determining regions 3 (<a class="reference internal" href="glossary.html#term-cdr3"><span class="xref std std-term">CDR3</span></a>) sequences of both α and β
+<a class="reference internal" href="glossary.html#term-tcr"><span class="xref std std-term">TCR</span></a> chains make up a clonotype.</p>
 </div>
 <div class="section" id="dual-tcrs">
 <h2>Dual TCRs<a class="headerlink" href="#dual-tcrs" title="Permalink to this headline">¶</a></h2>
 <p>Contrary to what would be expected based on the previously described mechanism of
-allelic exclusion (<span class="bibtex" id="id1">[Brady2010-gh]</span>), scRNA-seq datasets can feature a considerable
+allelic exclusion (<a class="bibtex reference internal" href="zzz_bibliography.html#brady2010-gh" id="id1">[BSB10]</a>), scRNA-seq datasets can feature a considerable
 number of cells with more than one TCR α and β pair. Since cells with more than one
 productive CDR3 sequence for each chain did not fit into our understanding of
-T cell biology, most TCR analysis tools ignore these cells (<span class="bibtex" id="id2">[Fischer2019]</span>,
-<span class="bibtex" id="id3">[Zhang2018-ip]</span>), or select the CDR3 sequence with the highest expression level
-(<span class="bibtex" id="id4">[Afik2017-sg]</span>). While in some cases these double-TCR cells might represent
+T cell biology, most TCR analysis tools ignore these cells (<a class="bibtex reference internal" href="zzz_bibliography.html#fischer2019" id="id2">[FWST19]</a>,
+<a class="bibtex reference internal" href="zzz_bibliography.html#zhang2018-ip" id="id3">[ZYZ+18]</a>), or select the CDR3 sequence with the highest expression level
+(<a class="bibtex reference internal" href="zzz_bibliography.html#afik2017-sg" id="id4">[AYB+17]</a>). While in some cases these double-TCR cells might represent
 artifacts (e.g. doublets of a CD8+ and a CD4+ T cell engaged in an immunological
 synapse), there is an increasing amount of evidence in support of a bone fide
-dual-TCR population (<span class="bibtex" id="id5">[Schuldt2019]</span>, <span class="bibtex" id="id6">[Ji2010-bn]</span>).</p>
+dual-TCR population (<a class="bibtex reference internal" href="zzz_bibliography.html#schuldt2019" id="id5">[SB19]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#ji2010-bn" id="id6">[JPG10]</a>).</p>
 <p>Scirpy allows investigating the composition and phenotypes of both single- and dual-TCR
 T cells by leveraging a T cell model similar to the one proposed in
-<span class="bibtex" id="id7">[Stubbington2016-kh]</span>, where T cells are allowed to have a primary and a secondary
+<a class="bibtex reference internal" href="zzz_bibliography.html#stubbington2016-kh" id="id7">[SLonnbergP+16]</a>, where T cells are allowed to have a primary and a secondary
 pair of α- and β chains. For each cell, the primary pair consists of the α- and β-chain
 with the highest read count. Likewise, the secondary pair is the pair of α/β-chains with
 the second highest expression level. Based on the assumption that each cell has only two
 copies of the underlying chromosome set, if more than two variants of a chain are
 recovered for the same cell, the excess TCR chains are ignored by Scirpy and the
-corresponding cells flagged as “multichain”. This filtering strategy leaves the choice
+corresponding cells flagged as <a class="reference internal" href="glossary.html#term-multichain-cell"><span class="xref std std-term">Multichain-cell</span></a>. This filtering strategy leaves the choice
 of discarding or including multichain cells in downstream analyses.</p>
 </div>
 <div class="section" id="clonotype-definition">
@@ -227,13 +229,13 @@ of discarding or including multichain cells in downstream analyses.</p>
 into clonotypes based on the following options:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>identical CDR3 nucleotide sequences;</p></li>
+<li><p>identical <a class="reference internal" href="glossary.html#term-cdr3"><span class="xref std std-term">CDR3</span></a> nucleotide sequences;</p></li>
 <li><p>identical CDR3 amino acid sequences;</p></li>
 <li><p>similar CDR3 amino acid sequences based on pairwise sequence alignment.</p></li>
 </ul>
 </div></blockquote>
 <p>The latter approach is inspired by studies showing that similar TCR sequences also
-share epitope targets (<span class="bibtex" id="id8">[Fischer2019]</span>, <span class="bibtex" id="id9">[Glanville2017-ay]</span>, <span class="bibtex" id="id10">[TCRdist]</span>).
+share epitope targets (<a class="bibtex reference internal" href="zzz_bibliography.html#fischer2019" id="id8">[FWST19]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#glanville2017-ay" id="id9">[GHN+17]</a>, <a class="bibtex reference internal" href="zzz_bibliography.html#tcrdist" id="id10">[DFGH+17]</a>).
 Based on these approaches, Scirpy constructs a global, epitope-focused cell similarity
 network. While convergence of the nucleotide-based clonotype definition to the amino
 acid based one hints at selection pressure, sequence alignment based networks offer
@@ -249,7 +251,7 @@ the opportunity to identify cells that might recognize the same epitopes.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bibliography.html" class="btn btn-neutral float-right" title="Bibliography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.pl.base.curve.html" class="btn btn-neutral float-left" title="scirpy.pl.base.curve" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
