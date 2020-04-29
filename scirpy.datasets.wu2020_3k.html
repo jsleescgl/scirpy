@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -90,8 +90,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scirpy.datasets.wu2020.html">scirpy.datasets.wu2020</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.datasets.wu2020_3k</a></li>
 </ul>
@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -158,7 +159,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/scirpy.datasets.wu2020_3k.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.datasets.wu2020_3k.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -198,19 +199,20 @@
 </style>
 <div class="section" id="scirpy-datasets-wu2020-3k">
 <h1>scirpy.datasets.wu2020_3k<a class="headerlink" href="#scirpy-datasets-wu2020-3k" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="scirpy.datasets.wu2020_3k">
 <code class="sig-prename descclassname">scirpy.datasets.</code><code class="sig-name descname">wu2020_3k</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.datasets.wu2020_3k" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the dataset from <a class="bibtex reference internal" href="zzz_bibliography.html#wu2020" id="id1">[WMdA+20]</a> as AnnData object, downsampled
 to 3000 TCR-containing cells.</p>
 <p>This is how the dataset was processed:</p>
-<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
-import scanpy as sc</p>
-<p>adata = sc.read_h5ad(“wu2020.h5ad”)
-adata = adata[adata.obs[“has_tcr”] == “True”, :]
-sc.pp.subsample(adata, n_obs=3000)
-adata.write_h5ad(“wu2020_3k.h5ad”)</p>
-<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;wu2020.h5ad&quot;</span><span class="p">)</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">subsample</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_obs</span><span class="o">=</span><span class="mi">3000</span><span class="p">)</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="s2">&quot;wu2020_3k.h5ad&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>

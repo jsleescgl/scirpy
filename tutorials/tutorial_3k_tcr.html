@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -171,7 +171,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/tutorials/tutorial_3k_tcr.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/tutorials/tutorial_3k_tcr.md" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -474,7 +474,7 @@ For this tutorial, to speed up computations, we use a downsampled version of 3k 
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-scanpy==1.4.6 anndata==0.7.1 umap==0.4.1 numpy==1.18.3 scipy==1.4.1 pandas==1.0.3 scikit-learn==0.22.2.post1 statsmodels==0.11.1 python-igraph==0.8.2
+scanpy==1.4.6 anndata==0.7.1 umap==0.4.2 numpy==1.18.3 scipy==1.4.1 pandas==1.0.3 scikit-learn==0.22.2.post1 statsmodels==0.11.1 python-igraph==0.8.2
 </pre></div></div>
 </div>
 <p>The dataset ships with the <code class="docutils literal notranslate"><span class="pre">scirpy</span></code> package. We can conveniently load it from the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> module:</p>
@@ -492,7 +492,7 @@ scanpy==1.4.6 anndata==0.7.1 umap==0.4.1 numpy==1.18.3 scipy==1.4.1 pandas==1.0.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 45.9MB/s]
+wu2020_3k.h5ad: 28.7MB [00:00, 58.4MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object:</p>
@@ -862,7 +862,7 @@ wu2020_3k.h5ad: 28.7MB [00:00, 45.9MB/s]
 <p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> supports importing TCR data from <a class="reference external" href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cellranger</a> (10x)
 or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (Smart-seq2).
 See <a class="reference internal" href="../api.html#api-io"><span class="std std-ref">Input/Output</span></a> for more details.</p>
-<p>This particular dataset has been imported using <code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.read_10x_vdj_csv()</span></code> and merged
+<p>This particular dataset has been imported using <a class="reference internal" href="../scirpy.read_10x_vdj.html#scirpy.read_10x_vdj" title="scirpy.read_10x_vdj"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.read_10x_vdj()</span></code></a> and merged
 with transcriptomics data using <a class="reference internal" href="../scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>. The exact procedure
 is described in <a class="reference internal" href="../scirpy.datasets.wu2020.html#scirpy.datasets.wu2020" title="scirpy.datasets.wu2020"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.datasets.wu2020()</span></code></a>.</p>
 </div>
@@ -993,7 +993,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f71a6a410&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0002439450&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1160,7 +1160,7 @@ We can then visualize it using <a class="reference internal" href="../scirpy.pl.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f71932590&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f00022c6710&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1203,7 +1203,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f71932590&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1698/1698 [00:17&lt;00:00, 97.00it/s]
+100%|██████████| 1698/1698 [00:20&lt;00:00, 82.16it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1219,7 +1219,7 @@ Finished computing TRA pairwise distances.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2259/2259 [00:30&lt;00:00, 73.53it/s]
+100%|██████████| 2259/2259 [00:36&lt;00:00, 62.09it/s]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1266,7 +1266,7 @@ Finished constructing cell x cell distance matrix.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f719ee5d0&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f00023318d0&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1292,7 +1292,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f719ee5d0&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3f719e9810&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f00022e9310&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1454,7 +1454,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../scirpy.p
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f74caf250&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0009873610&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1479,7 +1479,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../scirpy.p
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f752e9b50&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0009ac6d10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1528,7 +1528,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f71a33450&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0009aa4150&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1555,7 +1555,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68ba0450&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffd462450&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1628,7 +1628,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68f20890&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffd20b090&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1660,7 +1660,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f7195f790&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0009975850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1685,7 +1685,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f686c0890&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffd136f50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1710,7 +1710,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f68292450&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffccd9ed0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1737,7 +1737,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f6845df90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffcde1a10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1768,7 +1768,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f684b3690&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffc8d3fd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1799,7 +1799,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5be28750&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffce722d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2043,7 +2043,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f3f68fe2310&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7efffce832d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2067,7 +2067,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f3f5ba6e950&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7efffc341790&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2091,7 +2091,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5bc3d7d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffc1bc810&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2123,7 +2123,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5b639c90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffc0bec10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2169,7 +2169,7 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.axisgrid.FacetGrid at 0x7f3f68625d50&gt;
+&lt;seaborn.axisgrid.FacetGrid at 0x7efffd2dd8d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2203,7 +2203,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f5b0f1750&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efffc67a110&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

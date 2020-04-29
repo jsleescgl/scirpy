@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -90,8 +90,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul class="current">
@@ -103,9 +103,12 @@
 <li class="toctree-l3"><a class="reference internal" href="scirpy.pl.repertoire_overlap.html">scirpy.pl.repertoire_overlap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.pl.clonotype_imbalance.html">scirpy.pl.clonotype_imbalance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.pl.clonotype_network.html">scirpy.pl.clonotype_network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.embedding.html">scirpy.pl.embedding</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#module-scirpy.pl.base">Base plotting functions: <code class="docutils literal notranslate"><span class="pre">pl.base</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#module-scirpy.pl.styling">Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -165,7 +168,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/scirpy.pl.spectratype.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.pl.spectratype.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -205,7 +208,7 @@
 </style>
 <div class="section" id="scirpy-pl-spectratype">
 <h1>scirpy.pl.spectratype<a class="headerlink" href="#scirpy-pl-spectratype" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="scirpy.pl.spectratype">
 <code class="sig-prename descclassname">scirpy.pl.</code><code class="sig-name descname">spectratype</code><span class="sig-paren">(</span><em class="sig-param">adata, groupby=['TRA_1_cdr3'], *, target_col, combine_fun=&lt;function sum&gt;, fraction=None, viztype='bar', kde_kws=None, **kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.spectratype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show the distribution of CDR3 region lengths.</p>
@@ -219,14 +222,14 @@
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Color by this column from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. E.g. sample or diagnosis</p>
 </dd>
-<dt><strong>combine_fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7efdd331f5f0&gt;</span></code>)</dt><dd><p>A function definining how the groupby columns should be merged
+<dt><strong>combine_fun</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">&lt;function</span> <span class="pre">sum</span> <span class="pre">at</span> <span class="pre">0x7ff8f1599440&gt;</span></code>)</dt><dd><p>A function definining how the groupby columns should be merged
 (e.g. sum, mean, median, etc).</p>
 </dd>
 <dt><strong>fraction</strong> : <span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If True, compute fractions of abundances relative to the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> column
 rather than reporting abosolute numbers. Alternatively, a column
 name can be provided according to that the values will be normalized.</p>
 </dd>
-<dt><strong>viztype</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[bar, line, curve]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[bar, line, curve]</span> (default: <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>)</dt><dd><p>Type of plot to produce</p>
+<dt><strong>viztype</strong> : <span class="annotation terse">{‘bar’, ‘line’, ‘curve’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘bar’, ‘line’, ‘curve’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'bar'</span></code>)</dt><dd><p>Type of plot to produce</p>
 </dd>
 <dt><strong>kde_kws</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Parameters to be passed on to the curve plotting routine, like, style,
 shading and order of categories.</p>
@@ -235,10 +238,10 @@ shading and order of categories.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a>], <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a>], <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a>]</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Axes object</p>
 </dd>
 </dl>

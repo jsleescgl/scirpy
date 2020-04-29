@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -90,8 +90,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.datasets.wu2020</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.datasets.wu2020_3k.html">scirpy.datasets.wu2020_3k</a></li>
 </ul>
@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -158,7 +159,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/scirpy.datasets.wu2020.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.datasets.wu2020.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -198,102 +199,108 @@
 </style>
 <div class="section" id="scirpy-datasets-wu2020">
 <h1>scirpy.datasets.wu2020<a class="headerlink" href="#scirpy-datasets-wu2020" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="scirpy.datasets.wu2020">
 <code class="sig-prename descclassname">scirpy.datasets.</code><code class="sig-name descname">wu2020</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.datasets.wu2020" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the dataset from <a class="reference internal" href="zzz_bibliography.html#wu2020" id="id1"><span>[Wu2020]</span></a> as AnnData object.</p>
 <p>200k cells, of which 100k have TCRs.</p>
 <p>This is how the dataset was processed:</p>
-<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
-# %load_ext autoreload
-# %autoreload 2
-import scanpy as sc
-import sys</p>
-<p>sys.path.append(“../../..”)
-import scirpy as st
-from multiprocessing import Pool
-import os
-import pandas as pd
-from glob import glob
-import numpy as np</p>
-<p># + language=”bash”
-# mkdir -p data
-# cd data
-# wget -O GSE139555_raw.tar “<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file">https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file</a>”
-# wget -O GSE139555_tcell_metadata.txt.gz “<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file&amp;file=GSE139555%5Ftcell%5Fmetadata%2Etxt%2Egz">https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file&amp;file=GSE139555%5Ftcell%5Fmetadata%2Etxt%2Egz</a>”
-# tar xvf GSE139555_raw.tar</p>
-<p># + language=”bash”
-# cd data
-# for f in <a href="#id6"><span class="problematic" id="id7">*</span></a>.matrix.mtx.gz; do
-#   dirname=${f/.matrix.mtx.gz/}
-#   mkdir $dirname
-#   mv $dirname.genes.tsv.gz $dirname/genes.tsv.gz
-#   mv $dirname.matrix.mtx.gz $dirname/matrix.mtx.gz
-#   mv $dirname.barcodes.tsv.gz $dirname/barcodes.tsv.gz
-#   mv $dirname.filtered_contig_annotations.csv.gz $dirname/filtered_contig_annotations.csv.gz
-#   # fix missing feature type column
-#   zcat $dirname/genes.tsv.gz |  awk ‘{print $0 “tGene Expression”}’ | gzip &gt; $dirname/features.tsv.gz
-# done
-# -</p>
-<p>mtx_paths = glob(“data/GSM*”)</p>
-<p>mtx_paths</p>
-<dl class="simple">
-<dt>metadata_all = pd.read_csv(</dt><dd><p>“data/GSE139555_tcell_metadata.txt.gz”, sep=”t”, index_col=0</p>
-</dd>
-</dl>
-<p>)</p>
-<p>umap = metadata_all[[“UMAP_1”, “UMAP_2”]]</p>
-<p>metadata = metadata_all[[“ident”, “patient”, “sample”, “source”, “clonotype”]]</p>
-<dl class="simple">
-<dt>metadata = metadata.rename(</dt><dd><p>columns={“clonotype”: “clonotype_orig”, “ident”: “cluster_orig”}</p>
-</dd>
-</dl>
-<p>)</p>
-<p>metadata</p>
-<dl>
-<dt>def _load_adata(path):</dt><dd><p>sample_id = path.split(“-“)[-1].upper()
-obs = metadata.loc[metadata[“sample”] == sample_id, :]
-umap_coords = umap.loc[metadata[“sample”] == sample_id, :].values
-adata = sc.read_10x_mtx(path)
-adata_tcr = st.read_10x_vdj_csv(</p>
-<blockquote>
-<div><p>os.path.join(path, “filtered_contig_annotations.csv.gz”)</p>
-</div></blockquote>
-<p>)
-adata.obs_names = [</p>
-<blockquote>
-<div><p>“{}_{}”.format(sample_id, barcode) for barcode in adata.obs_names</p>
-</div></blockquote>
-<p>]
-adata_tcr.obs_names = [</p>
-<blockquote>
-<div><p>“{}_{}”.format(sample_id, barcode) for barcode in adata_tcr.obs_names</p>
-</div></blockquote>
-<p>]
-# subset to T cells only
-adata = adata[obs.index, :].copy()
-adata.obs = adata.obs.join(obs, how=”inner”)
-assert adata.shape[0] == umap_coords.shape[0]
-adata.obsm[“X_umap_orig”] = umap_coords
-st.pp.merge_with_tcr(adata, adata_tcr)
-return adata</p>
-</dd>
-</dl>
-<p>p = Pool()
-adatas = p.map(_load_adata, mtx_paths)
-p.close()</p>
-<p>adata = adatas[0].concatenate(adatas[1:])</p>
-<p># inverse umap X -coordinate
-adata.obsm[“X_umap_orig”][:, 0] = (</p>
-<blockquote>
-<div><p>np.max(adata.obsm[“X_umap_orig”][:, 0]) - adata.obsm[“X_umap_orig”][:, 0]</p>
-</div></blockquote>
-<p>)</p>
-<p>np.sum(adata.obs[“has_tcr”])</p>
-<p>adata.write_h5ad(“wu2020.h5ad”, compression=”lzf”)</p>
-<p>adata.obs</p>
-<p>sc.pl.embedding(adata, “umap_orig”, color=”cluster_orig”, legend_loc=”on data”)</p>
-<p><a href="#id8"><span class="problematic" id="id9">``</span></a><a href="#id10"><span class="problematic" id="id11">`</span></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load_ext autoreload</span>
+<span class="c1"># %autoreload 2</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../../..&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># + language=&quot;bash&quot;</span>
+<span class="c1"># mkdir -p data</span>
+<span class="c1"># cd data</span>
+<span class="c1"># wget -O GSE139555_raw.tar &quot;https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file&quot;</span>
+<span class="c1"># wget -O GSE139555_tcell_metadata.txt.gz &quot;https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE139555&amp;format=file&amp;file=GSE139555%5Ftcell%5Fmetadata%2Etxt%2Egz&quot;</span>
+<span class="c1"># tar xvf GSE139555_raw.tar</span>
+
+<span class="c1"># + language=&quot;bash&quot;</span>
+<span class="c1"># cd data</span>
+<span class="c1"># for f in *.matrix.mtx.gz; do</span>
+<span class="c1">#   dirname=${f/\.matrix\.mtx\.gz/}</span>
+<span class="c1">#   mkdir $dirname</span>
+<span class="c1">#   mv $dirname.genes.tsv.gz $dirname/genes.tsv.gz</span>
+<span class="c1">#   mv $dirname.matrix.mtx.gz $dirname/matrix.mtx.gz</span>
+<span class="c1">#   mv $dirname.barcodes.tsv.gz $dirname/barcodes.tsv.gz</span>
+<span class="c1">#   mv $dirname.filtered_contig_annotations.csv.gz $dirname/filtered_contig_annotations.csv.gz</span>
+<span class="c1">#   # fix missing feature type column</span>
+<span class="c1">#   zcat $dirname/genes.tsv.gz |  awk &#39;{print $0 &quot;\tGene Expression&quot;}&#39; | gzip &gt; $dirname/features.tsv.gz</span>
+<span class="c1"># done</span>
+<span class="c1"># -</span>
+
+<span class="n">mtx_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;data/GSM*&quot;</span><span class="p">)</span>
+
+<span class="n">mtx_paths</span>
+
+<span class="n">metadata_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/GSE139555_tcell_metadata.txt.gz&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">umap</span> <span class="o">=</span> <span class="n">metadata_all</span><span class="p">[[</span><span class="s2">&quot;UMAP_1&quot;</span><span class="p">,</span> <span class="s2">&quot;UMAP_2&quot;</span><span class="p">]]</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata_all</span><span class="p">[[</span><span class="s2">&quot;ident&quot;</span><span class="p">,</span> <span class="s2">&quot;patient&quot;</span><span class="p">,</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;clonotype&quot;</span><span class="p">]]</span>
+
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;clonotype&quot;</span><span class="p">:</span> <span class="s2">&quot;clonotype_orig&quot;</span><span class="p">,</span> <span class="s2">&quot;ident&quot;</span><span class="p">:</span> <span class="s2">&quot;cluster_orig&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">metadata</span>
+
+
+<span class="k">def</span> <span class="nf">_load_adata</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">sample_id</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sample_id</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">umap_coords</span> <span class="o">=</span> <span class="n">umap</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">sample_id</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_10x_mtx</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">adata_tcr</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">read_10x_vdj_csv</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;filtered_contig_annotations.csv.gz&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obs_names</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_id</span><span class="p">,</span> <span class="n">barcode</span><span class="p">)</span> <span class="k">for</span> <span class="n">barcode</span> <span class="ow">in</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs_names</span>
+    <span class="p">]</span>
+    <span class="n">adata_tcr</span><span class="o">.</span><span class="n">obs_names</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sample_id</span><span class="p">,</span> <span class="n">barcode</span><span class="p">)</span> <span class="k">for</span> <span class="n">barcode</span> <span class="ow">in</span> <span class="n">adata_tcr</span><span class="o">.</span><span class="n">obs_names</span>
+    <span class="p">]</span>
+    <span class="c1"># subset to T cells only</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">obs</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obs</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">umap_coords</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap_orig&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">umap_coords</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">merge_with_tcr</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">adata_tcr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">adata</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">()</span>
+<span class="n">adatas</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_load_adata</span><span class="p">,</span> <span class="n">mtx_paths</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adatas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">adatas</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+<span class="c1"># inverse umap X -coordinate</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap_orig&quot;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap_orig&quot;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">adata</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap_orig&quot;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;has_tcr&quot;</span><span class="p">])</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="s2">&quot;wu2020.h5ad&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;lzf&quot;</span><span class="p">)</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;umap_orig&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cluster_orig&quot;</span><span class="p">,</span> <span class="n">legend_loc</span><span class="o">=</span><span class="s2">&quot;on data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>

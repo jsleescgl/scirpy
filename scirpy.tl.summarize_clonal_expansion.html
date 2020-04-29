@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -90,8 +90,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
@@ -107,6 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -166,7 +167,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/scirpy.tl.summarize_clonal_expansion.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.tl.summarize_clonal_expansion.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -206,9 +207,9 @@
 </style>
 <div class="section" id="scirpy-tl-summarize-clonal-expansion">
 <h1>scirpy.tl.summarize_clonal_expansion<a class="headerlink" href="#scirpy-tl-summarize-clonal-expansion" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="scirpy.tl.summarize_clonal_expansion">
-<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">summarize_clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param">adata</em>, <em class="sig-param">groupby</em>, <em class="sig-param">*</em>, <em class="sig-param">target_col='clonotype'</em>, <em class="sig-param">summarize_by='cell'</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.summarize_clonal_expansion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">summarize_clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">groupby</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">target_col</span><span class="o">=</span><span class="default_value">'clonotype'</span></em>, <em class="sig-param"><span class="n">summarize_by</span><span class="o">=</span><span class="default_value">'cell'</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.summarize_clonal_expansion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Summarizes clonal expansion by a grouping variable.</p>
 <p>Removes all entries with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in <code class="docutils literal notranslate"><span class="pre">target_col</span></code> prior to plotting.</p>
 <dl class="field-list simple">
@@ -220,7 +221,7 @@
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>column in obs which holds the clonotype information</p>
 </dd>
-<dt><strong>summarize_by</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[cell, clonotype]</span><span class="annotation full"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[cell, clonotype]</span> (default: <code class="docutils literal notranslate"><span class="pre">'cell'</span></code>)</dt><dd><p>Can be either <code class="docutils literal notranslate"><span class="pre">cell</span></code> to count cells belonging to a clonotype (the default),
+<dt><strong>summarize_by</strong> : <span class="annotation terse">{‘cell’, ‘clonotype’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘cell’, ‘clonotype’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'cell'</span></code>)</dt><dd><p>Can be either <code class="docutils literal notranslate"><span class="pre">cell</span></code> to count cells belonging to a clonotype (the default),
 or “clonotype” to count clonotypes. The former leads to a over-representation
 of expanded clonotypes but better represents the fraction of expanded cells.</p>
 </dd>
@@ -231,10 +232,7 @@ of expanded clonotypes but better represents the fraction of expanded cells.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pd.DataFrame</p>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>

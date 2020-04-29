@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0+427549f
+                0.0+365677b
               </div>
             
           
@@ -90,16 +90,17 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#input-output">Input/Output</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.read_h5ad</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_10x_vdj.html">scirpy.read_10x_vdj</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_tracer.html">scirpy.read_tracer</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -159,7 +160,7 @@
         
             
             
-              <a href="https://github.com/grst/scirpy/blob/master/docs/scirpy.read_h5ad.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.read_h5ad.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -199,7 +200,7 @@
 </style>
 <div class="section" id="scirpy-read-h5ad">
 <h1>scirpy.read_h5ad<a class="headerlink" href="#scirpy-read-h5ad" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="scirpy.read_h5ad">
 <code class="sig-prename descclassname">scirpy.</code><code class="sig-name descname">read_h5ad</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">backed=None</em>, <em class="sig-param">*</em>, <em class="sig-param">as_sparse=()</em>, <em class="sig-param">as_sparse_fmt=&lt;class 'scipy.sparse.csr.csr_matrix'&gt;</em>, <em class="sig-param">chunk_size=6000</em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.read_h5ad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read <code class="docutils literal notranslate"><span class="pre">.h5ad</span></code>-formatted hdf5 file.</p>
@@ -208,7 +209,7 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>filename</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a>]</span></dt><dd><p>File name of data file.</p>
 </dd>
-<dt><strong>backed</strong> : <span class="annotation terse"><code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[r, r+], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Literal_</span></code>[r, r+], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">'r'</span></code>, load <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> in <code class="docutils literal notranslate"><span class="pre">backed</span></code> mode
+<dt><strong>backed</strong> : <span class="annotation terse">{‘r’, ‘r+’}, <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘r’, ‘r+’], <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">'r'</span></code>, load <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> in <code class="docutils literal notranslate"><span class="pre">backed</span></code> mode
 instead of fully loading it into memory (<code class="docutils literal notranslate"><span class="pre">memory</span></code> mode).
 If you want to modify backed attributes of the AnnData object,
 you need to choose <code class="docutils literal notranslate"><span class="pre">'r+'</span></code>.</p>
