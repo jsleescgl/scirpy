@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.0+abc1b95
+                0.0+fe16249
               </div>
             
           
@@ -222,8 +222,9 @@
 <dl class="py function">
 <dt id="scirpy.pl.base.curve">
 <code class="sig-prename descclassname">scirpy.pl.base.</code><code class="sig-name descname">curve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">curve_layout</span><span class="o">=</span><span class="default_value">'overlay'</span></em>, <em class="sig-param"><span class="n">shade</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">kde_norm</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">kernel_kws</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'default'</span></em>, <em class="sig-param"><span class="n">style_kws</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fig_kws</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.base.curve" title="Permalink to this definition">¶</a></dt>
-<dd><p>Basic plotting function primarily for the spectratype
-to show length distributions</p>
+<dd><p>Basic plotting function for drawing KDE-smoothed curves.</p>
+<p>Primarily designed for the <a class="reference internal" href="scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.spectratype()</span></code></a> plotting
+function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -239,9 +240,9 @@ to show length distributions</p>
 </dd>
 <dt><strong>order</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Specifies the order of groups.</p>
 </dd>
-<dt><strong>shade</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, draw a shade between curves
-style
-Style to apply to the axes. Currently supported are <code class="docutils literal notranslate"><span class="pre">None</span></code> (disable styling)
+<dt><strong>shade</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If True, draw a shade between curves</p>
+</dd>
+<dt><strong>style</strong> : <span class="annotation terse">{‘default’}, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘default’]]</span> (default: <code class="docutils literal notranslate"><span class="pre">'default'</span></code>)</dt><dd><p>Style to apply to the axes. Currently supported are <code class="docutils literal notranslate"><span class="pre">None</span></code> (disable styling)
 and default (default style).</p>
 </dd>
 <dt><strong>style_kws</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <code class="docutils literal notranslate"><span class="pre">None</span></code></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</dt><dd><p>Parameters passed to <a class="reference internal" href="scirpy.pl.styling.style_axes.html#scirpy.pl.styling.style_axes" title="scirpy.pl.styling.style_axes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.styling.style_axes()</span></code></a></p>
@@ -255,7 +256,7 @@ if no <code class="docutils literal notranslate"><span class="pre">ax</span></co
 <dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span><span class="annotation full"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>List of axes.</p>
+<dd class="field-odd"><p>Axes object.</p>
 </dd>
 </dl>
 </dd></dl>
