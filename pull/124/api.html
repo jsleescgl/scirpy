@@ -26,6 +26,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.0+3e1ae9c
+                0.0+b35c897
               </div>
             
           
@@ -107,7 +109,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.pp.merge_with_tcr.html">scirpy.pp.merge_with_tcr</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pp.tcr_dist.html">scirpy.pp.tcr_dist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.pp.tcr_neighbors.html">scirpy.pp.tcr_neighbors</a></li>
 </ul>
 </li>
@@ -151,6 +152,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.util.graph.layout_components.html">scirpy.util.graph.layout_components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tcr_dist.tcr_dist.html">scirpy.tcr_dist.tcr_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html">scirpy.tcr_dist.DistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html">scirpy.tcr_dist.IdentityDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html">scirpy.tcr_dist.LevenshteinDistanceCalculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scirpy.tcr_dist.AlignmentDistanceCalculator.html">scirpy.tcr_dist.AlignmentDistanceCalculator</a></li>
 </ul>
 </li>
 </ul>
@@ -296,13 +305,10 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_tcr</span></code></a>(adata, adata_tcr, *[, how, …])</p></td>
-<td><p>Integrate the TCR AnnData into an existing AnnData object with transcriptomics data.</p></td>
+<td><p>Merge TCR data with transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pp.tcr_dist.html#scirpy.pp.tcr_dist" title="scirpy.pp.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(unique_seqs, *[, metric, cutoff, …])</p></td>
-<td><p>calculate the sequence x sequence distance matrix</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
-<td><p>Construct a cell x cell neighborhood graph based on CDR3 sequence similarity.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
+<td><p>Construct a neighborhood graph based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequence similarity.</p></td>
 </tr>
 </tbody>
 </table>
@@ -439,6 +445,32 @@
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.util.graph.layout_components.html#scirpy.util.graph.layout_components" title="scirpy.util.graph.layout_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph.layout_components</span></code></a>(graph[, …])</p></td>
 <td><p>Compute a graph layout by layouting all connected components individually.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-scirpy.tcr_dist">
+<span id="tcr-distance-metrics-tcr-dist"></span><h2>TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code><a class="headerlink" href="#module-scirpy.tcr_dist" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tcr_dist.tcr_dist.html#scirpy.tcr_dist.tcr_dist" title="scirpy.tcr_dist.tcr_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_dist</span></code></a>(unique_seqs, *[, metric, cutoff, …])</p></td>
+<td><p>Calculate a sequence x sequence distance matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>(cutoff[, n_jobs])</p></td>
+<td><p>Abstract base class for a <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a>-sequence distance calculator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>([cutoff, n_jobs])</p></td>
+<td><p>Calculates the Identity-distance between <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequences.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html#scirpy.tcr_dist.LevenshteinDistanceCalculator" title="scirpy.tcr_dist.LevenshteinDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LevenshteinDistanceCalculator</span></code></a>(cutoff[, n_jobs])</p></td>
+<td><p>Calculates the Levenshtein edit-distance between sequences.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="scirpy.tcr_dist.AlignmentDistanceCalculator.html#scirpy.tcr_dist.AlignmentDistanceCalculator" title="scirpy.tcr_dist.AlignmentDistanceCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlignmentDistanceCalculator</span></code></a>(cutoff[, …])</p></td>
+<td><p>Calculates distance between sequences based on pairwise sequence alignment.</p></td>
 </tr>
 </tbody>
 </table>
