@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scirpy.tl.chain_pairing" href="scirpy.tl.chain_pairing.html" />
+    <link rel="next" title="scirpy.tl.clonal_expansion" href="scirpy.tl.clonal_expansion.html" />
     <link rel="prev" title="scirpy.tl.define_clonotypes" href="scirpy.tl.define_clonotypes.html" /> 
 </head>
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+b35c897
+                0.0+8a9c1d5
               </div>
             
           
@@ -96,23 +96,22 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_imbalance.html">scirpy.tl.clonotype_imbalance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="api.html#generic">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#quality-control">Quality control</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.clonotype_network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#analyse-clonal-diversity">Analyse clonal diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#v-d-j-gene-usage">V(D)J gene usage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
 </ul>
@@ -177,7 +176,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L139-L219" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L141-L229" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -219,14 +218,19 @@
 <h1>scirpy.tl.clonotype_network<a class="headerlink" href="#scirpy-tl-clonotype-network" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="scirpy.tl.clonotype_network">
-<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonotype_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">min_size</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">layout</span><span class="o">=</span><span class="default_value">'fr'</span></em>, <em class="sig-param"><span class="n">layout_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">neighbors_key</span><span class="o">=</span><span class="default_value">'tcr_neighbors'</span></em>, <em class="sig-param"><span class="n">key_clonotype_size</span><span class="o">=</span><span class="default_value">'clonotype_size'</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">'X_clonotype_network'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">42</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonotype_network" title="Permalink to this definition">¶</a></dt>
-<dd><p>Build the clonotype network for plotting</p>
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonotype_network</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">min_size</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">layout</span><span class="o">=</span><span class="default_value">'components'</span></em>, <em class="sig-param"><span class="n">layout_kwargs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">neighbors_key</span><span class="o">=</span><span class="default_value">'tcr_neighbors'</span></em>, <em class="sig-param"><span class="n">key_clonotype_size</span><span class="o">=</span><span class="default_value">'clonotype_size'</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">'X_clonotype_network'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">42</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonotype_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Layouts the clonotype network for plotting.</p>
+<p>Other than with transcriptomics data, this network usually consists
+of many disconnected components, each of them representing cells
+of the same clonotype.</p>
+<p>Singleton clonotypes can be filtered out with the <code class="docutils literal notranslate"><span class="pre">min_size</span></code> parameter.</p>
+<p>Stores coordinates of the clonotype network in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>min_size</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>)</dt><dd><p>Only show clonotypes with at least <code class="docutils literal notranslate"><span class="pre">min_size</span></code> cells.</p>
 </dd>
-<dt><strong>layout</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'fr'</span></code>)</dt><dd><p>The layout algorithm to use. Can be anything supported by
+<dt><strong>layout</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'components'</span></code>)</dt><dd><p>The layout algorithm to use. Can be anything supported by
 <code class="docutils literal notranslate"><span class="pre">igraph.Graph.layout</span></code>  or “components” to layout all connected components
 individually. See <a class="reference internal" href="scirpy.util.graph.layout_components.html#scirpy.util.graph.layout_components" title="scirpy.util.graph.layout_components"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.util.graph.layout_components()</span></code></a> for more details.</p>
 </dd>
@@ -238,7 +242,7 @@ individually. See <a class="reference internal" href="scirpy.util.graph.layout_c
 </dd>
 <dt><strong>key_added</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'X_clonotype_network'</span></code>)</dt><dd><p>Key under which the layout coordinates will be stored in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code>.</p>
 </dd>
-<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If true, store the coordinates in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code>, otherwise return them.</p>
+<dt><strong>inplace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, store the coordinates in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code>, otherwise return them.</p>
 </dd>
 <dt><strong>random_state</strong></dt><dd><p>Random seed set before computing the layout.</p>
 </dd>
@@ -264,7 +268,7 @@ coordinates.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.tl.chain_pairing.html" class="btn btn-neutral float-right" title="scirpy.tl.chain_pairing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.tl.clonal_expansion.html" class="btn btn-neutral float-right" title="scirpy.tl.clonal_expansion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.tl.define_clonotypes.html" class="btn btn-neutral float-left" title="scirpy.tl.define_clonotypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

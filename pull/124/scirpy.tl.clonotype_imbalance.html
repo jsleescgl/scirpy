@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scirpy.pl.alpha_diversity" href="scirpy.pl.alpha_diversity.html" />
+    <link rel="next" title="scirpy.tl.spectratype" href="scirpy.tl.spectratype.html" />
     <link rel="prev" title="scirpy.tl.repertoire_overlap" href="scirpy.tl.repertoire_overlap.html" /> 
 </head>
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+b35c897
+                0.0+8a9c1d5
               </div>
             
           
@@ -96,23 +96,25 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.tl.clonotype_imbalance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="api.html#generic">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#quality-control">Quality control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="api.html#analyse-clonal-diversity">Analyse clonal diversity</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.clonal_expansion.html">scirpy.tl.clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.clonotype_imbalance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#v-d-j-gene-usage">V(D)J gene usage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
 </ul>
@@ -177,7 +179,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotype_imbalance.py#L11-L151" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotype_imbalance.py#L11-L155" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -224,6 +226,10 @@
 <p>Uses Fischer’s exact test to rank clonotypes.
 Depends on execution of <a class="reference internal" href="scirpy.tl.repertoire_overlap.html#scirpy.tl.repertoire_overlap" title="scirpy.tl.repertoire_overlap"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.repertoire_overlap()</span></code></a>.
 Adds two dataframes (abundance of clonotypes per sample; pval and logFC for clonotypes) to <code class="docutils literal notranslate"><span class="pre">uns</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an experimental function and will likely change in the future.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -277,7 +283,7 @@ By default it is None to ensure that the overlap tool is executed with the right
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.pl.alpha_diversity.html" class="btn btn-neutral float-right" title="scirpy.pl.alpha_diversity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.tl.spectratype.html" class="btn btn-neutral float-right" title="scirpy.tl.spectratype" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.tl.repertoire_overlap.html" class="btn btn-neutral float-left" title="scirpy.tl.repertoire_overlap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
