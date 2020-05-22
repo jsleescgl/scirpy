@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+e1782e0
+                0.0+375eaa1
               </div>
             
           
@@ -217,7 +217,7 @@
 <dl class="py function">
 <dt id="scirpy.pl.embedding">
 <code class="sig-prename descclassname">scirpy.pl.</code><code class="sig-name descname">embedding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">basis</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">color</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">panel_size</span><span class="o">=</span><span class="default_value">4, 4</span></em>, <em class="sig-param"><span class="n">palette</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">legend_loc</span><span class="o">=</span><span class="default_value">'right margin'</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ncols</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">show</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">hspace</span><span class="o">=</span><span class="default_value">0.25</span></em>, <em class="sig-param"><span class="n">wspace</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.embedding" title="Permalink to this definition">¶</a></dt>
-<dd><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p>
+<dd><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.5.2.dev0+g5bc37a2.d20200521)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p>
 <dl class="simple">
 <dt>The differences to the scanpy embedding function are:</dt><dd><ul class="simple">
 <li><p>allows to specify a <code class="docutils literal notranslate"><span class="pre">panel_size</span></code></p></li>
@@ -234,7 +234,7 @@ instead of reverting to grey</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>annotated data matrix</p>
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>annotated data matrix</p>
 </dd>
 <dt><strong>basis</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>embedding to plot.
 Get the coordinates from the “X_{basis}” key in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code>.
@@ -265,7 +265,7 @@ for the <code class="docutils literal notranslate"><span class="pre">loc</span><
 </dd>
 <dt><strong>hspace</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">0.25</span></code>)</dt><dd><p>Adjust the height of the space between multiple panels.</p>
 </dd>
-<dt><strong>**kwargs</strong></dt><dd><p>Arguments to pass to <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a>.</p>
+<dt><strong>**kwargs</strong></dt><dd><p>Arguments to pass to <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.5.2.dev0+g5bc37a2.d20200521)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -280,7 +280,7 @@ element for each <code class="docutils literal notranslate"><span class="pre">co
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a></p>
+<p><a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.5.2.dev0+g5bc37a2.d20200521)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a></p>
 </div>
 </dd></dl>
 

@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+e1782e0
+                0.0+375eaa1
               </div>
             
           
@@ -285,7 +285,7 @@
 <span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
 </pre></div>
 </div>
-<p>For consistencly, the scirpy API tries to follow the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/index.html">scanpy API</a>
+<p>For consistency, the scirpy API tries to follow the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/index.html">scanpy API</a>
 as closely as possible.</p>
 <div class="section" id="input-output">
 <span id="api-io"></span><h2>Input/Output<a class="headerlink" href="#input-output" title="Permalink to this headline">¶</a></h2>
@@ -318,7 +318,7 @@ formats. See also <a class="reference internal" href="usage-principles.html#impo
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_with_tcr</span></code></a>(adata, adata_tcr, *[, how, …])</p></td>
-<td><p>Merge TCR data with transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p></td>
+<td><p>Merge TCR data with transcriptomics data into a single <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tcr_neighbors</span></code></a>(adata, *[, metric, cutoff, …])</p></td>
 <td><p>Construct a neighborhood graph based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequence similarity.</p></td>
@@ -328,7 +328,7 @@ formats. See also <a class="reference internal" href="usage-principles.html#impo
 </div>
 <div class="section" id="tools-tl">
 <h2>Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code><a class="headerlink" href="#tools-tl" title="Permalink to this headline">¶</a></h2>
-<p>Tools add an interpretable annotation to the <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object
+<p>Tools add an interpretable annotation to the <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object
 which usually can be visualized by a corresponding plotting function.</p>
 <span class="target" id="module-scirpy.tl"></span><div class="section" id="generic">
 <h3>Generic<a class="headerlink" href="#generic" title="Permalink to this headline">¶</a></h3>
@@ -427,7 +427,7 @@ which usually can be visualized by a corresponding plotting function.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="scirpy.pl.embedding.html#scirpy.pl.embedding" title="scirpy.pl.embedding"><code class="xref py py-obj docutils literal notranslate"><span class="pre">embedding</span></code></a>(adata, basis, *[, color, …])</p></td>
-<td><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.4.7.dev0+gd47d373.d20200317)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p></td>
+<td><p>A customized wrapper to the <a class="reference external" href="https://scanpy.readthedocs.io/en/stable/api/scanpy.pl.embedding.html#scanpy.pl.embedding" title="(in Scanpy v1.5.2.dev0+g5bc37a2.d20200521)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scanpy.pl.embedding()</span></code></a> function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -437,7 +437,7 @@ which usually can be visualized by a corresponding plotting function.</p>
 <p>Every of these plotting functions has a corresponding <em>tool</em> in the <a class="reference internal" href="#module-scirpy.tl" title="scirpy.tl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scirpy.tl</span></code></a>
 section. Depending on the computational load, tools are either invoked on-the-fly
 when calling the plotting function or need to be precomputed and stored in
-<a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> previously.</p>
+<a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> previously.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
