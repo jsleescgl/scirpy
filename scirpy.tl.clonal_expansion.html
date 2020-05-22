@@ -26,6 +26,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -39,7 +41,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="scirpy.tl.summarize_clonal_expansion" href="scirpy.tl.summarize_clonal_expansion.html" />
-    <link rel="prev" title="scirpy.tl.chain_pairing" href="scirpy.tl.chain_pairing.html" /> 
+    <link rel="prev" title="scirpy.tl.clonotype_network" href="scirpy.tl.clonotype_network.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.0+6304bdb
+                0.0+e65be83
               </div>
             
           
@@ -92,25 +94,29 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.chain_pairing.html">scirpy.tl.chain_pairing</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.tl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.group_abundance.html">scirpy.tl.group_abundance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.spectratype.html">scirpy.tl.spectratype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.tl.clonotype_imbalance.html">scirpy.tl.clonotype_imbalance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="api.html#generic">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#quality-control">Quality control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="api.html#analyse-clonal-diversity">Analyse clonal diversity</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.summarize_clonal_expansion.html">scirpy.tl.summarize_clonal_expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.alpha_diversity.html">scirpy.tl.alpha_diversity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.repertoire_overlap.html">scirpy.tl.repertoire_overlap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.clonotype_imbalance.html">scirpy.tl.clonotype_imbalance</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#v-d-j-gene-usage">V(D)J gene usage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -155,6 +161,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -170,7 +178,8 @@
         
             
             
-              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.tl.clonal_expansion.rst" class="fa fa-github"> Edit on GitHub</a>
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonal_expansion.py#L51-L96" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -213,12 +222,12 @@
 <dl class="py function">
 <dt id="scirpy.tl.clonal_expansion">
 <code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonal_expansion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">target_col</span><span class="o">=</span><span class="default_value">'clonotype'</span></em>, <em class="sig-param"><span class="n">expanded_in</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">clip_at</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">'clonal_expansion'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonal_expansion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a column to obs which clonotypes are expanded.</p>
+<dd><p>Adds a column to <code class="docutils literal notranslate"><span class="pre">obs</span></code> recording which clonotypes are expanded.</p>
 <p>Counts NaN values like any other value in <code class="docutils literal notranslate"><span class="pre">target_col</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annoated data matrix</p>
+<dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>Annoated data matrix</p>
 </dd>
 <dt><strong>target_col</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">'clonotype'</span></code>)</dt><dd><p>Column containing the clontype annoataion</p>
 </dd>
@@ -238,7 +247,7 @@ with the clipped counts.</p>
 </dl>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.17)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]</span></p>
+<dd class="field-even"><p><span class="annotation terse"><code class="docutils literal notranslate"><span class="pre">None</span></code>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]</span></p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Depending on the value of inplace, adds a column to adata or returns
@@ -260,7 +269,7 @@ an array with the clipped count per cell.</p>
         <a href="scirpy.tl.summarize_clonal_expansion.html" class="btn btn-neutral float-right" title="scirpy.tl.summarize_clonal_expansion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="scirpy.tl.chain_pairing.html" class="btn btn-neutral float-left" title="scirpy.tl.chain_pairing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="scirpy.tl.clonotype_network.html" class="btn btn-neutral float-left" title="scirpy.tl.clonotype_network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

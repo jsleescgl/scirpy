@@ -27,6 +27,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -65,7 +67,7 @@
             
             
               <div class="version">
-                0.0+6304bdb
+                0.0+e65be83
               </div>
             
           
@@ -91,6 +93,7 @@
             
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -171,6 +174,7 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
@@ -185,6 +189,8 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="scirpy.tcr_dist.AlignmentDistanceCalculator.html#scirpy.tcr_dist.AlignmentDistanceCalculator">AlignmentDistanceCalculator (class in scirpy.tcr_dist)</a>
+</li>
       <li><a href="scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity">alpha_diversity() (in module scirpy.pl)</a>
 
       <ul>
@@ -213,6 +219,16 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat.html#scirpy.tcr_dist.AlignmentDistanceCalculator.calc_dist_mat">calc_dist_mat() (scirpy.tcr_dist.AlignmentDistanceCalculator method)</a>
+
+      <ul>
+        <li><a href="scirpy.tcr_dist.DistanceCalculator.calc_dist_mat.html#scirpy.tcr_dist.DistanceCalculator.calc_dist_mat">(scirpy.tcr_dist.DistanceCalculator method)</a>
+</li>
+        <li><a href="scirpy.tcr_dist.IdentityDistanceCalculator.calc_dist_mat.html#scirpy.tcr_dist.IdentityDistanceCalculator.calc_dist_mat">(scirpy.tcr_dist.IdentityDistanceCalculator method)</a>
+</li>
+        <li><a href="scirpy.tcr_dist.LevenshteinDistanceCalculator.calc_dist_mat.html#scirpy.tcr_dist.LevenshteinDistanceCalculator.calc_dist_mat">(scirpy.tcr_dist.LevenshteinDistanceCalculator method)</a>
+</li>
+      </ul></li>
       <li><a href="glossary.html#term-CDR"><strong>CDR</strong></a>
 </li>
       <li><a href="glossary.html#term-CDR3"><strong>CDR3</strong></a>
@@ -241,6 +257,8 @@
         <li><a href="scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network">(in module scirpy.tl)</a>
 </li>
       </ul></li>
+      <li><a href="scirpy.pl.clonotype_network_igraph.html#scirpy.pl.clonotype_network_igraph">clonotype_network_igraph() (in module scirpy.pl)</a>
+</li>
       <li><a href="scirpy.pl.base.curve.html#scirpy.pl.base.curve">curve() (in module scirpy.pl.base)</a>
 </li>
   </ul></td>
@@ -251,6 +269,18 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes">define_clonotypes() (in module scirpy.tl)</a>
 </li>
+      <li><a href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator">DistanceCalculator (class in scirpy.tcr_dist)</a>
+</li>
+      <li><a href="scirpy.tcr_dist.AlignmentDistanceCalculator.DTYPE.html#scirpy.tcr_dist.AlignmentDistanceCalculator.DTYPE">DTYPE (scirpy.tcr_dist.AlignmentDistanceCalculator attribute)</a>
+
+      <ul>
+        <li><a href="scirpy.tcr_dist.DistanceCalculator.DTYPE.html#scirpy.tcr_dist.DistanceCalculator.DTYPE">(scirpy.tcr_dist.DistanceCalculator attribute)</a>
+</li>
+        <li><a href="scirpy.tcr_dist.IdentityDistanceCalculator.DTYPE.html#scirpy.tcr_dist.IdentityDistanceCalculator.DTYPE">(scirpy.tcr_dist.IdentityDistanceCalculator attribute)</a>
+</li>
+        <li><a href="scirpy.tcr_dist.LevenshteinDistanceCalculator.DTYPE.html#scirpy.tcr_dist.LevenshteinDistanceCalculator.DTYPE">(scirpy.tcr_dist.LevenshteinDistanceCalculator attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-Dual-TCR"><strong>Dual TCR</strong></a>
@@ -282,6 +312,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator">IdentityDistanceCalculator (class in scirpy.tcr_dist)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -289,6 +327,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html#scirpy.tcr_dist.LevenshteinDistanceCalculator">LevenshteinDistanceCalculator (class in scirpy.tcr_dist)</a>
+</li>
       <li><a href="scirpy.pl.base.line.html#scirpy.pl.base.line">line() (in module scirpy.pl.base)</a>
 </li>
   </ul></td>
@@ -314,6 +354,8 @@
         <li><a href="api.html#module-scirpy.pl.styling">scirpy.pl.styling</a>
 </li>
         <li><a href="api.html#module-scirpy.pp">scirpy.pp</a>
+</li>
+        <li><a href="api.html#module-scirpy.tcr_dist">scirpy.tcr_dist</a>
 </li>
         <li><a href="api.html#module-scirpy.tl">scirpy.tl</a>
 </li>
@@ -399,13 +441,20 @@
         <li><a href="api.html#module-scirpy.pl.styling">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     scirpy.pp
 
       <ul>
         <li><a href="api.html#module-scirpy.pp">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    scirpy.tcr_dist
+
+      <ul>
+        <li><a href="api.html#module-scirpy.tcr_dist">module</a>
 </li>
       </ul></li>
       <li>
@@ -440,7 +489,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-TCR"><strong>TCR</strong></a>
 </li>
-      <li><a href="scirpy.pp.tcr_dist.html#scirpy.pp.tcr_dist">tcr_dist() (in module scirpy.pp)</a>
+      <li><a href="scirpy.tcr_dist.tcr_dist.html#scirpy.tcr_dist.tcr_dist">tcr_dist() (in module scirpy.tcr_dist)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>

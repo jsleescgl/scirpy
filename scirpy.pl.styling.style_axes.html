@@ -26,6 +26,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -38,7 +40,7 @@
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="scirpy.util.graph.layout_components" href="scirpy.util.graph.layout_components.html" />
+    <link rel="next" title="scirpy.datasets.wu2020" href="scirpy.datasets.wu2020.html" />
     <link rel="prev" title="scirpy.pl.styling.apply_style_to_axes" href="scirpy.pl.styling.apply_style_to_axes.html" /> 
 </head>
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.0+6304bdb
+                0.0+e65be83
               </div>
             
           
@@ -92,21 +94,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#input-output">Input/Output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.alpha_diversity.html">scirpy.pl.alpha_diversity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.clonal_expansion.html">scirpy.pl.clonal_expansion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.group_abundance.html">scirpy.pl.group_abundance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.spectratype.html">scirpy.pl.spectratype</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.vdj_usage.html">scirpy.pl.vdj_usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.repertoire_overlap.html">scirpy.pl.repertoire_overlap</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.clonotype_imbalance.html">scirpy.pl.clonotype_imbalance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.clonotype_network.html">scirpy.pl.clonotype_network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.pl.embedding.html">scirpy.pl.embedding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#id2">Generic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html#tools">Tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api.html#module-scirpy.pl.base">Base plotting functions: <code class="docutils literal notranslate"><span class="pre">pl.base</span></code></a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api.html#module-scirpy.pl.styling">Plot styling: <code class="docutils literal notranslate"><span class="pre">pl.styling</span></code></a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="scirpy.pl.styling.apply_style_to_axes.html">scirpy.pl.styling.apply_style_to_axes</a></li>
@@ -115,7 +110,9 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -160,6 +157,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -175,7 +174,8 @@
         
             
             
-              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.pl.styling.style_axes.rst" class="fa fa-github"> Edit on GitHub</a>
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_plotting/styling.py#L38-L111" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -217,12 +217,12 @@
 <h1>scirpy.pl.styling.style_axes<a class="headerlink" href="#scirpy-pl-styling-style-axes" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="scirpy.pl.styling.style_axes">
-<code class="sig-prename descclassname">scirpy.pl.styling.</code><code class="sig-name descname">style_axes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">legend_title</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">xlab</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">ylab</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">title_loc</span><span class="o">=</span><span class="default_value">'center'</span></em>, <em class="sig-param"><span class="n">title_pad</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title_fontsize</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">label_fontsize</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">tick_fontsize</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">change_xticks</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">add_legend</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">fraction</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.styling.style_axes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.pl.styling.</code><code class="sig-name descname">style_axes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">legend_title</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">xlab</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">ylab</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">title_loc</span><span class="o">=</span><span class="default_value">'center'</span></em>, <em class="sig-param"><span class="n">title_pad</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">title_fontsize</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">label_fontsize</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">tick_fontsize</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">change_xticks</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">add_legend</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pl.styling.style_axes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Style an axes object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>ax</strong> : <span class="annotation terse"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span><span class="annotation full"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span></dt><dd><p>Axis object to style</p>
+<dt><strong>ax</strong> : <span class="annotation terse"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span><span class="annotation full"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a></span></dt><dd><p>Axis object to style.</p>
 </dd>
 <dt><strong>title</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">''</span></code>)</dt><dd><p>Figure title.</p>
 </dd>
@@ -246,8 +246,6 @@
 </dd>
 <dt><strong>add_legend</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Font size of the axis tick labels.</p>
 </dd>
-<dt><strong>fraction</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Style as though the plot shows fractions</p>
-</dd>
 </dl>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -266,7 +264,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.util.graph.layout_components.html" class="btn btn-neutral float-right" title="scirpy.util.graph.layout_components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.datasets.wu2020.html" class="btn btn-neutral float-right" title="scirpy.datasets.wu2020" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="scirpy.pl.styling.apply_style_to_axes.html" class="btn btn-neutral float-left" title="scirpy.pl.styling.apply_style_to_axes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

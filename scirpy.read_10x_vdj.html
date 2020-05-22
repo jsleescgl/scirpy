@@ -26,6 +26,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -66,7 +68,7 @@
             
             
               <div class="version">
-                0.0+6304bdb
+                0.0+e65be83
               </div>
             
           
@@ -92,18 +94,20 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage-principles.html">Usage principles</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="api.html#module-scirpy">Input/Output</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="api.html#input-output">Input/Output</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_h5ad.html">scirpy.read_h5ad</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.read_10x_vdj</a></li>
 <li class="toctree-l3"><a class="reference internal" href="scirpy.read_tracer.html">scirpy.read_tracer</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tcr-biology.html">T-cell receptor model</a></li>
@@ -148,6 +152,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -163,7 +169,8 @@
         
             
             
-              <a href="https://github.com/icbi-lab/scirpy/blob/master/docs/scirpy.read_10x_vdj.rst" class="fa fa-github"> Edit on GitHub</a>
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_io/_io.py#L245-L277" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -207,41 +214,40 @@
 <dt id="scirpy.read_10x_vdj">
 <code class="sig-prename descclassname">scirpy.</code><code class="sig-name descname">read_10x_vdj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">filtered</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.read_10x_vdj" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read TCR data from 10x Genomics cell-ranger output.</p>
-<p>Supports <code class="docutils literal notranslate"><span class="pre">all_contig_annotations.json</span></code> and <code class="docutils literal notranslate"><span class="pre">{all,filtered}_contig_annotations.csv</span></code>.
-If the json file is available, it is preferable as it additionally
-contains information about VDJ-junction insertions.</p>
-<blockquote>
-<div><p>Filters and processes
-cells according to our current working
-model for TCRs.</p>
-<p>Simplifying assumptions:
-* There are only alpha and beta chains
-* each cell can contain at most two alpha and two beta chains
-* non-productive chains are not relevant</p>
-<p>These assumptions lead to the following filtering rules:
-* All chains that are not of type “TRA” or “TRB” will be removed.
-* Non-productive chains will be removed.
-* if there are more than two non-produrvice chains for either TRA/TRB,
-the least abundant ones (by <code class="docutils literal notranslate"><span class="pre">expr</span></code>) will be removed until
-there are only two left. Cells that had chains removed are flagged
-with ‘multi_chain’ = True.</p>
-</div></blockquote>
+<p>Supports <code class="docutils literal notranslate"><span class="pre">all_contig_annotations.json</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{all,filtered}_contig_annotations.csv</span></code>.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">json</span></code> file is available, it is preferable as it
+contains additional information about V(D)J-junction insertions. Other than
+that there should be no difference.</p>
+<dl class="simple">
+<dt>Currently, reading data into <em>Scirpy</em> has the following limitations:</dt><dd><ul class="simple">
+<li><p>only alpha- and beta <a class="reference internal" href="glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
+<li><p>non-productive chains are removed</p></li>
+<li><p>Each chain can contain up to two alpha and two beta chains (<a class="reference internal" href="glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a>).
+Excess chains are removed (those with lowest read count/<a class="reference internal" href="glossary.html#term-UMI"><span class="xref std std-term">UMI</span></a> count)
+and cells flagged as <a class="reference internal" href="glossary.html#term-Multichain-cell"><span class="xref std std-term">Multichain-cell</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>For more information, see <a class="reference internal" href="tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Path to filterd_contig_annotations.csv or all_contig_annotationgs.csv</p>
+<dt><strong>path</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Path to <code class="docutils literal notranslate"><span class="pre">filterd_contig_annotations.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">all_contig_annotations.csv</span></code> or
+<code class="docutils literal notranslate"><span class="pre">all_contig_annotations.json</span></code>.</p>
 </dd>
-<dt><strong>filtered</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Only keep filtered contig annotations (i.e. is_cell and high_confidence)
+<dt><strong>filtered</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</dt><dd><p>Only keep filtered contig annotations (i.e. <code class="docutils literal notranslate"><span class="pre">is_cell</span></code> and <code class="docutils literal notranslate"><span class="pre">high_confidence</span></code>).
 If using <code class="docutils literal notranslate"><span class="pre">filtered_contig_annotations.csv</span></code> already, this option
 is futile.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200127)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>
+<dd class="field-even"><p><span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell.</p>
+<dd class="field-odd"><p>AnnData object with TCR data in <code class="docutils literal notranslate"><span class="pre">obs</span></code> for each cell. For more details see
+<a class="reference internal" href="usage-principles.html#data-structure"><span class="std std-ref">Data structure</span></a>.</p>
 </dd>
 </dl>
 </dd></dl>
