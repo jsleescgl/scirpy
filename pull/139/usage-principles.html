@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+fb526cc
+                0.0+6bb6406
               </div>
             
           
@@ -227,7 +227,16 @@ or a list of such.</p></li>
 <div class="section" id="data-structure">
 <span id="id1"></span><h2>Data structure<a class="headerlink" href="#data-structure" title="Permalink to this headline">¶</a></h2>
 <p>For instructions how to load data into scirpy, see <a class="reference internal" href="tutorials/tutorial_io.html#importing-data"><span class="std std-ref">Loading TCR data with scirpy</span></a>.</p>
-<p>It just has additional TCR-related columns in <code class="docutils literal notranslate"><span class="pre">obs</span></code>:</p>
+<p>Scirpy leverages the <a class="reference external" href="https://github.com/theislab/anndata">AnnData</a> data structure
+which combines a gene expression matrix (<code class="docutils literal notranslate"><span class="pre">.X</span></code>), gene-level annotations (<code class="docutils literal notranslate"><span class="pre">.var</span></code>) and
+cell-level annotations (<code class="docutils literal notranslate"><span class="pre">.obs</span></code>) into a single object. <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> forms the basis for the
+<a class="reference external" href="https://scanpy.readthedocs.io/en/stable/usage-principles.html">Scanpy analysis workflow</a>
+for single-cell transcriptomics data.</p>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="_images/anndata.svg"><img alt="_images/anndata.svg" src="_images/anndata.svg" width="350px" /></a>
+<p class="caption"><span class="caption-text">Image by <a class="reference external" href="http://falexwolf.de/">F. Alex Wolf</a>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Scirpy adds the following TCR-related columns to <code class="docutils literal notranslate"><span class="pre">AnnData.obs</span></code>:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">has_tcr</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> for all cells with a T-cell receptor</p></li>
@@ -235,12 +244,12 @@ or a list of such.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TRB_1_&lt;attr&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">TRB_2_&lt;attr&gt;</span></code>: columns related to the primary and secondary TCR-beta chain</p></li>
 </ul>
 </div></blockquote>
-<p>The list of attributes available are:</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;attr&gt;</span></code> is any of:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">c_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">v_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">d_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">j_gene</span></code>: The gene symbols of the respective genes</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cdr3</span></code> and <code class="docutils literal notranslate"><span class="pre">cdr3_nt</span></code>: The amino acoid and nucleotide sequences of the CDR3 regions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">junction_ins</span></code>: The number of nucleotides inserted in the <code class="docutils literal notranslate"><span class="pre">VD</span></code>/<code class="docutils literal notranslate"><span class="pre">DJ</span></code>/<code class="docutils literal notranslate"><span class="pre">VJ</span></code> junctions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">junction_ins</span></code>: The number of nucleotides inserted in the <code class="docutils literal notranslate"><span class="pre">VD</span></code> + <code class="docutils literal notranslate"><span class="pre">DJ</span></code> junctions or the <code class="docutils literal notranslate"><span class="pre">VJ</span></code> junction, respectively.</p></li>
 </ul>
 </div></blockquote>
 </div>
