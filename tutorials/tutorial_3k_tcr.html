@@ -40,7 +40,7 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Usage principles" href="../usage-principles.html" />
+    <link rel="next" title="Loading TCR data with scirpy" href="tutorial_io.html" />
     <link rel="prev" title="Tutorials" href="../tutorials.html" /> 
 </head>
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+9977cd3
+                0.0+ce86488
               </div>
             
           
@@ -116,10 +116,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_io.html">Loading TCR data with scirpy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
@@ -448,7 +449,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Analysis-of-3k-T-cells-from-cancer">
 <h1>Analysis of 3k T cells from cancer<a class="headerlink" href="#Analysis-of-3k-T-cells-from-cancer" title="Permalink to this headline">¶</a></h1>
-<p>In this tutorial, we re-analize single-cell TCR/RNA-seq data from Wu et al. (<a class="bibtex reference internal" href="../zzz_bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
+<p>In this tutorial, we re-analyze single-cell TCR/RNA-seq data from Wu et al. (<a class="bibtex reference internal" href="../zzz_bibliography.html#wu2020" id="id1">[WMdA+20]</a>)
 generated on the 10x Genomics platform. The original dataset consists of &gt;140k T cells
 from 14 treatment-naive patients across four different types of cancer.
 For this tutorial, to speed up computations, we use a downsampled version of 3k cells.</p>
@@ -496,7 +497,7 @@ scanpy==1.5.1 anndata==0.7.3 umap==0.4.3 numpy==1.18.4 scipy==1.4.1 pandas==1.0.
   import numba.targets
 </pre></div></div>
 </div>
-<p>The dataset ships with the <code class="docutils literal notranslate"><span class="pre">scirpy</span></code> package. We can conveniently load it from the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> module:</p>
+<p>The dataset ships with the <code class="docutils literal notranslate"><span class="pre">scirpy</span></code> package. We can conveniently load it from the <a class="reference internal" href="../api.html#module-scirpy.datasets" title="scirpy.datasets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datasets</span></code></a> module:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -511,10 +512,16 @@ scanpy==1.5.1 anndata==0.7.3 umap==0.4.3 numpy==1.18.4 scipy==1.4.1 pandas==1.0.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 46.9MB/s]
+wu2020_3k.h5ad: 28.7MB [00:01, 22.3MB/s]
 </pre></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object:</p>
+<p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object with additional, TCR-specific columns in <code class="docutils literal notranslate"><span class="pre">obs</span></code>.
+For more information, check the page about Scirpy’s <a class="reference internal" href="../usage-principles.html#data-structure"><span class="std std-ref">data structure</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>T cell receptors</strong></p>
+<p>For more information about our T-cell receptor model, see <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -532,23 +539,6 @@ wu2020_3k.h5ad: 28.7MB [00:00, 46.9MB/s]
 <div class="highlight"><pre>
 (3000, 30727)
 </pre></div></div>
-</div>
-<p>It just has additional TCR-related columns in <code class="docutils literal notranslate"><span class="pre">obs</span></code>:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">has_tcr</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> for all cells with a T-cell receptor</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TRA_1_&lt;attr&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">TRA_2_&lt;attr&gt;</span></code>: columns related to the primary and secondary TCR-alpha chain</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TRB_1_&lt;attr&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">TRB_2_&lt;attr&gt;</span></code>: columns related to the primary and secondary TCR-beta chain</p></li>
-</ul>
-<p>The list of attributes available are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">c_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">v_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">d_gene</span></code>, <code class="docutils literal notranslate"><span class="pre">j_gene</span></code>: The gene symbols of the respective genes</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cdr3</span></code> and <code class="docutils literal notranslate"><span class="pre">cdr3_nt</span></code>: The amino acoid and nucleotide sequences of the CDR3 regions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">junction_ins</span></code>: The number of nucleotides inserted in the <code class="docutils literal notranslate"><span class="pre">VD</span></code>/<code class="docutils literal notranslate"><span class="pre">DJ</span></code>/<code class="docutils literal notranslate"><span class="pre">VJ</span></code> junctions.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>T cell receptors</strong></p>
-<p>For more information about our T-cell receptor model, see <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -878,12 +868,11 @@ wu2020_3k.h5ad: 28.7MB [00:00, 46.9MB/s]
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Importing data</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> supports importing TCR data from <a class="reference external" href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cellranger</a> (10x)
-or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (Smart-seq2).
-See <a class="reference internal" href="../api/index.html#api-io"><span class="std std-ref">Input/Output</span></a> for more details.</p>
-<p>This particular dataset has been imported using <a class="reference internal" href="../api/scirpy.read_10x_vdj.html#scirpy.read_10x_vdj" title="scirpy.read_10x_vdj"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.read_10x_vdj()</span></code></a> and merged
-with transcriptomics data using <a class="reference internal" href="../api/scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>. The exact procedure
-is described in <a class="reference internal" href="../api/scirpy.datasets.wu2020.html#scirpy.datasets.wu2020" title="scirpy.datasets.wu2020"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.datasets.wu2020()</span></code></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">scirpy</span></code> natively supports reading TCR data from <a class="reference external" href="https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger">Cellranger</a> (10x)
+or <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (Smart-seq2) and provides helper functions to import other data types. We provide a <a class="reference internal" href="tutorial_io.html#importing-data"><span class="std std-ref">dedicated tutorial on data loading</span></a> with more details.</p>
+<p>This particular dataset has been imported using <a class="reference internal" href="../generated/scirpy.io.read_10x_vdj.html#scirpy.io.read_10x_vdj" title="scirpy.io.read_10x_vdj"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.read_10x_vdj()</span></code></a> and merged
+with transcriptomics data using <a class="reference internal" href="../generated/scirpy.pp.merge_with_tcr.html#scirpy.pp.merge_with_tcr" title="scirpy.pp.merge_with_tcr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.merge_with_tcr()</span></code></a>. The exact procedure
+is described in <a class="reference internal" href="../generated/scirpy.datasets.wu2020.html#scirpy.datasets.wu2020" title="scirpy.datasets.wu2020"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.datasets.wu2020()</span></code></a>.</p>
 </div>
 <div class="section" id="Preprocess-Transcriptomics-data">
 <h2>Preprocess Transcriptomics data<a class="headerlink" href="#Preprocess-Transcriptomics-data" title="Permalink to this headline">¶</a></h2>
@@ -968,15 +957,15 @@ is described in <a class="reference internal" href="../api/scirpy.datasets.wu202
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_19_1.svg" src="../_images/tutorials_tutorial_3k_tcr_19_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_17_1.svg" src="../_images/tutorials_tutorial_3k_tcr_17_1.svg" /></div>
 </div>
 </div>
 <div class="section" id="TCR-Quality-Control">
 <h2>TCR Quality Control<a class="headerlink" href="#TCR-Quality-Control" title="Permalink to this headline">¶</a></h2>
 <p>While most of T cell receptors have exactly one pair of α and β chains, up to one third of
 T cells can have <em>dual TCRs</em>, i.e. two pairs of receptors originating from different alleles (<a class="bibtex reference internal" href="../zzz_bibliography.html#schuldt2019" id="id2">[SB19]</a>).</p>
-<p>Using the <a class="reference internal" href="../api/scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a> function, we can add a summary
-about the T cell receptor compositions to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>. We can visualize it using <a class="reference internal" href="../api/scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a>.</p>
+<p>Using the <a class="reference internal" href="../generated/scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a> function, we can add a summary
+about the T cell receptor compositions to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>. We can visualize it using <a class="reference internal" href="../generated/scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>chain pairing</strong></p>
@@ -1012,14 +1001,14 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda0492dd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac305163d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_23_1.svg" src="../_images/tutorials_tutorial_3k_tcr_23_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_21_1.svg" src="../_images/tutorials_tutorial_3k_tcr_21_1.svg" /></div>
 </div>
 <p>Indeed, in this dataset, ~6% of cells have more than a one pair of productive T-cell receptors:</p>
 <div class="nbinput docutils container">
@@ -1063,7 +1052,7 @@ Fraction of cells with more than one pair of TCRs: 0.06
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_27_1.svg" src="../_images/tutorials_tutorial_3k_tcr_27_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_25_1.svg" src="../_images/tutorials_tutorial_3k_tcr_25_1.svg" /></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
@@ -1117,29 +1106,29 @@ Fraction of cells with more than one pair of TCRs: 0.06
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="../api/scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../generated/scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a></p></td>
 <td><p>Compute a neighborhood graph of CDR3-sequences.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../api/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a></p></td>
 <td><p>Cluster cells by the similarity of their CDR3-sequences.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../api/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="../generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a></p></td>
 <td><p>Compute positions of cells in clonotype network.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../api/scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a></p></td>
 <td><p>Plot clonotype network colored by different parameters.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="Compute-CDR3-neighborhood-graph">
 <h3>Compute CDR3 neighborhood graph<a class="headerlink" href="#Compute-CDR3-neighborhood-graph" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="../api/scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a> computes the pairwise sequence alignment of all CDR3 sequences and
+<p><a class="reference internal" href="../generated/scirpy.pp.tcr_neighbors.html#scirpy.pp.tcr_neighbors" title="scirpy.pp.tcr_neighbors"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pp.tcr_neighbors()</span></code></a> computes the pairwise sequence alignment of all CDR3 sequences and
 derives a distance from the alignment score. This approach was originally proposed as <em>TCRdist</em> by Dash et al. (<a class="bibtex reference internal" href="../zzz_bibliography.html#tcrdist" id="id3">[DFGH+17]</a>).</p>
 <p>The function requires to specify a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> parameter. All cells with a distance between their
 CDR3 sequences lower than <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> will be connected in the network. In the first example,
 we set the cutoff to <code class="docutils literal notranslate"><span class="pre">0</span></code>, to define clontypes as cells with <strong>identical</strong> CDR3 sequences.
 When the cutoff is <code class="docutils literal notranslate"><span class="pre">0</span></code> no alignment will be performed.</p>
-<p>Then, the function <a class="reference internal" href="../api/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a> will detect connected modules
+<p>Then, the function <a class="reference internal" href="../generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a> will detect connected modules
 in the graph and annotate them as clonotypes. This will add a <code class="docutils literal notranslate"><span class="pre">clonotype</span></code> and
 <code class="docutils literal notranslate"><span class="pre">clonotype_size</span></code> column to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code>.</p>
 <div class="nbinput nblast docutils container">
@@ -1152,8 +1141,8 @@ in the graph and annotate them as clonotypes. This will add a <code class="docut
 </pre></div>
 </div>
 </div>
-<p>To visualize the network we first call <a class="reference internal" href="../api/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
-We can then visualize it using <a class="reference internal" href="../api/scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a>. We recommend setting the
+<p>To visualize the network we first call <a class="reference internal" href="../generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
+We can then visualize it using <a class="reference internal" href="../generated/scirpy.pl.clonotype_network.html#scirpy.pl.clonotype_network" title="scirpy.pl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonotype_network()</span></code></a>. We recommend setting the
 <code class="docutils literal notranslate"><span class="pre">min_size</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">&gt;=2</span></code>, to prevent the singleton clonotypes from cluttering the network.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1179,7 +1168,7 @@ We can then visualize it using <a class="reference internal" href="../api/scirpy
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0455050&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fac30496b90&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1187,7 +1176,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0455050&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_35_2.svg" src="../_images/tutorials_tutorial_3k_tcr_35_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_33_2.svg" src="../_images/tutorials_tutorial_3k_tcr_33_2.svg" /></div>
 </div>
 <p>Let’s re-compute the network with a <code class="docutils literal notranslate"><span class="pre">cutoff</span></code> of <code class="docutils literal notranslate"><span class="pre">10</span></code>. That’s the equivalent of 2 <code class="docutils literal notranslate"><span class="pre">R</span></code>s mutating into <code class="docutils literal notranslate"><span class="pre">N</span></code> (using the BLOSUM62 distance matrix).</p>
 <div class="nbinput nblast docutils container">
@@ -1222,7 +1211,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0455050&gt;],
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1698/1698 [00:20&lt;00:00, 82.22it/s]
+100%|██████████| 1698/1698 [00:15&lt;00:00, 111.78it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1238,7 +1227,7 @@ Finished computing TRA pairwise distances.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2259/2259 [00:36&lt;00:00, 62.05it/s]
+100%|██████████| 2259/2259 [00:25&lt;00:00, 86.94it/s]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1285,7 +1274,7 @@ Finished constructing cell x cell distance matrix.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda382a950&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fac32d4d950&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1293,7 +1282,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda382a950&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_41_2.svg" src="../_images/tutorials_tutorial_3k_tcr_41_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_39_2.svg" src="../_images/tutorials_tutorial_3k_tcr_39_2.svg" /></div>
 </div>
 <p>Now we show the same graph, colored by patient. We observe that for instance clonotypes 277 and 211 (center) are <em>private</em>, i.e. they contain cells from a single sample only. On the other hand, for instance clonotype 333 (bottom left) is <em>public</em>, i.e. it is shared across patients <em>Lung3</em> and <em>Lung1</em>.</p>
 <div class="nbinput docutils container">
@@ -1311,7 +1300,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda382a950&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0448450&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fac304e6610&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1319,7 +1308,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0448450&gt;],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_43_1.svg" src="../_images/tutorials_tutorial_3k_tcr_43_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_41_1.svg" src="../_images/tutorials_tutorial_3k_tcr_41_1.svg" /></div>
 </div>
 <p>We can now extract information (e.g. CDR3-sequences) from a specific clonotype by subsetting <code class="docutils literal notranslate"><span class="pre">AnnData</span></code>. Clonotype <code class="docutils literal notranslate"><span class="pre">333</span></code> does not have a detected alpha chain.</p>
 <div class="nbinput docutils container">
@@ -1421,7 +1410,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7efda0448450&gt;],
 <div class="section" id="Clonal-expansion">
 <h3>Clonal expansion<a class="headerlink" href="#Clonal-expansion" title="Permalink to this headline">¶</a></h3>
 <p>Let’s visualize the number of expanded clonotypes (i.e. clonotypes consisting
-of more than one cell) by cell-type. The first option is to add a column with the <a class="reference internal" href="../api/scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonal_expansion()</span></code></a>
+of more than one cell) by cell-type. The first option is to add a column with the <a class="reference internal" href="../generated/scirpy.tl.clonal_expansion.html#scirpy.tl.clonal_expansion" title="scirpy.tl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonal_expansion()</span></code></a>
 to <code class="docutils literal notranslate"><span class="pre">adata.obs</span></code> and overlay it on the UMAP plot.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -1454,10 +1443,10 @@ to <code class="docutils literal notranslate"><span class="pre">adata.obs</span>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_50_1.svg" src="../_images/tutorials_tutorial_3k_tcr_50_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_48_1.svg" src="../_images/tutorials_tutorial_3k_tcr_48_1.svg" /></div>
 </div>
 <p>The second option is to show the number of cells belonging to an expanded clonotype per category
-in a stacked bar plot, using the <a class="reference internal" href="../api/scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonal_expansion()</span></code></a> plotting function.</p>
+in a stacked bar plot, using the <a class="reference internal" href="../generated/scirpy.pl.clonal_expansion.html#scirpy.pl.clonal_expansion" title="scirpy.pl.clonal_expansion"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.clonal_expansion()</span></code></a> plotting function.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
@@ -1473,14 +1462,14 @@ in a stacked bar plot, using the <a class="reference internal" href="../api/scir
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda0496090&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac32c9c850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_52_1.svg" src="../_images/tutorials_tutorial_3k_tcr_52_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_50_1.svg" src="../_images/tutorials_tutorial_3k_tcr_50_1.svg" /></div>
 </div>
 <p>The same plot, normalized to cluster size. Clonal expansion is a sign of positive selection for a certain, reactive T-cell clone. It, therefore, makes sense that CD8+ effector T-cells have the largest fraction of expanded clonotypes.</p>
 <div class="nbinput docutils container">
@@ -1498,17 +1487,17 @@ in a stacked bar plot, using the <a class="reference internal" href="../api/scir
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda0082850&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac32df9dd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_54_1.svg" src="../_images/tutorials_tutorial_3k_tcr_54_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_52_1.svg" src="../_images/tutorials_tutorial_3k_tcr_52_1.svg" /></div>
 </div>
 <p>Expectedly, the CD8+ effector T cells have the largest fraction of expanded clonotypes.</p>
-<p>Consistent with this observation, they have the lowest <a class="reference internal" href="../api/scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity" title="scirpy.pl.alpha_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.alpha_diversity()</span></code></a> of clonotypes.</p>
+<p>Consistent with this observation, they have the lowest <a class="reference internal" href="../generated/scirpy.pl.alpha_diversity.html#scirpy.pl.alpha_diversity" title="scirpy.pl.alpha_diversity"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.alpha_diversity()</span></code></a> of clonotypes.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
@@ -1522,12 +1511,12 @@ in a stacked bar plot, using the <a class="reference internal" href="../api/scir
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_56_0.svg" src="../_images/tutorials_tutorial_3k_tcr_56_0.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_54_0.svg" src="../_images/tutorials_tutorial_3k_tcr_54_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="Clonotype-abundance">
 <h3>Clonotype abundance<a class="headerlink" href="#Clonotype-abundance" title="Permalink to this headline">¶</a></h3>
-<p>The function <a class="reference internal" href="../api/scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a> allows us to create bar charts for
+<p>The function <a class="reference internal" href="../generated/scirpy.pl.group_abundance.html#scirpy.pl.group_abundance" title="scirpy.pl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.group_abundance()</span></code></a> allows us to create bar charts for
 arbitrary categorial from <code class="docutils literal notranslate"><span class="pre">obs</span></code>. Here, we use it to show the distribution of the
 ten largest clonotypes across the cell-type clusters.</p>
 <div class="nbinput docutils container">
@@ -1547,14 +1536,14 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda38c2390&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac330936d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_59_1.svg" src="../_images/tutorials_tutorial_3k_tcr_59_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_57_1.svg" src="../_images/tutorials_tutorial_3k_tcr_57_1.svg" /></div>
 </div>
 <p>It might be beneficial to normalize the counts to the number of cells per sample to mitigate biases due to different sample sizes:</p>
 <div class="nbinput docutils container">
@@ -1574,14 +1563,14 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda3da6ed0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac2830d690&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_61_1.svg" src="../_images/tutorials_tutorial_3k_tcr_61_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_59_1.svg" src="../_images/tutorials_tutorial_3k_tcr_59_1.svg" /></div>
 </div>
 <p>Coloring the bars by patient gives us information about public and private clonotypes: Some clonotypes are <em>private</em>, i.e. specific to a certain tissue, others are <em>public</em>, i.e. they are shared across different tissues.</p>
 <div class="nbinput docutils container">
@@ -1599,7 +1588,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_63_0.svg" src="../_images/tutorials_tutorial_3k_tcr_63_0.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_61_0.svg" src="../_images/tutorials_tutorial_3k_tcr_61_0.svg" /></div>
 </div>
 <p>However, clonotypes that are shared between <em>patients</em> are rare:</p>
 <div class="nbinput docutils container">
@@ -1617,13 +1606,13 @@ ten largest clonotypes across the cell-type clusters.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_65_0.svg" src="../_images/tutorials_tutorial_3k_tcr_65_0.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_63_0.svg" src="../_images/tutorials_tutorial_3k_tcr_63_0.svg" /></div>
 </div>
 </div>
 </div>
 <div class="section" id="Gene-usage">
 <h2>Gene usage<a class="headerlink" href="#Gene-usage" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../api/scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.group_abundance()</span></code></a> can also give us some information on VDJ usage.
+<p><a class="reference internal" href="../generated/scirpy.tl.group_abundance.html#scirpy.tl.group_abundance" title="scirpy.tl.group_abundance"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.group_abundance()</span></code></a> can also give us some information on VDJ usage.
 We can choose any of the <code class="docutils literal notranslate"><span class="pre">{TRA,TRB}_{1,2}_{v,d,j,c}_gene</span></code> columns to make a stacked bar plot.
 We use <code class="docutils literal notranslate"><span class="pre">max_col</span></code> to limit the plot to the 10 most abundant V-genes.</p>
 <div class="nbinput docutils container">
@@ -1647,14 +1636,14 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd98202f50&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac227bd490&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_68_1.svg" src="../_images/tutorials_tutorial_3k_tcr_68_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_66_1.svg" src="../_images/tutorials_tutorial_3k_tcr_66_1.svg" /></div>
 </div>
 <p>We can pre-select groups by filtering <code class="docutils literal notranslate"><span class="pre">adata</span></code>:</p>
 <div class="nbinput docutils container">
@@ -1696,16 +1685,16 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda0571f10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac300b8e50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_70_2.svg" src="../_images/tutorials_tutorial_3k_tcr_70_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_68_2.svg" src="../_images/tutorials_tutorial_3k_tcr_68_2.svg" /></div>
 </div>
-<p>The exact combinations of VDJ genes can be visualized as a Sankey-plot using <a class="reference internal" href="../api/scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.vdj_usage()</span></code></a>.</p>
+<p>The exact combinations of VDJ genes can be visualized as a Sankey-plot using <a class="reference internal" href="../generated/scirpy.pl.vdj_usage.html#scirpy.pl.vdj_usage" title="scirpy.pl.vdj_usage"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.pl.vdj_usage()</span></code></a>.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
@@ -1721,14 +1710,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efda0406990&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac32c66390&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_72_1.svg" src="../_images/tutorials_tutorial_3k_tcr_72_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_70_1.svg" src="../_images/tutorials_tutorial_3k_tcr_70_1.svg" /></div>
 </div>
 <p>We can also use this plot to investigate the exact VDJ composition of one (or several) clonotypes:</p>
 <div class="nbinput docutils container">
@@ -1746,18 +1735,18 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd92c96710&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac2220fa90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_74_1.svg" src="../_images/tutorials_tutorial_3k_tcr_74_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_72_1.svg" src="../_images/tutorials_tutorial_3k_tcr_72_1.svg" /></div>
 </div>
 <div class="section" id="Spectratype-plots">
 <h3>Spectratype plots<a class="headerlink" href="#Spectratype-plots" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="../api/scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-func docutils literal notranslate"><span class="pre">spectratype()</span></code></a> plots give us information about the length distribution of CDR3 regions.</p>
+<p><a class="reference internal" href="../generated/scirpy.pl.spectratype.html#scirpy.pl.spectratype" title="scirpy.pl.spectratype"><code class="xref py py-func docutils literal notranslate"><span class="pre">spectratype()</span></code></a> plots give us information about the length distribution of CDR3 regions.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
@@ -1773,14 +1762,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd92c5c710&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac2221ba50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_77_1.svg" src="../_images/tutorials_tutorial_3k_tcr_77_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_75_1.svg" src="../_images/tutorials_tutorial_3k_tcr_75_1.svg" /></div>
 </div>
 <p>The same chart visualized as “ridge”-plot:</p>
 <div class="nbinput docutils container">
@@ -1804,14 +1793,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd92bed050&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac2231dd10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_79_1.svg" src="../_images/tutorials_tutorial_3k_tcr_79_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_77_1.svg" src="../_images/tutorials_tutorial_3k_tcr_77_1.svg" /></div>
 </div>
 <p>A spectratype-plot by gene usage. To pre-select specific genes, we can simply filter the <code class="docutils literal notranslate"><span class="pre">adata</span></code> object before plotting.</p>
 <div class="nbinput docutils container">
@@ -1852,14 +1841,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd927f6fd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac21d7aa90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_81_2.svg" src="../_images/tutorials_tutorial_3k_tcr_81_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_79_2.svg" src="../_images/tutorials_tutorial_3k_tcr_79_2.svg" /></div>
 </div>
 </div>
 </div>
@@ -2096,14 +2085,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7efd92c14090&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7fac330f8350&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_86_1.svg" src="../_images/tutorials_tutorial_3k_tcr_86_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_84_1.svg" src="../_images/tutorials_tutorial_3k_tcr_84_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
@@ -2120,14 +2109,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7efd9277fe10&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7fac219b4590&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_87_1.svg" src="../_images/tutorials_tutorial_3k_tcr_87_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_85_1.svg" src="../_images/tutorials_tutorial_3k_tcr_85_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
@@ -2144,14 +2133,14 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd92573bd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac216f0810&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_88_1.svg" src="../_images/tutorials_tutorial_3k_tcr_88_1.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_86_1.svg" src="../_images/tutorials_tutorial_3k_tcr_86_1.svg" /></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
@@ -2176,14 +2165,14 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd9203b810&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac215b8ad0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_89_2.svg" src="../_images/tutorials_tutorial_3k_tcr_89_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_87_2.svg" src="../_images/tutorials_tutorial_3k_tcr_87_2.svg" /></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
@@ -2222,14 +2211,14 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.axisgrid.FacetGrid at 0x7efd983d4850&gt;
+&lt;seaborn.axisgrid.FacetGrid at 0x7fac3024de50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_91_2.svg" src="../_images/tutorials_tutorial_3k_tcr_91_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_89_2.svg" src="../_images/tutorials_tutorial_3k_tcr_89_2.svg" /></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
@@ -2256,14 +2245,14 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7efd92432e10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac219cd050&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_3k_tcr_92_2.svg" src="../_images/tutorials_tutorial_3k_tcr_92_2.svg" /></div>
+<img alt="../_images/tutorials_tutorial_3k_tcr_90_2.svg" src="../_images/tutorials_tutorial_3k_tcr_90_2.svg" /></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -2286,7 +2275,7 @@ No handles with labels found to put in legend.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usage-principles.html" class="btn btn-neutral float-right" title="Usage principles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tutorial_io.html" class="btn btn-neutral float-right" title="Loading TCR data with scirpy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
