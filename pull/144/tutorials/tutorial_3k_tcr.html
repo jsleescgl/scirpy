@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+c243ea1
+                0.0+be57a9f
               </div>
             
           
@@ -512,7 +512,7 @@ scanpy==1.5.1 anndata==0.7.3 umap==0.4.3 numpy==1.18.4 scipy==1.4.1 pandas==1.0.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 41.3MB/s]
+wu2020_3k.h5ad: 28.7MB [00:00, 38.3MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object with additional, TCR-specific columns in <code class="docutils literal notranslate"><span class="pre">obs</span></code>.
@@ -1001,7 +1001,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d58111d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f43198cc490&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1146,9 +1146,9 @@ in the graph and annotate them as clonotypes. This will add a <code class="docut
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1622/1622 [00:00&lt;00:00, 86094.17it/s]
-100%|██████████| 2180/2180 [00:00&lt;00:00, 18435.50it/s]
-100%|██████████| 9003/9003 [00:00&lt;00:00, 78334.53it/s]
+100%|██████████| 1622/1622 [00:00&lt;00:00, 77640.38it/s]
+100%|██████████| 2180/2180 [00:00&lt;00:00, 17076.09it/s]
+100%|██████████| 9003/9003 [00:00&lt;00:00, 79481.78it/s]
 </pre></div></div>
 </div>
 <p>To visualize the network we first call <a class="reference internal" href="../generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
@@ -1178,7 +1178,7 @@ We can then visualize it using <a class="reference internal" href="../generated/
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f49d572d6d0&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f431989b790&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1223,7 +1223,7 @@ Computing TRA pairwise distances...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1698/1698 [00:18&lt;00:00, 93.54it/s]
+100%|██████████| 1698/1698 [00:14&lt;00:00, 119.40it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1231,7 +1231,7 @@ Computing TRA pairwise distances...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Finished computing TRA pairwise distances. (0:00:18)
+Finished computing TRA pairwise distances. (0:00:14)
 Computing TRB pairwise distances...
 </pre></div></div>
 </div>
@@ -1240,7 +1240,7 @@ Computing TRB pairwise distances...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2259/2259 [00:31&lt;00:00, 71.43it/s]
+100%|██████████| 2259/2259 [00:25&lt;00:00, 90.35it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1248,7 +1248,7 @@ Computing TRB pairwise distances...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Finished computing TRB pairwise distances. (0:00:31)
+Finished computing TRB pairwise distances. (0:00:25)
 Started comstructing TRA coord-dictionary...
 </pre></div></div>
 </div>
@@ -1257,7 +1257,7 @@ Started comstructing TRA coord-dictionary...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2240/2240 [00:00&lt;00:00, 15759.49it/s]
+100%|██████████| 2240/2240 [00:00&lt;00:00, 13859.09it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1275,7 +1275,7 @@ Started comstructing TRB coord-dictionary...
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 
-100%|██████████| 2470/2470 [00:00&lt;00:00, 46260.22it/s]
+100%|██████████| 2470/2470 [00:00&lt;00:00, 41394.19it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1293,7 +1293,7 @@ Constructing cell x cell distance matrix...
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 
-100%|██████████| 12595/12595 [00:00&lt;00:00, 111044.86it/s]
+100%|██████████| 12595/12595 [00:00&lt;00:00, 101693.36it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1354,7 +1354,7 @@ Finished constructing cell x cell distance matrix.  (0:00:00)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f49d8bff1d0&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f431ccaec90&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1380,7 +1380,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f49d8bff1d0&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f49d8ba9e10&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f4319888d50&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1542,7 +1542,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../generate
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d571fc50&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f431cde4e90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1567,7 +1567,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../generate
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49cc73e890&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4319b5b750&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1616,7 +1616,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d8b1eb90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f431ce8f310&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1643,7 +1643,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d56ffb90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f431d032310&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1716,7 +1716,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49cc64cc10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4310706090&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1765,7 +1765,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d574ae10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f43186c5850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1790,7 +1790,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d8fa7710&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f43197bbe50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1815,7 +1815,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49cc05fa50&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f43100c9ad0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1842,7 +1842,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49d8d871d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4310298510&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1873,7 +1873,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49bfc0b790&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f431006f8d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1921,7 +1921,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49bfb7db90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4303bc7b50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2165,7 +2165,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f49bfb2fb50&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7f4303b620d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2189,7 +2189,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f49bf7eb310&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7f43038b2550&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2213,7 +2213,7 @@ This slicing behavior will be removed in anndata 0.8.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49bf4ff410&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f430350ebd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2245,7 +2245,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49bf3f1850&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f43034b4090&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2291,7 +2291,7 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.axisgrid.FacetGrid at 0x7f49bf7cab10&gt;
+&lt;seaborn.axisgrid.FacetGrid at 0x7f43036f7ed0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2325,7 +2325,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49bf509dd0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f4318180b90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
