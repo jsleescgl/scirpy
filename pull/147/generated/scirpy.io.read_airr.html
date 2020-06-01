@@ -40,8 +40,8 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="scirpy.pp.merge_with_tcr" href="scirpy.pp.merge_with_tcr.html" />
-    <link rel="prev" title="scirpy.io.read_h5ad" href="scirpy.io.read_h5ad.html" /> 
+    <link rel="next" title="scirpy.io.TcrCell" href="scirpy.io.TcrCell.html" />
+    <link rel="prev" title="scirpy.io.read_tracer" href="scirpy.io.read_tracer.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+d22ed95
+                0.0+c09d8a2
               </div>
             
           
@@ -93,27 +93,26 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/tutorial_3k_tcr.html">Analysis of 3k T cells from cancer</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../tutorials/tutorial_io.html">Loading TCR data with scirpy</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../tutorials/tutorial_io.html#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.io.read_airr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-10x-data">Read 10x data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-Smart-seq2-data-processed-with-TraCeR">Read Smart-seq2 data processed with TraCeR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorials/tutorial_io.html#Read-an-AIRR-compliant-rearrangement-table">Read an AIRR-compliant rearrangement table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_io.html#Creating-AnnData-objects-from-other-formats">Creating AnnData objects from other formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/tutorial_io.html#Combining-multiple-samples">Combining multiple samples</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../usage-principles.html">Usage principles</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../api.html#input-output-io">Input/Output: <code class="docutils literal notranslate"><span class="pre">io</span></code></a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.read_h5ad.html">scirpy.io.read_h5ad</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">scirpy.io.read_airr</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.TcrCell.html">scirpy.io.TcrCell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.TcrChain.html">scirpy.io.TcrChain</a></li>
-<li class="toctree-l3"><a class="reference internal" href="scirpy.io.from_tcr_objs.html">scirpy.io.from_tcr_objs</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pp">Preprocessing: <code class="docutils literal notranslate"><span class="pre">pp</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#tools-tl">Tools: <code class="docutils literal notranslate"><span class="pre">tl</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.pl">Plotting: <code class="docutils literal notranslate"><span class="pre">pl</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.datasets">Datasets: <code class="docutils literal notranslate"><span class="pre">datasets</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.util">Utility functions: <code class="docutils literal notranslate"><span class="pre">util</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api.html#module-scirpy.tcr_dist">TCR distance metrics: <code class="docutils literal notranslate"><span class="pre">tcr_dist</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tcr-biology.html">T-cell receptor model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zzz_bibliography.html">Bibliography</a></li>
@@ -164,7 +163,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../api.html">API</a> &raquo;</li>
+          <li><a href="../tutorials.html">Tutorials</a> &raquo;</li>
+        
+          <li><a href="../tutorials/tutorial_io.html">Loading TCR data with scirpy</a> &raquo;</li>
         
       <li>scirpy.io.read_airr</li>
     
@@ -174,7 +175,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L411-L470" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/io/_io.py#L411-L478" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -218,8 +219,16 @@
 <dt id="scirpy.io.read_airr">
 <code class="sig-prename descclassname">scirpy.io.</code><code class="sig-name descname">read_airr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.io.read_airr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read AIRR-compliant data.</p>
-<p>Reads data organized in the <a class="reference external" href="https://docs.airr-community.org/en/latest/datarep/rearrangements.html">AIRR rearrangement schema</a></p>
+<p>Reads data organized in the <a class="reference external" href="https://docs.airr-community.org/en/latest/datarep/rearrangements.html">AIRR rearrangement schema</a>.</p>
 <dl class="simple">
+<dt>The following columns are required:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">productive</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">locus</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consensus_count</span></code></p></li>
+<li><p>at least one of <code class="docutils literal notranslate"><span class="pre">junction_aa</span></code> or <code class="docutils literal notranslate"><span class="pre">junction</span></code>.</p></li>
+</ul>
+</dd>
 <dt>Currently, reading data into <em>Scirpy</em> has the following limitations:</dt><dd><ul class="simple">
 <li><p>only alpha- and beta <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
 <li><p>non-productive chains are removed</p></li>
@@ -259,10 +268,10 @@ as a List, e.g. <code class="docutils literal notranslate"><span class="pre">[&q
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scirpy.pp.merge_with_tcr.html" class="btn btn-neutral float-right" title="scirpy.pp.merge_with_tcr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scirpy.io.TcrCell.html" class="btn btn-neutral float-right" title="scirpy.io.TcrCell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="scirpy.io.read_h5ad.html" class="btn btn-neutral float-left" title="scirpy.io.read_h5ad" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="scirpy.io.read_tracer.html" class="btn btn-neutral float-left" title="scirpy.io.read_tracer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+d22ed95
+                0.0+c09d8a2
               </div>
             
           
@@ -96,11 +96,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../tutorials.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tutorial_3k_tcr.html">Analysis of 3k T cells from cancer</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Loading TCR data with scirpy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Loading-data-from-10x-Genomics-CellRanger-or-TraCeR">Loading data from <em>10x Genomics CellRanger</em> or <em>TraCeR</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_10x_vdj.html">scirpy.io.read_10x_vdj</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_tracer.html">scirpy.io.read_tracer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/scirpy.io.read_airr.html">scirpy.io.read_airr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Read-10x-data">Read 10x data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#Read-Smart-seq2-data-processed-with-TraCeR">Read Smart-seq2 data processed with TraCeR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Read-an-AIRR-compliant-rearrangement-table">Read an AIRR-compliant rearrangement table</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#Creating-AnnData-objects-from-other-formats">Creating AnnData objects from other formats</a><ul>
@@ -476,10 +478,12 @@ an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/
 AnnData and how Scirpy makes use of it, check out the <a class="reference internal" href="../usage-principles.html#data-structure"><span class="std std-ref">Data structure</span></a> section.</p>
 <p>The example data used in this notebook are available from the
 <a class="reference external" href="https://github.com/icbi-lab/scirpy/tree/master/docs/tutorials/example_data">Scirpy repository</a>.</p>
-<div class="section" id="Loading-data-from-10x-Genomics-CellRanger-or-TraCeR">
-<h2>Loading data from <em>10x Genomics CellRanger</em> or <em>TraCeR</em><a class="headerlink" href="#Loading-data-from-10x-Genomics-CellRanger-or-TraCeR" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools">
+<h2>Loading data from <em>10x Genomics CellRanger</em>, <em>TraCeR</em> or AIRR-compliant tools<a class="headerlink" href="#Loading-data-from-10x-Genomics-CellRanger,-TraCeR-or-AIRR-compliant-tools" title="Permalink to this headline">¶</a></h2>
 <p>We provide convenience functions to load data from <em>CellRanger</em> or <em>TraCeR</em> with a single function call,
-supporting both data generated on the <em>10x</em> and <em>Smart-seq2</em> sequencing platforms, respectively.</p>
+supporting both data generated on the <em>10x</em> and <em>Smart-seq2</em> sequencing platforms, respectively.
+Moreover, we support importing data in the community-standard
+<a class="reference external" href="https://docs.airr-community.org/en/latest/datarep/rearrangements.html">AIRR rearrangement schema</a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -491,6 +495,9 @@ supporting both data generated on the <em>10x</em> and <em>Smart-seq2</em> seque
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../generated/scirpy.io.read_tracer.html#scirpy.io.read_tracer" title="scirpy.io.read_tracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_tracer</span></code></a>(path)</p></td>
 <td><p>Read data from <a class="reference external" href="https://github.com/Teichlab/tracer">TraCeR</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#stubbington2016-kh" id="id1">[SLonnbergP+16]</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../generated/scirpy.io.read_airr.html#scirpy.io.read_airr" title="scirpy.io.read_airr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_airr</span></code></a>(path)</p></td>
+<td><p>Read AIRR-compliant data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -670,6 +677,77 @@ The raw data has been processed using the aforementioned <a class="reference ext
 <img alt="../_images/tutorials_tutorial_io_14_0.svg" src="../_images/tutorials_tutorial_io_14_0.svg" /></div>
 </div>
 </div>
+<div class="section" id="Read-an-AIRR-compliant-rearrangement-table">
+<h3>Read an AIRR-compliant rearrangement table<a class="headerlink" href="#Read-an-AIRR-compliant-rearrangement-table" title="Permalink to this headline">¶</a></h3>
+<p>We generated example data using <a class="reference external" href="https://immunesim.readthedocs.io/en/latest/">immuneSIM</a> (<a class="bibtex reference internal" href="../zzz_bibliography.html#weber2020" id="id5">[WAY+20]</a>).
+The data consists of 100 cells and does not include transcriptomics data.</p>
+<p>The rearrangement tables are often organized into separate tables per chain. Therefore, <a class="reference internal" href="../generated/scirpy.io.read_airr.html#scirpy.io.read_airr" title="scirpy.io.read_airr"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.read_airr()</span></code></a> supports
+specifiying multiple <code class="docutils literal notranslate"><span class="pre">tsv</span></code> files at once. This would have the same effect as concatenating them before
+the import.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">adata</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_airr</span><span class="p">([</span><span class="s2">&quot;example_data/immunesim_airr/immunesim_tra.tsv&quot;</span><span class="p">,</span> <span class="s2">&quot;example_data/immunesim_airr/immunesim_trb.tsv&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>The dataset does not come with transcriptomics data. We can, therefore, not
+show the UMAP plot highlighting cells with TCRs, but we can still use scirpy
+to analyse it. Below, we visualize the clonotype network
+connecting cells with similar <a class="reference internal" href="../glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequences.</p>
+<p><strong>Note:</strong> The cutoff of 25 was chosen for demonstration purposes on this small sample dataset. Usually a smaller cutoff
+is more approriate.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">dual_tcr</span><span class="o">=</span><span class="s2">&quot;primary_only&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 100/100 [00:00&lt;00:00, 1047.96it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 1020.92it/s]
+100%|██████████| 142/142 [00:00&lt;00:00, 79998.81it/s]
+100%|██████████| 147/147 [00:00&lt;00:00, 76411.29it/s]
+100%|██████████| 278/278 [00:00&lt;00:00, 105770.73it/s]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotypes</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f39137f9050&gt;],
+      dtype=object)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_tutorial_io_19_1.svg" src="../_images/tutorials_tutorial_io_19_1.svg" /></div>
+</div>
+</div>
 </div>
 <div class="section" id="Creating-AnnData-objects-from-other-formats">
 <span id="importing-custom-formats"></span><h2>Creating AnnData objects from other formats<a class="headerlink" href="#Creating-AnnData-objects-from-other-formats" title="Permalink to this headline">¶</a></h2>
@@ -695,7 +773,7 @@ an <a class="reference external" href="https://anndata.readthedocs.io/en/stable/
 </table>
 <p>If you believe you are working with a commonly used format, consider sending a <a class="reference external" href="https://github.com/icbi-lab/scirpy/issues">feature request</a>
 for a <code class="docutils literal notranslate"><span class="pre">read_XXX</span></code> function.</p>
-<p>For this example, we again load the triple-negative breast cancer data from <a class="bibtex reference internal" href="../zzz_bibliography.html#chung2017" id="id5">[CEL+17]</a>. However, this
+<p>For this example, we again load the triple-negative breast cancer data from <a class="bibtex reference internal" href="../zzz_bibliography.html#chung2017" id="id6">[CEL+17]</a>. However, this
 time, we retrieve the TCR data from a separate summary table containing the TCR information
 (we generated this table for the sake of the example, but it could as well
 be a supplementary file from the paper).</p>
@@ -709,7 +787,7 @@ be a supplementary file from the paper).</p>
 </ul>
 </div></blockquote>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -725,7 +803,7 @@ be a supplementary file from the paper).</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -962,7 +1040,7 @@ When converting the <a class="reference internal" href="../generated/scirpy.io.T
 scirpy will only retain at most two alpha and two beta chains per cell and flag cells which exceed
 this number as <a class="reference internal" href="../glossary.html#term-Multichain-cell"><span class="xref std std-term">multichain cells</span></a>. For more information, check the page about our <a class="reference internal" href="../tcr-biology.html#tcr-model"><span class="std std-ref">T-cell receptor model</span></a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -996,7 +1074,7 @@ this number as <a class="reference internal" href="../glossary.html#term-Multich
 </div>
 <p>Now, we can convert the list of <a class="reference internal" href="../generated/scirpy.io.TcrCell.html#scirpy.io.TcrCell" title="scirpy.io.TcrCell"><code class="xref py py-class docutils literal notranslate"><span class="pre">TcrCell</span></code></a> objects using <a class="reference internal" href="../generated/scirpy.io.from_tcr_objs.html#scirpy.io.from_tcr_objs" title="scirpy.io.from_tcr_objs"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.io.from_tcr_objs()</span></code></a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1005,7 +1083,7 @@ this number as <a class="reference internal" href="../glossary.html#term-Multich
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1017,7 +1095,7 @@ this number as <a class="reference internal" href="../glossary.html#term-Multich
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1034,7 +1112,7 @@ this number as <a class="reference internal" href="../glossary.html#term-Multich
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_io_22_0.svg" src="../_images/tutorials_tutorial_io_22_0.svg" /></div>
+<img alt="../_images/tutorials_tutorial_io_27_0.svg" src="../_images/tutorials_tutorial_io_27_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="Combining-multiple-samples">
@@ -1042,9 +1120,9 @@ this number as <a class="reference internal" href="../glossary.html#term-Multich
 <p>It is quite common that the sequncing data is split up in multiple samples.
 To combine them into a single object, we load each sample independently using one of the approaches described
 in this document. Then, we combine them using <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.concatenate.html#anndata.AnnData.concatenate" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">anndata.AnnData.concatenate()</span></code></a>.</p>
-<p>Here is a full example loading and combining three samples from the COVID19 study by <a class="bibtex reference internal" href="../zzz_bibliography.html#liao2020" id="id6">[LLY+20]</a>.</p>
+<p>Here is a full example loading and combining three samples from the COVID19 study by <a class="bibtex reference internal" href="../zzz_bibliography.html#liao2020" id="id7">[LLY+20]</a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1058,7 +1136,7 @@ in this document. Then, we combine them using <a class="reference external" href
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1079,7 +1157,7 @@ in this document. Then, we combine them using <a class="reference external" href
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1090,7 +1168,7 @@ in this document. Then, we combine them using <a class="reference external" href
 </div>
 <p>The data is now integrated in a single object. Again, the detected TCRs coincide with <code class="docutils literal notranslate"><span class="pre">CD3E</span></code> gene expression. We clearly observe batch effects between the samples – for a meaningful downstream analysis further processing steps such as highly-variable gene filtering and batch correction are necessary.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1106,7 +1184,7 @@ in this document. Then, we combine them using <a class="reference external" href
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/tutorials_tutorial_io_28_0.svg" src="../_images/tutorials_tutorial_io_28_0.svg" /></div>
+<img alt="../_images/tutorials_tutorial_io_33_0.svg" src="../_images/tutorials_tutorial_io_33_0.svg" /></div>
 </div>
 </div>
 </div>
