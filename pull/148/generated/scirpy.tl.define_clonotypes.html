@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+8a5a3e7
+                0.0+13f9d62
               </div>
             
           
@@ -177,7 +177,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L69-L150" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L69-L181" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -227,10 +227,21 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>adata</strong></dt><dd><p>Annotated data matrix.</p>
 </dd>
-<dt><strong>same_v_gene</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</dt><dd><p>Enforces clonotypes to have the same <a class="reference internal" href="../glossary.html#term-V-D-J"><span class="xref std std-term">V-gene</span></a>. This is useful
+<dt><strong>same_v_gene</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, {‘primary_only’, ‘all’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘primary_only’, ‘all’]]</span> (default: <code class="docutils literal notranslate"><span class="pre">False</span></code>)</dt><dd><p><p>Enforces clonotypes to have the same <a class="reference internal" href="../glossary.html#term-V-D-J"><span class="xref std std-term">V-genes</span></a>. This is useful
 as the CDR1 and CDR2 regions are fully encoded in this gene.
-See <a class="reference internal" href="../glossary.html#term-CDR"><span class="xref std std-term">CDR</span></a> for more details. Genes with no V-gene
-detected will be treated like a separate “gene”.</p>
+See <a class="reference internal" href="../glossary.html#term-CDR"><span class="xref std std-term">CDR</span></a> for more details.</p>
+<dl class="simple">
+<dt>Possible values are</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> - Ignore V-gene during clonotype definition</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;primary_only&quot;</span></code> - Only the V-genes of the primary pair of alpha
+and beta chains needs to match</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code> - All V-genes of all sequences need to match.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Chains with no detected V-gene will be treated like a separate “gene” with
+the name “None”.</p>
+</p>
 </dd>
 <dt><strong>partitions</strong> : <span class="annotation terse">{‘connected’, ‘leiden’}</span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘connected’, ‘leiden’]</span> (default: <code class="docutils literal notranslate"><span class="pre">'connected'</span></code>)</dt><dd><p><p>How to find graph partitions that define a clonotype.
 Possible values are <code class="docutils literal notranslate"><span class="pre">leiden</span></code>, for using the “Leiden” algorithm and
