@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+448dc03
+                0.0+e07553f
               </div>
             
           
@@ -288,6 +288,13 @@ Multichain cells comprised significantly more reads per cell
 (most of) multichain cells are technical artifacts arising from
 cell-multiplets (<a class="bibtex reference internal" href="zzz_bibliography.html#ilicic2016" id="id10">[IKK+16]</a>).</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
+</dd>
+<dt id="term-Orphan-chain">Orphan chain</dt><dd><p>A <a class="reference internal" href="#term-TCR"><span class="xref std std-term">TCR</span></a> chain is called <em>orphan</em>, if its corresponding counterpart
+has not been detected. For instance, if a cell has only a TCR-α chain,
+but no TCR-β chain, the cell will be flagged as “Orphan alpha”.</p>
+<p>Orphan chains are most likley the effect of stochastic dropouts due to
+sequencing inefficiencies.</p>
+<p>See also <a class="reference internal" href="generated/scirpy.tl.chain_pairing.html#scirpy.tl.chain_pairing" title="scirpy.tl.chain_pairing"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.chain_pairing()</span></code></a>.</p>
 </dd>
 <dt id="term-UMI">UMI</dt><dd><p>Unique molecular identifier. Some single-cell RNA-seq protocols
 label each RNA with a unique barcode prior to PCR-amplification to mitigate
