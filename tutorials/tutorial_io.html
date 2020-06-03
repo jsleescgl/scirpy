@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -704,7 +704,7 @@ is more approriate.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">dual_tcr</span><span class="o">=</span><span class="s2">&quot;primary_only&quot;</span><span class="p">)</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">tcr_neighbors</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">dual_tcr</span><span class="o">=</span><span class="s2">&quot;primary_only&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -713,11 +713,11 @@ is more approriate.</p>
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 100/100 [00:00&lt;00:00, 1323.60it/s]
-100%|██████████| 100/100 [00:00&lt;00:00, 1266.85it/s]
-100%|██████████| 142/142 [00:00&lt;00:00, 74785.43it/s]
-100%|██████████| 147/147 [00:00&lt;00:00, 79341.49it/s]
-100%|██████████| 278/278 [00:00&lt;00:00, 34880.39it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 1645.46it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 1645.78it/s]
+100%|██████████| 142/142 [00:00&lt;00:00, 95815.82it/s]
+100%|██████████| 147/147 [00:00&lt;00:00, 71910.74it/s]
+100%|██████████| 278/278 [00:00&lt;00:00, 113702.24it/s]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -725,9 +725,9 @@ is more approriate.</p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotypes</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
-<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="p">)</span>
-<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotype_clusters</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;fr&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +737,7 @@ is more approriate.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f228ab0ced0&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f02c2211fd0&gt;],
       dtype=object)
 </pre></div></div>
 </div>

@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -122,6 +122,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#define-and-visualize-clonotypes">Define and visualize clonotypes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.define_clonotype_clusters.html">scirpy.tl.define_clonotype_clusters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/scirpy.tl.clonotype_network_igraph.html">scirpy.tl.clonotype_network_igraph</a></li>
 </ul>
@@ -394,13 +395,16 @@ which usually can be visualized by a corresponding plotting function.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, same_v_gene, …])</p></td>
-<td><p>Define <a class="reference internal" href="glossary.html#term-Clonotype"><span class="xref std std-term">clonotypes</span></a> based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> distance.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotypes</span></code></a>(adata, *[, key_added])</p></td>
+<td><p>Define <a class="reference internal" href="glossary.html#term-Clonotype"><span class="xref std std-term">clonotypes</span></a> based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> nucleic acid sequence identity.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, min_size, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.define_clonotype_clusters.html#scirpy.tl.define_clonotype_clusters" title="scirpy.tl.define_clonotype_clusters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">define_clonotype_clusters</span></code></a>(adata, *[, …])</p></td>
+<td><p>Define <a class="reference internal" href="glossary.html#term-Clonotype-cluster"><span class="xref std std-term">clonotype clusters</span></a> based on <a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> distance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network</span></code></a>(adata, *[, sequence, …])</p></td>
 <td><p>Layouts the clonotype network for plotting.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network_igraph.html#scirpy.tl.clonotype_network_igraph" title="scirpy.tl.clonotype_network_igraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network_igraph</span></code></a>(adata[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/scirpy.tl.clonotype_network_igraph.html#scirpy.tl.clonotype_network_igraph" title="scirpy.tl.clonotype_network_igraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clonotype_network_igraph</span></code></a>(adata[, basis])</p></td>
 <td><p>Get an <code class="docutils literal notranslate"><span class="pre">igraph</span></code> object representing the clonotype network.</p></td>
 </tr>
 </tbody>

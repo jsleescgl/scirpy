@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -204,15 +204,23 @@ page about our <a class="reference internal" href="tcr-biology.html#tcr-model"><
 under the <a class="reference external" href="https://creativecommons.org/licenses/by/3.0/deed.en">CC BY-3.0</a> license.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 </dd>
-<dt id="term-Clonotype">Clonotype</dt><dd><p>A clonotype designates a collection of T or B cells that bear the same adaptive
-immune receptors, and thus recognize the same epitopes. Generally, these cells are
-also descendants of a common, antecedent cell and belong to the same cell clone.
-In single-cell RNA-sequencing data, T cells sharing identical
-<a class="reference internal" href="#term-CDR"><span class="xref std std-term">CDR3</span></a> sequences of both α and β TCR chains are generally
-considered a clonotype.</p>
+<dt id="term-Clonotype">Clonotype</dt><dd><p>A clonotype designates a collection of T or B cells that descend from a
+common, antecedent cell, and therefore, bear the same adaptive
+immune receptors and recognize the same <a class="reference internal" href="#term-Epitope"><span class="xref std std-term">epitopes</span></a>.</p>
+<p>In single-cell RNA-sequencing (scRNA-seq) data, T cells sharing identical
+complementarity-determining regions 3 (<a class="reference internal" href="#term-CDR3"><span class="xref std std-term">CDR3</span></a>) nucleotide sequences of both α and β
+<a class="reference internal" href="#term-TCR"><span class="xref std std-term">TCR</span></a> chains make up a clonotype.</p>
 <p><em>Scirpy</em> provides a flexible approach to clonotype definition based on
-<a class="reference internal" href="#term-CDR"><span class="xref std std-term">CDR3</span></a> sequence identity or similarity. For more details, see the
-page about our <a class="reference internal" href="tcr-biology.html#tcr-model"><span class="std std-ref">TCR model</span></a>.</p>
+<a class="reference internal" href="#term-CDR"><span class="xref std std-term">CDR3</span></a> sequence identity or similarity. Additionally, it is possible
+to require clonotypes to have the same <a class="reference internal" href="#term-V-D-J"><span class="xref std std-term">V-gene</span></a>, enforcing the CDR 1
+and 2 regions to be the same.</p>
+<p>For more details, see the page about our <a class="reference internal" href="tcr-biology.html#tcr-model"><span class="std std-ref">TCR model</span></a> and
+the API documentation of <a class="reference internal" href="generated/scirpy.tl.define_clonotypes.html#scirpy.tl.define_clonotypes" title="scirpy.tl.define_clonotypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotypes()</span></code></a>.</p>
+</dd>
+<dt id="term-Clonotype-cluster">Clonotype cluster</dt><dd><p>A higher-order aggregation of <a class="reference internal" href="#term-Clonotype"><span class="xref std std-term">clonotypes</span></a> that have different
+<a class="reference internal" href="#term-CDR"><span class="xref std std-term">CDR3</span></a> nucleotide sequences, but might recognize the same antigen
+because they have the same or similar CDR3 amino acid sequence.</p>
+<p>See also: <a class="reference internal" href="generated/scirpy.tl.define_clonotype_clusters.html#scirpy.tl.define_clonotype_clusters" title="scirpy.tl.define_clonotype_clusters"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.define_clonotype_clusters()</span></code></a>.</p>
 </dd>
 <dt id="term-Private-clonotype">Private clonotype</dt><dd><p>A clonotype that is specific for a certain patient.</p>
 </dd>

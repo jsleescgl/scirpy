@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -172,7 +172,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L320-L360" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L321-L366" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -239,7 +239,8 @@ Note that not all distance metrics support nucleotide sequences.</p>
 <dt><strong>metric</strong> : <span class="annotation terse">{‘alignment’, ‘identity’, ‘levenshtein’}, <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘alignment’, ‘identity’, ‘levenshtein’], <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">'identity'</span></code>)</dt><dd><p><dl class="simple">
 <dt>You can choose one of the following metrics:</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">identity</span></code> – 1 for identical sequences, 0 otherwise.
-See <a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>.</p></li>
+See <a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>.
+This metric implies a cutoff of 0.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">levenshtein</span></code> – Levenshtein edit distance.
 See <a class="reference internal" href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html#scirpy.tcr_dist.LevenshteinDistanceCalculator" title="scirpy.tcr_dist.LevenshteinDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LevenshteinDistanceCalculator</span></code></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">alignment</span></code> – Distance based on pairwise sequence alignments using the
@@ -251,9 +252,13 @@ See <a class="reference internal" href="scirpy.tcr_dist.AlignmentDistanceCalcula
 </dl>
 </p>
 </dd>
-<dt><strong>cutoff</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">10</span></code>)</dt><dd><p>All distances <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">cutoff</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">0</span></code> and eliminated from the sparse
-matrix. A sensible cutoff depends on the distance metric, you can find
+<dt><strong>cutoff</strong> : <span class="annotation terse"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span> (default: <code class="docutils literal notranslate"><span class="pre">10</span></code>)</dt><dd><p><dl class="simple">
+<dt>All distances <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">cutoff</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">0</span></code> and eliminated from the sparse</dt><dd><p>matrix. A sensible cutoff depends on the distance metric, you can find
 information in the corresponding docs.</p>
+</dd>
+</dl>
+<p>A cutoff of 0 implies the <code class="docutils literal notranslate"><span class="pre">identity</span></code> metric.</p>
+</p>
 </dd>
 </dl>
 </dd>

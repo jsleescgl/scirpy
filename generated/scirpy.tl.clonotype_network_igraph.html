@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -103,6 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../api.html#quality-control">Quality control</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../api.html#define-and-visualize-clonotypes">Define and visualize clonotypes</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="scirpy.tl.define_clonotypes.html">scirpy.tl.define_clonotypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scirpy.tl.define_clonotype_clusters.html">scirpy.tl.define_clonotype_clusters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scirpy.tl.clonotype_network.html">scirpy.tl.clonotype_network</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">scirpy.tl.clonotype_network_igraph</a></li>
 </ul>
@@ -177,7 +178,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L275-L306" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/_tools/_clonotypes.py#L304-L340" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -219,7 +220,7 @@
 <h1>scirpy.tl.clonotype_network_igraph<a class="headerlink" href="#scirpy-tl-clonotype-network-igraph" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="scirpy.tl.clonotype_network_igraph">
-<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonotype_network_igraph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">neighbors_key</span><span class="o">=</span><span class="default_value">'tcr_neighbors'</span></em>, <em class="sig-param"><span class="n">basis</span><span class="o">=</span><span class="default_value">'clonotype_network'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonotype_network_igraph" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.tl.</code><code class="sig-name descname">clonotype_network_igraph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="n">basis</span><span class="o">=</span><span class="default_value">'clonotype_network'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.tl.clonotype_network_igraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get an <code class="docutils literal notranslate"><span class="pre">igraph</span></code> object representing the clonotype network.</p>
 <p>Requires running <a class="reference internal" href="scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> before, to
 compute the layout.</p>
@@ -227,8 +228,6 @@ compute the layout.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>adata</strong></dt><dd><p>Annotated data matrix.</p>
-</dd>
-<dt><strong>neighbors_key</strong></dt><dd><p>Key in <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code> where tcr neighborhood information is located.</p>
 </dd>
 <dt><strong>basis</strong></dt><dd><p>Key in <code class="docutils literal notranslate"><span class="pre">adata.obsm</span></code> where the network layout is stored.</p>
 </dd>

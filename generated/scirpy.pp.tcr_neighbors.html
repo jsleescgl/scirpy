@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+62f8418
+                0.0+448dc03
               </div>
             
           
@@ -169,7 +169,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L718-L807" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/icbi-lab/scirpy/tree/master/scirpy/tcr_dist/__init__.py#L726-L821" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -211,7 +211,7 @@
 <h1>scirpy.pp.tcr_neighbors<a class="headerlink" href="#scirpy-pp-tcr-neighbors" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt id="scirpy.pp.tcr_neighbors">
-<code class="sig-prename descclassname">scirpy.pp.</code><code class="sig-name descname">tcr_neighbors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">metric</span><span class="o">=</span><span class="default_value">'alignment'</span></em>, <em class="sig-param"><span class="n">cutoff</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">receptor_arms</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">dual_tcr</span><span class="o">=</span><span class="default_value">'primary_only'</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">'tcr_neighbors'</span></em>, <em class="sig-param"><span class="n">sequence</span><span class="o">=</span><span class="default_value">'aa'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pp.tcr_neighbors" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">scirpy.pp.</code><code class="sig-name descname">tcr_neighbors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adata</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">metric</span><span class="o">=</span><span class="default_value">'identity'</span></em>, <em class="sig-param"><span class="n">cutoff</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">receptor_arms</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">dual_tcr</span><span class="o">=</span><span class="default_value">'primary_only'</span></em>, <em class="sig-param"><span class="n">key_added</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sequence</span><span class="o">=</span><span class="default_value">'nt'</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#scirpy.pp.tcr_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct a neighborhood graph based on <a class="reference internal" href="../glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a> sequence similarity.</p>
 <p>All cells with a CDR3 distance <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">cutoff</span></code> receive an edge in the graph.
 Edges are weighted by the distance.</p>
@@ -220,10 +220,11 @@ Edges are weighted by the distance.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>adata</strong> : <span class="annotation terse"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span><span class="annotation full"><a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a></span></dt><dd><p>annotated data matrix</p>
 </dd>
-<dt><strong>metric</strong> : <span class="annotation terse">{‘identity’, ‘alignment’, ‘levenshtein’}, <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘identity’, ‘alignment’, ‘levenshtein’], <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">'alignment'</span></code>)</dt><dd><p><dl class="simple">
+<dt><strong>metric</strong> : <span class="annotation terse">{‘identity’, ‘alignment’, ‘levenshtein’}, <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a></span><span class="annotation full"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.8)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code></a>[‘identity’, ‘alignment’, ‘levenshtein’], <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">DistanceCalculator</span></code></a>]</span> (default: <code class="docutils literal notranslate"><span class="pre">'identity'</span></code>)</dt><dd><p><dl class="simple">
 <dt>You can choose one of the following metrics:</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">identity</span></code> – 1 for identical sequences, 0 otherwise.
-See <a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>.</p></li>
+See <a class="reference internal" href="scirpy.tcr_dist.IdentityDistanceCalculator.html#scirpy.tcr_dist.IdentityDistanceCalculator" title="scirpy.tcr_dist.IdentityDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityDistanceCalculator</span></code></a>.
+This metric implies a cutoff of 0.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">levenshtein</span></code> – Levenshtein edit distance.
 See <a class="reference internal" href="scirpy.tcr_dist.LevenshteinDistanceCalculator.html#scirpy.tcr_dist.LevenshteinDistanceCalculator" title="scirpy.tcr_dist.LevenshteinDistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LevenshteinDistanceCalculator</span></code></a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">alignment</span></code> – Distance based on pairwise sequence alignments using the
@@ -241,8 +242,7 @@ information in the corresponding docs.</p>
 </dd>
 </dl>
 <p>Two cells with a distance &lt;= the cutoff will be connected.
-If cutoff = 0, the CDR3 sequences need to be identical. In this
-case, no alignment is performed.</p>
+A cutoff of 0 implies the use of the <code class="docutils literal notranslate"><span class="pre">identity</span></code> metric.</p>
 </p>
 </dd>
 </dl>
@@ -268,7 +268,9 @@ cutoff for all of the chains.</p></li>
 <p>See also <a class="reference internal" href="../glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a></p>
 </dd>
 <dt>key_added:</dt><dd><p>dict key under which the result will be stored in <code class="docutils literal notranslate"><span class="pre">adata.uns</span></code>
-when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True.</p>
+when <code class="docutils literal notranslate"><span class="pre">inplace</span></code> is True. Defaults to <code class="docutils literal notranslate"><span class="pre">tcr_neighbors_{sequence}_{metric}</span></code>.</p>
+<p>If metric is an instance of <a class="reference internal" href="scirpy.tcr_dist.DistanceCalculator.html#scirpy.tcr_dist.DistanceCalculator" title="scirpy.tcr_dist.DistanceCalculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">scirpy.tcr_dist.DistanceCalculator</span></code></a>,
+<code class="docutils literal notranslate"><span class="pre">{metric}</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code>.</p>
 </dd>
 <dt>sequence:</dt><dd><p>Use amino acid (<code class="docutils literal notranslate"><span class="pre">aa</span></code>) or nulceotide (<code class="docutils literal notranslate"><span class="pre">nt</span></code>) sequences?</p>
 </dd>
