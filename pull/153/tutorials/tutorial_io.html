@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+d59ea57
+                0.0+4dc3f4c
               </div>
             
           
@@ -484,8 +484,8 @@ AnnData and how Scirpy makes use of it, check out the <a class="reference intern
 <p>Currently, reading data into <em>Scirpy</em> has the following limitations:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>only alpha- and beta <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
-<li><p>non-productive chains are removed. _CellRanger_, _TraCeR_, and the _AIRR rearrangment format
+<li><p>Only alpha- and beta <a class="reference internal" href="../glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains are supported. Other chains are ignored.</p></li>
+<li><p>Non-productive chains are removed. <em>CellRanger</em>, <em>TraCeR</em>, and the <em>AIRR rearrangment format</em>
 flag these cells appropriately. When reading <a class="reference internal" href="#importing-custom-formats"><span class="std std-ref">custom formats</span></a>,
 you need to pass the flag explicitly or filter the chains beforehand.</p></li>
 <li><p>Each chain can contain up to two alpha and two beta chains (<a class="reference internal" href="../glossary.html#term-Dual-TCR"><span class="xref std std-term">Dual TCR</span></a>).
@@ -743,11 +743,11 @@ is more approriate.</p>
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 100/100 [00:00&lt;00:00, 1218.52it/s]
-100%|██████████| 100/100 [00:00&lt;00:00, 1251.85it/s]
-100%|██████████| 142/142 [00:00&lt;00:00, 78750.65it/s]
-100%|██████████| 147/147 [00:00&lt;00:00, 89877.94it/s]
-100%|██████████| 278/278 [00:00&lt;00:00, 89459.61it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 1029.68it/s]
+100%|██████████| 100/100 [00:00&lt;00:00, 872.79it/s]
+100%|██████████| 142/142 [00:00&lt;00:00, 73502.55it/s]
+100%|██████████| 147/147 [00:00&lt;00:00, 56508.36it/s]
+100%|██████████| 278/278 [00:00&lt;00:00, 85185.31it/s]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -767,7 +767,7 @@ is more approriate.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f7d5be54550&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f4a44391550&gt;],
       dtype=object)
 </pre></div></div>
 </div>
