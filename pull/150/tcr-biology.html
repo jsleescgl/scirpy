@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+8b1ed8a
+                0.0+baf7ad5
               </div>
             
           
@@ -198,13 +198,14 @@
 <span id="tcr-model"></span><h1>T-cell receptor model<a class="headerlink" href="#t-cell-receptor-model" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-a-clonotype">
 <h2>What is a clonotype?<a class="headerlink" href="#what-is-a-clonotype" title="Permalink to this headline">¶</a></h2>
-<p>A clonotype designates a collection of T or B cells that bear the same adaptive
-immune receptors, and thus recognize the same <a class="reference internal" href="glossary.html#term-Epitope"><span class="xref std std-term">epitopes</span></a>.
-Generally, these cells are
-also descendants of a common, antecedent cell and belong to the same cell clone.
-In single-cell RNA-sequencing (scRNA-seq) data, T cells sharing identical
-complementarity-determining regions 3 (<a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a>) sequences of both α and β
-<a class="reference internal" href="glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains make up a clonotype.</p>
+<p>A clonotype designates a collection of T or B cells that descend from a
+common, antecedent cell, and therefore, bear the same adaptive
+immune receptors and recognize the same <a class="reference internal" href="glossary.html#term-Epitope"><span class="xref std std-term">epitopes</span></a>.</p>
+<p>In single-cell RNA-sequencing (scRNA-seq) data, T cells sharing identical
+complementarity-determining regions 3 (<a class="reference internal" href="glossary.html#term-CDR3"><span class="xref std std-term">CDR3</span></a>) nucleotide sequences of both α and β
+<a class="reference internal" href="glossary.html#term-TCR"><span class="xref std std-term">TCR</span></a> chains make up a clonotype. Scirpy provides an option to additionally
+require clonotypes to have the same <a class="reference internal" href="glossary.html#term-V-D-J"><span class="xref std std-term">V-gene</span></a>, enforcing the CDR 1
+and 2 regions to be the same.</p>
 </div>
 <div class="section" id="dual-tcrs">
 <h2>Dual TCRs<a class="headerlink" href="#dual-tcrs" title="Permalink to this headline">¶</a></h2>
