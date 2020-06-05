@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.0+c30f028
+                0.0+82bdf28
               </div>
             
           
@@ -470,16 +470,18 @@ For this tutorial, to speed up computations, we use a downsampled version of 3k 
 <span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
 <span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;../..&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;../..&quot;</span><span class="p">)</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -515,7 +517,7 @@ scanpy==1.5.1 anndata==0.7.3 umap==0.4.4 numpy==1.18.5 scipy==1.4.1 pandas==1.0.
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-wu2020_3k.h5ad: 28.7MB [00:00, 55.6MB/s]
+wu2020_3k.h5ad: 28.7MB [00:00, 63.2MB/s]
 </pre></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">adata</span></code> is a regular <a class="reference external" href="https://anndata.readthedocs.io/en/stable/anndata.AnnData.html#anndata.AnnData" title="(in anndata v0.7.2.dev5+ge4581ab.d20200520)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnData</span></code></a> object with additional, TCR-specific columns in <code class="docutils literal notranslate"><span class="pre">obs</span></code>.
@@ -1016,7 +1018,7 @@ about the T cell receptor compositions to <code class="docutils literal notransl
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b884c02d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa0841c5510&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1163,9 +1165,9 @@ in the graph and annotate them as clonotypes. This will add a <code class="docut
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1643/1643 [00:00&lt;00:00, 71838.39it/s]
-100%|██████████| 2186/2186 [00:00&lt;00:00, 81537.68it/s]
-100%|██████████| 8887/8887 [00:00&lt;00:00, 71825.09it/s]
+100%|██████████| 1643/1643 [00:00&lt;00:00, 72759.96it/s]
+100%|██████████| 2186/2186 [00:00&lt;00:00, 78418.32it/s]
+100%|██████████| 8887/8887 [00:00&lt;00:00, 63432.07it/s]
 </pre></div></div>
 </div>
 <p>To visualize the network we first call <a class="reference internal" href="../generated/scirpy.tl.clonotype_network.html#scirpy.tl.clonotype_network" title="scirpy.tl.clonotype_network"><code class="xref py py-func docutils literal notranslate"><span class="pre">scirpy.tl.clonotype_network()</span></code></a> to compute the layout.
@@ -1195,7 +1197,7 @@ We can then visualize it using <a class="reference internal" href="../generated/
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f7b884a6590&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fa084262410&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1258,7 +1260,7 @@ Computing TRA pairwise distances...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 1698/1698 [00:19&lt;00:00, 89.27it/s]
+100%|██████████| 1698/1698 [00:19&lt;00:00, 86.85it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1275,7 +1277,7 @@ Computing TRB pairwise distances...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 2259/2259 [00:33&lt;00:00, 68.39it/s]
+100%|██████████| 2259/2259 [00:34&lt;00:00, 65.02it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1283,7 +1285,7 @@ Computing TRB pairwise distances...
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Finished computing TRB pairwise distances. (0:00:33)
+Finished computing TRB pairwise distances. (0:00:34)
 Started comstructing TRA coord-dictionary...
 </pre></div></div>
 </div>
@@ -1292,7 +1294,7 @@ Started comstructing TRA coord-dictionary...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-100%|██████████| 3748/3748 [00:00&lt;00:00, 38765.76it/s]
+100%|██████████| 3748/3748 [00:00&lt;00:00, 38548.83it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1310,7 +1312,7 @@ Started comstructing TRB coord-dictionary...
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 
-100%|██████████| 3498/3498 [00:00&lt;00:00, 15775.89it/s]
+100%|██████████| 3498/3498 [00:00&lt;00:00, 16421.85it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1328,7 +1330,7 @@ Constructing cell x cell distance matrix...
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 
-100%|██████████| 22017/22017 [00:00&lt;00:00, 106843.23it/s]
+100%|██████████| 22017/22017 [00:00&lt;00:00, 96864.22it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1389,7 +1391,7 @@ Finished constructing cell x cell distance matrix.  (0:00:00)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f7b883f2e90&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fa08423afd0&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1415,7 +1417,7 @@ array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f7b883f2e90&gt;],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f7b88812a10&gt;],
+array([&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fa0843ccf50&gt;],
       dtype=object)
 </pre></div></div>
 </div>
@@ -1645,7 +1647,12 @@ Categories (2396, object): [0, 1, 2, 3, ..., 2392, 2393, 2394, 2395]
 <span></span><span class="c1"># Display the first 2 clonotypes with different v genes</span>
 <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
     <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ct_different_v</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span>
-    <span class="p">[</span><span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">,</span> <span class="s2">&quot;ct_cluster_aa_alignment_same_v&quot;</span><span class="p">,</span> <span class="s2">&quot;TRA_1_v_gene&quot;</span><span class="p">,</span> <span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ct_cluster_aa_alignment_same_v&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TRA_1_v_gene&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TRB_1_v_gene&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
 <span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;ct_cluster_aa_alignment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1821,7 +1828,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../generate
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7f7d4090&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa087e858d0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1846,7 +1853,7 @@ in a stacked bar plot, using the <a class="reference internal" href="../generate
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b882a9a50&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06ef6e090&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1893,7 +1900,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7e1de490&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa084635cd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1920,7 +1927,7 @@ ten largest clonotypes across the cell-type clusters.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7d79a990&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa07ca79090&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1989,7 +1996,7 @@ We use <code class="docutils literal notranslate"><span class="pre">max_col</spa
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b8a5f5350&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa07cd43ad0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2032,7 +2039,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7f92a2d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa087af7850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2057,7 +2064,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7e127710&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06f69ac10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2084,7 +2091,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7da646d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06ed4a510&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2111,7 +2118,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7da70210&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06ec2a290&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2143,7 +2150,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7da1e350&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06eeb7350&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2187,7 +2194,7 @@ Trying to set attribute `.uns` of view, copying.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7d9585d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa0847fbdd0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2426,7 +2433,7 @@ Running Scirpy’s <a class="reference internal" href="../generated/scirpy.tl.re
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.matrix.ClusterGrid at 0x7f7b7dd49c10&gt;
+&lt;seaborn.matrix.ClusterGrid at 0x7fa06f7d0c10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2441,7 +2448,9 @@ Running Scirpy’s <a class="reference internal" href="../generated/scirpy.tl.re
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">pair_to_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;LN2&quot;</span><span class="p">,</span> <span class="s2">&quot;LT2&quot;</span><span class="p">],</span><span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
+<span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">pair_to_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;LN2&quot;</span><span class="p">,</span> <span class="s2">&quot;LT2&quot;</span><span class="p">],</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2459,7 +2468,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7d0ab9d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06e46ca50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2512,9 +2521,9 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-../../scirpy/_tools/_clonotype_imbalance.py:274: RuntimeWarning: divide by zero encountered in double_scalars
+/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/scirpy/_tools/_clonotype_imbalance.py:274: RuntimeWarning: divide by zero encountered in log2
   (case_mean_freq + global_minimum) / (control_mean_freq + global_minimum)
-../../scirpy/_tools/_clonotype_imbalance.py:274: RuntimeWarning: divide by zero encountered in log2
+/opt/hostedtoolcache/Python/3.7.7/x64/lib/python3.7/site-packages/scirpy/_tools/_clonotype_imbalance.py:274: RuntimeWarning: divide by zero encountered in double_scalars
   (case_mean_freq + global_minimum) / (control_mean_freq + global_minimum)
 </pre></div></div>
 </div>
@@ -2524,7 +2533,7 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;seaborn.axisgrid.FacetGrid at 0x7f7b880946d0&gt;
+&lt;seaborn.axisgrid.FacetGrid at 0x7fa07cfd3190&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2565,7 +2574,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7e233e10&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06def6950&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2592,7 +2601,7 @@ No handles with labels found to put in legend.
     <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
     <span class="n">case_label</span><span class="o">=</span><span class="s2">&quot;CD8_Teff&quot;</span><span class="p">,</span>
     <span class="n">control_label</span><span class="o">=</span><span class="s2">&quot;CD8_Trm&quot;</span><span class="p">,</span>
-    <span class="n">inplace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">top_differential_clonotypes</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[</span><span class="s2">&quot;clonotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
@@ -2651,7 +2660,9 @@ WARNING: Clonotype imbalance calculation depends on repertoire overlap. We could
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">)</span>
-<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">pair_to_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CD8_Teff&quot;</span><span class="p">,</span> <span class="s2">&quot;CD8_Trm&quot;</span><span class="p">],</span><span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">repertoire_overlap</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">pair_to_plot</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CD8_Teff&quot;</span><span class="p">,</span> <span class="s2">&quot;CD8_Trm&quot;</span><span class="p">],</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2669,7 +2680,7 @@ No handles with labels found to put in legend.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f7b7d05c950&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fa06d1a9f10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -2687,7 +2698,9 @@ No handles with labels found to put in legend.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;163&quot;</span><span class="p">],</span> <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;277&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+<span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;clonotype&quot;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;163&quot;</span><span class="p">],</span> <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;277&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span>
+<span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;163&quot;</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
